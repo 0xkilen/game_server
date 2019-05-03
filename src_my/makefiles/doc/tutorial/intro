@@ -1,0 +1,26 @@
+Welcome to the wonderful world of make.
+
+This make system is unconventional in that a single instance of make knows the 
+global graph of all dependencies.  The ene and edf make systems that this
+replaces featured a recursive design, where make would invoke another make
+process to build each subdirectory.  No such recursion happens in this make
+system.  As a result, you can always ask make to build any output file, and the
+-j flag for parallel builds always works.
+
+The easiest way to use the build system is from the root of the source tree
+(above ene, edf and etools), but `make` can also be invoked from subdirectories
+which contain simple "forwarding" makefiles that jump up to the top of the
+tree.
+
+For usage information, run `make help`, or just read makefiles/doc/help
+
+Information about what the make system should build, and how, is distributed
+throughout the tree in VARS.mk files and the occasional RULES.mk file.
+
+If all you want to build is libraries, binaries, c# programs, copied files, and
+ant outputs, then there is no need to write any rules yourself.  Instead, you
+just define variables in your VARS.mk files, as described in this tutorial, and
+the make system will generate rules for you.
+
+If you want to build other things, you will need to write rules yourself, in
+RULES.mk files:  see makefiles/doc/tutorial/add_a_custom_rule

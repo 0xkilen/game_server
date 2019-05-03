@@ -1,0 +1,279 @@
+package proto.data;
+
+import "data_base.proto";
+import "data_resource.proto";
+import "data_item.proto";
+import "data_shop.proto";
+import "data_relation.proto";
+import "data_quest.proto";
+import "data_xinshou.proto";
+import "data_yunying.proto";
+import "data_activity.proto";
+import "data_title.proto";
+import "data_recharge.proto";
+import "data_mail.proto";
+import "data_chat.proto";
+
+message role_data {
+        required string name = 1;
+        required gender gender = 2;
+        optional uint32 level = 3 [default = 1];
+        optional uint32 last_levelup_time = 4;
+        //optional uint32 vip_exp = 5;
+        optional int32 icon = 6;
+        repeated string custom_icons = 7;
+        optional int32 custom_icon = 8;
+        optional uint32 fate = 9;
+        optional uint32 offline_time = 10;
+        optional uint32 last_login_time = 11;
+        optional uint32 first_login_time = 12;
+        optional uint32 last_online_day = 13;
+        optional uint32 login_days = 14;
+        optional uint32 today_online_seconds = 15;
+        optional uint32 today_intimate_actor = 16;
+        //optional voice greeting = 17;
+        optional string welcome = 18;
+        optional int32 kaichang = 19;
+        optional uint32 channel_id = 20;
+        repeated string former_names = 21;
+        optional string username = 22;
+}
+
+message role_simple_info {
+        required uint64 gid = 1;
+        required string name = 2;
+        required gender gender = 3;
+        required uint32 level = 4;
+        required uint32 vip_exp = 5;
+        required int32 icon = 6;
+        repeated string custom_icons = 7;
+        optional int32 custom_icon = 8;
+        optional uint32 offline_time = 9;
+        optional uint32 zhanli = 10;
+        optional uint32 title = 11;
+        optional string login_ip = 12;
+        optional uint32 area_id = 13;
+        optional bool not_player = 22;
+        optional uint64 vigor = 25;
+}
+
+message role_info {
+        required role_simple_info simple_info = 1;
+        optional resources resources = 5;
+        optional int32 receive_gift = 11;
+        optional uint32 present = 13;
+        optional int32 present_count = 14;
+        optional string welcome = 19;
+        optional uint64 spouse = 21;
+        repeated string former_names = 23;
+        //repeated formation_actor_extra_data formation_actors_data = 24;
+}
+
+message role_info_array {
+        repeated role_info infos = 1;
+}
+
+message role_changing_data {
+        optional uint32 eat_time = 1;
+        optional uint32 eat_times = 2;
+        optional uint32 share_day = 3;
+}
+
+
+message comment {
+        optional uint64 gid = 1;
+        optional uint64 reply_to = 2;
+        required uint64 role = 3;
+        optional string content = 4;
+        optional uint32 gift = 5;
+        optional uint32 gift_count = 6;
+        required uint32 time = 7;
+}
+
+message comment_array {
+        optional uint64 gid_seed = 1 [default = 1];
+        repeated comment comments = 2;
+}
+
+message social_present {
+        required uint32 pttid = 1;
+        optional int32 count = 2;
+}
+
+message social {
+        repeated social_present presents = 1;
+        optional uint32 upvote_count = 2;
+        optional uint32 upvote_roles_day = 3;
+        repeated uint64 upvote_roles = 4;
+        repeated uint64 upvoted_roles = 5;
+}
+
+message chat_data {
+        required proto.data.chat_type type = 1;
+        required uint32 last_send_time = 2;
+}
+
+message chat_data_array {
+        repeated chat_data chats = 1;
+}
+
+message role {
+        required uint64 gid = 1;
+        optional role_data data = 3;
+        optional resources resources = 4;
+        optional item_array items = 7;
+        optional shop shop = 9;
+        optional relation relation = 13;
+        optional quests quests = 15;
+        optional role_changing_data changing_data = 17;
+        optional yunying yunying = 24;
+        optional activity activity = 25;
+        optional title_array titles = 26;
+        optional recharge recharge = 27;
+        optional comment_array comments = 28;
+        optional social social = 29;
+        optional mail_array mails = 34;
+        optional xinshou xinshou = 37;
+        optional chat_data_array chat_data = 39;
+}
+
+enum player_action_type {
+        PAT_MIRROR_ACTION = 100;
+
+        PAT_ARENA_CHALLENGE = 200;
+        PAT_ARENA_JOIN = 201;
+
+        PAT_MANSION_ACCEPT_QUEST = 300;
+        PAT_MANSION_ENTER = 301;
+        PAT_MANSION_ENTER_FRIEND = 302;
+        PAT_MANSION_LEAVE = 303;
+        PAT_MANSION_UPVOTE = 304;
+        PAT_MANSION_HELP_QUEST = 305;
+        PAT_MANSION_ACCEPT_GAME_INVITATION = 306;
+        PAT_MANSION_PLAY_GAME = 307;
+        PAT_MANSION_INVITE_GAME = 308;
+        PAT_MANSION_GAME_WAIT_ACCEPT = 309;
+        PAT_MANSION_BANQUET_RESERVE = 310;
+        PAT_MANSION_BANQUET_ENTER = 311;
+        PAT_MANSION_BANQUET_PLAY = 312;
+        PAT_MANSION_BANQUET_LEAVE = 313;
+        PAT_MANSION_BANQUET_HOST = 314;
+        PAT_MANSION_CREATE = 315;
+        PAT_MANSION_FARM_PLANT_SOW = 316;
+        PAT_MANSION_FARM_PLANT_WATER = 317;
+        PAT_MANSION_FARM_PLANT_FERTILIZE = 318;
+        PAT_MANSION_FARM_PLANT_DISINSECT = 319;
+        PAT_MANSION_FARM_PLANT_HARVEST = 320;
+        PAT_MANSION_KITCHEN_COOK = 321;
+
+        PAT_ADVENTURE_CHALLENGE_NEW = 400;
+        PAT_ADVENTURE_CHALLENGE = 401;
+        PAT_ADVENTURE_SWEEP = 402;
+        PAT_HUANZHUANG_PVP_UPDATE_SELECTION = 500;
+        PAT_HUANZHUANG_PVP_VOTE = 501;
+        PAT_HUANZHUANG_PVP_UPVOTE = 502;
+
+        PAT_ROLE_UPVOTE = 600;
+
+        PAT_GONGDOU = 700;
+
+        PAT_RELATION_SEND_GIFT_TO_FRIEND = 800;
+        PAT_RELATION_SEND_GIFT_TO_SPOUSE = 801;
+        PAT_RELATION_APPLY_FRIEND = 802;
+        PAT_RELATION_APPROVE_APPLICATION = 803;
+
+        PAT_FIEF_ENTER_SELF = 804;
+        PAT_FIEF_ENTER_OTHER = 805;
+        PAT_FIEF_AREA_INICIDENT_OPEN = 806;
+        PAT_FIEF_AREA_INCIDENT_INVITE = 807;
+        PAT_FIEF_AREA_INCIDENT_JOIN = 808;
+        PAT_FIEF_CREATE = 809;
+        PAT_FIEF_LEAVE = 810;
+
+        PAT_LEAGUE_FIND_TO_JOIN = 900;
+        PAT_LEAGUE_DONATION = 901;
+        PAT_LEAGUE_QUEST_APPEAL = 902;
+        PAT_LEAGUE_QUEST_HELP = 903;
+        PAT_LEAGUE_LUCKY_BAG_ISSUE = 904;
+        PAT_LEAGUE_LUCKY_BAG_OPEN = 905;
+        PAT_LEAGUE_CREATE = 906;
+        PAT_LEAGUE_APPROVE_JOINER = 907;
+        PAT_LEAGUE_WAR_ENROLL = 908;
+        PAT_LEAGUE_UPGRADE_BUILDING = 909;
+        PAT_LEAGUE_ACCELERATE_BUILDING_UPGRADING = 910;
+        PAT_LEAGUE_TRADE_TO_CITY = 911;
+        PAT_LEAGUE_ALIENATE_CITY = 912;
+        PAT_LEAGUE_INVITE_CITY = 913;
+
+        PAT_LIEMING_ROOM_ENTER = 1000;
+        PAT_MULTI_LIEMING_READY = 1001;
+        PAT_MULTI_LIEMING_INPUT = 1002;
+        PAT_LIEMING_ROOM_ENTER_BY_INVITE = 1003;
+
+        PAT_CHAT_WORLD = 1050;
+
+        PAT_PLAYER_ON_HOOK = 1100;
+
+        PAT_GUANPIN_PROMOTE = 1200;
+        PAT_GUANPIN_DIANSHI_BAOMING = 1201;
+        PAT_GUANPIN_CHAOTANG_CHANLLENGE = 1202;
+
+        PAT_MARRIAGE_START_STAR_WISH = 1300;
+        PAT_MARRIAGE_STAR_WISH_SEND_GIFT = 1301;
+        PAT_MARRIAGE_STAR_WISH_CANCEL = 1302;
+        PAT_MARRIAGE_STOP_STAR_WISH = 1303;
+        PAT_MARRIAGE_STAR_WISH_SELECT = 1304;
+        PAT_MARRIAGE_START_PK = 1305;
+        PAT_MARRIAGE_PK_CHALLENGE = 1306;
+        PAT_MARRIAGE_PK_CANCEL = 1307;
+        PAT_MARRIAGE_STOP_PK = 1308;
+        PAT_MARRIAGE_PK_SELECT = 1309;
+        PAT_MARRIAGE_START_QIU_QIAN = 1310;
+        PAT_MARRIAGE_JOIN_QIU_QIAN = 1311;
+        PAT_MARRIAGE_DECLINE_QIU_QIAN = 1312;
+        PAT_MARRIAGE_QIU_QIAN_CONFIRM = 1317;
+        PAT_MARRIAGE_PROPOSE = 1319;
+        PAT_MARRIAGE_ACCEPT_PROPOSE = 1320;
+        PAT_MARRIAGE_DECLINE_PROPOSE = 1321;
+        PAT_MARRIAGE_DIVORCE = 1322;
+
+        PAT_ACTIVITY_QIANDAO = 1400;
+        PAT_ACTIVITY_RECHARGE = 1401;
+        PAT_ACTIVITY_YUEKA_REWARD = 1402;
+
+        PAT_CHILD_RAISE = 1500;
+        PAT_CHILD_STUDY = 1501;
+        PAT_CHILD_LEARN_SKILL = 1502;
+        PAT_CHILD_ADD_SKILL_EXP = 1503;
+        PAT_CHILD_USE_GROW_ITEM = 1504;
+        PAT_CHILD_PUT_ON_JADE = 1505;
+        PAT_CHILD_TAKE_OFF_JADE = 1506;
+        PAT_CHILD_ADOPT = 1507;
+}
+
+message player_action {
+        required player_action_type type = 1;
+        repeated string arg = 2;
+}
+
+enum player_condition_type {
+        PCT_MANSION_HAS_GAME_INVITATION = 100;
+        PCT_ARENA_JOINED = 201;
+        PCT_FIEF_CREATED = 302;
+        PCT_MANSION_CREATED = 403;
+        PCT_MARRIAGE_STARTED_QIU_QIAN = 505;
+        PCT_MARRIAGE_SPOUSE_STARTED_QIU_QIAN = 506;
+        PCT_MARRIAGE_QIU_QIANING = 507;
+        PCT_CHILD_HAS = 600;
+        PCT_CHILD_DIVORCING = 601;
+}
+
+message player_condition {
+        required player_condition_type type = 1;
+        repeated string arg = 2;
+}
+
+message custom_icon {
+        required int32 idx = 1;
+        optional string icon = 2;
+}

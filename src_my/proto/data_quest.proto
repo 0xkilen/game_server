@@ -1,0 +1,206 @@
+package proto.data;
+
+enum quest_target_type {
+        LEVELUP_REACH = 100;
+        TURN_IN_ITEM = 101;
+        ZHANLI_REACH = 102;
+        COST_USE_ITEM_COUNT = 103;
+        COLLECT_SUIT_COUNT = 104;
+        SUIT_ALL_PART_REACH_LEVEL = 105;
+        LEIJI_CONSUME_RESOURCES_GE = 106;
+        COST_RESOURCES_GE = 107;
+        SINGLE_BATTLE_VALUE_REACH = 108;
+        OWN_RESOURCES_GE = 109;
+        TURN_IN_RESOURCE = 110;
+
+        GET_ACTOR_QUALITY_GE_TIMES = 200;
+        FORMATION_GRIDS_ACTOR_COUNT = 201;
+        LEVELUP_ACTOR_TIMES = 202;
+        FORMATION_ACTOR_QUALITY_GE_COUNT = 203;
+        ACTOR_STAR_GE = 204;
+        ACTOR_ADD_STEP_TIMES = 205;
+        GET_ACTOR_PIN_GE_COUNT = 206;
+        GET_ACTOR_LEVEL_GE_COUNT = 207;
+        ACTOR_LEVEL_GE = 208;
+        ACTOR_PIN_GE = 209;
+        ACTOR_STEP_GE = 210;
+        ACTOR_ADD_STAR_TIMES_GE = 211;
+        ACTOR_ALL_STAR_GE = 212;
+        ACTOR_ACTOR_STAR_GE = 213;
+        ACTOR_ADD_PIN_TIMES = 214;
+        ACTOR_STAR_COUNT_GE = 215;
+
+        PASS_ADVENTURE_TIMES_GE = 300;
+        PASS_EPISODE_ADVENTURE_COUNT_GE = 301;
+        PASS_ADVENTURE = 302;
+        CHALLENGE_HUANZHUANG_ADVENTURE_TIMES = 303;
+        PASS_CHAPTER_ADVENTURE = 304;
+        PASS_ADVENTURE_TYPE = 305;
+        HUANZHUANG_ADVENTURE_HIGHEST_LEVEL = 306;
+        LEVELUP_EQUIPMENT_TIMES = 307;
+        EQUIPMENT_ADD_QUALITY_TIMES = 308;
+        ANY_EQUIPMENT_LEVEL_REACH = 309;
+        EQUIPMENT_COMPOSE_TIMES = 310;
+        EQUIPMENT_HIGHEST_SCORE_GE = 311;
+        EQUIPMENT_MERGE_TIMES_GE = 312;
+        EQUIPMENT_XILIAN_TIMES_GE = 313;
+        HUANZHUANG_COMPOSE_TIMES_GE = 314;
+        HUANZHUANG_LEVELUP_TIMES_GE = 315;
+        HUANZHUANG_INTENSIFY_TIMES_GE = 316;
+
+        WORLD_CHAT_TIMES = 400;
+        PRIVATE_CHAT_TIMES = 401;
+
+        CHALLENGE_ARENA_TIMES = 500;
+        ARENA_RANK_REACH = 501;
+        ARENA_WIN_TIMES = 502;
+
+        PLAYER_SKILL_UNLOCK_COUNT = 600;
+        PLAYER_SKILL_LEVEL_LIMIT = 601;
+
+        JOIN_LIEMING_BATTLE_TIMES = 700;
+        PASS_LIEMING_SPECIAL_BATTLE_TIMES = 701;
+        PASS_LIEMING = 702;
+
+        LEAGUE_BOSS_TOTAL_DAMAGE = 800;
+        LEAGUE_LEVEL_REACH = 801;
+        LEAGUE_KILL_BOSS_TIMES = 802;
+        LEAGUE_SEND_LUCKY_BAG_GE_COUNT = 803;
+        LEAGUE_GET_LUCKY_BAG_KING_GE_TIMES = 804;
+        LEAGUE_GET_LUCKY_BAG_DIAMAND = 805;
+        LEAGUE_QUEST_FINISH_TIMES = 806;
+        LEAGUE_HELP_OTHER_TIMES = 807;
+        LEAGUE_SEND_LUCKY_BAG_TIMES = 808;
+        LEAGUE_CAMPAIGN_TIMES = 809;
+        LEAGUE_DONATE_TIMES = 810;
+        LEAGUE_TROUBLE_TIMES = 811;
+        LEAGUE_TRADE_TIMES = 812;
+
+        MANSION_FISHING_GET = 900;
+        MANSION_VISIT_TIMES = 901;
+        MANSION_POISON_BANQUET_TIMES = 902;
+        MANSION_FURNITURE_GE = 903;
+        MANSION_FANCY_GE = 904;
+        MANSION_HELP_QUEST_TIMES = 905;
+        MANSION_UPVOTED_TIMES = 906;
+        MANSION_COMMIT_HALL_QUEST_TIMES = 907;
+        MANSION_COMMIT_QUEST_TIMES = 908;
+        MANSION_ENTER_BANQUET_TIMES = 909;
+        MANSION_ACCEPT_QUEST_TIMES = 910;
+        MANSION_ACCEPT_OTHER_QUEST_TIMES = 911;
+        MANSION_ADD_FURNITURE_GE = 912;
+        MANSION_BUILDING_LEVEL_GE = 913;
+        MASNION_GAME_FISHING_TIMES = 914;
+        MANSION_TEAM_GAME_FISHING_TIMES = 915;
+        MANSION_BANQUET_PRESTIGE_LEVEL_GE = 916;
+        MANSION_BANQUET_ATMOSPHERE_GE = 917;
+        MANSION_BANQUET_ACTIVITY_GE = 918;
+        MANSION_BANQUET_ANSWER_QUESTION_COUNT_GE = 919;
+        MANSION_BANQUET_EAT_DISH_LEVEL_GE = 920;
+        MANSION_BANQUET_USE_FIREWORK_COUNT_GE = 921;
+        MANSION_FARM_PLANT_TIMES_GE = 923;
+        MANSION_KITCHEN_COOK_TIMES_GE = 924;
+
+        FIEF_DEFEAT_THIEF_TIMES = 1001;
+        FIEF_DEFEAT_BOSS_TIMES = 1002;
+        FIEF_BOSS_TOTAL_DAMAGE = 1003;
+        FIEF_TRIGGER_EVENT_TIMES = 1004;
+        FIEF_CHALLENGE_BOSS_TIMES = 1005;
+        FIEF_JOINED_AREA_INCIDENT_COUNT_GE = 1006;
+        FIEF_OPEN_AREA_INCIDENT_COUNT_GE = 1007;
+        FIEF_CHALLENGED_BOSS_LEVEL_GE = 1008;
+        FIEF_SET_BUILDING_MANAGER = 1009;
+        FIEF_SET_BUILDING_ASSISTANTS = 1010;
+        FIEF_BUILDING_MANAGER_CRAFTS_GE = 1011;
+        FIEF_BUILDING_LEVEL_GE = 1012;
+        FIEF_LEVEL_GE = 1013;
+
+        HUANZHUANG_ZHUANG_XIA_GE = 1100;
+        HUANZHUANG_YI_CHU_GE = 1101;
+        HUANZHUANG_PVP_VOTE = 1102;
+        HUANZHUANG_PVP_NEW_HIGH_RANK_REACH = 1103;
+        HUANZHUANG_PVP_UPDATE_SELECTION = 1104;
+        HUANZHUANG_PVP_RANK_GE = 1105;
+        HUANZHUANG_COLLECTION = 1106;
+        HUANZHUANG_PVP_GUESS_VOTE_TIMES_GE = 1107;
+        HUANZHUANG_PART_ITEM_COUNT_GE = 1108;
+
+        GONGDOU_TIMES = 1200;
+        GONGDOU_TO_SELF_LEAGUE_TIMES = 1201;
+
+        PASS_LIEZHUAN_CHAPTER_COUNT_GE = 1300;
+
+        RELATION_FRIEND_INTIMACY_GE = 1400;
+        FRIEND_NUMBER_GE = 1401;
+        SEND_GIFT_TO_FRIEND_GE_COUNT = 1402;
+        SEND_GIFT_TO_SELF_LEAGUE_TIMES = 1403;
+
+        SHOP_BUY_GE = 1500;
+        MYS_SHOP_REFRESH_TIMES = 1501;
+        EACH_SHOP_BUG_TIMES_GE = 1502;
+
+        SPINE_ADD_COLLECTION_GE = 1600;
+
+        ADD_FATE_TIMES = 1700;
+        ADD_FATE = 1701;
+
+        DRAW_LOTTERY_TIMES = 1800;
+        DRAW_LOTTERY_GOLD_TEN_TIMES = 1801;
+        DRAW_LOTTERY_DIAMOND_TEN_TIMES = 1802;
+
+        GUANPIN_GE = 1900;
+        GUANPIN_CHALLENGE_TIMES = 1901;
+        GUANPIN_COLLECT_FENGLU_TIMES = 1902;
+
+        CUR_DAY_RECHARGE_GE = 2001;
+        ACTIVITY_FESTIVAL_RECHARGE_MONEY_GE = 2002;
+        RECHARGE_GE = 2003;
+
+        TOWER_CHALLENGE_TIMES = 2100;
+        TOWER_HIGHEST_LEVEL_GE = 2101;
+
+        PASS_FEIGE = 2102;
+        GIVE_ROLE_A_LIKE_TIMES_GE = 2103;
+
+        MARRIAGE_BECOME_PROPOSE = 2200;
+        MARRIAGE_ANSWER_QUESTION_TIMES_GE = 2201;
+        MARRIAGE_GUESTURE_NEXT_ROUND_TIMES_GE = 2202;
+
+}
+
+message quest_target {
+        required quest_target_type type = 1;
+        required uint32 cur = 2;
+        optional quest_param param = 3;
+        optional uint32 cur_param_index = 4;
+}
+
+message quest_param {
+        repeated string arg = 1;
+        required uint32 need = 2;
+}
+
+message quest {
+        required uint32 pttid = 1;
+        repeated quest_target targets = 2;
+        optional uint32 accept_time = 3;
+        optional bool not_registered = 4;
+}
+
+message league_quest {
+        required uint32 can_help_accept_day = 1;
+        repeated uint32 quest_can_help_accepted = 2;
+        required uint32 daily_accept_day = 3;
+        repeated uint32 daily_quest_accepted = 4;
+}
+
+message quests {
+        repeated quest accepted = 1;
+        repeated uint32 passed = 2;
+        optional league_quest league_quest = 3;
+        optional uint32 everyday_quest_day = 5;
+        repeated uint32 finished_everyday_quests = 6;
+        repeated uint32 got_everyday_quest_rewards = 7;
+        repeated uint32 received_achievements = 8;
+        optional int32 everyday_quest_monday = 9;
+}

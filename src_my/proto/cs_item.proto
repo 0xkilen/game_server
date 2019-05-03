@@ -1,0 +1,71 @@
+package proto.cs;
+
+import "cs_base.proto";
+import "data_base.proto";
+import "data_event.proto";
+
+message c2s_item_use_req {
+        extend base {
+                optional c2s_item_use_req ciur = 2500;
+        }
+        required uint32 pttid = 1;
+        required int32 count = 2;
+}
+
+message s2c_item_use_rsp {
+        extend base {
+                optional s2c_item_use_rsp siur = 2501;
+        }
+        required proto.data.result result = 1;
+        optional proto.data.event_res event_res = 2;
+        optional uint32 pttid = 3;
+        optional int32 count = 4;
+}
+
+message c2s_item_organize_req {
+        extend base {
+                optional c2s_item_organize_req cior = 2502;
+        }
+}
+
+message c2s_item_confirm_req {
+        extend base {
+                optional c2s_item_confirm_req cicr = 2503;
+        }
+}
+
+message c2s_item_xinwu_compose_req {
+        extend base {
+                optional c2s_item_xinwu_compose_req cixcr = 2504;
+        }
+        required uint32 xinwu = 1;
+        required uint32 count = 2;
+}
+
+message s2c_item_xinwu_compose_rsp {
+        extend base {
+                optional s2c_item_xinwu_compose_rsp sixcr = 2505;
+        }
+        required uint32 xinwu = 1;
+        required uint32 count = 2;
+        required proto.data.result result = 3;
+        optional proto.data.event_res event_res = 4;
+}
+
+message c2s_item_xinwu_decompose_req {
+        extend base {
+                optional c2s_item_xinwu_decompose_req cixdr = 2506;
+        }
+        required uint32 xinwu = 1;
+        required uint32 count = 2;
+}
+
+message s2c_item_xinwu_decompose_rsp {
+        extend base {
+                optional s2c_item_xinwu_decompose_rsp sixdr = 2507;
+        }
+        required uint32 xinwu = 1;
+        required uint32 count = 2;
+        required proto.data.result result = 3;
+        optional proto.data.event_res event_res = 4;
+}

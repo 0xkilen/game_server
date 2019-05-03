@@ -1,0 +1,28 @@
+DROP TABLE IF EXISTS league_mgr;
+CREATE TABLE IF NOT EXISTS league_mgr (
+gid BIGINT UNSIGNED NOT NULL UNIQUE,
+data MEDIUMBLOB
+)
+CHARACTER SET = utf8
+ENGINE = InnoDB;
+
+DELIMITER $$
+
+DROP PROCEDURE IF EXISTS get_league_mgr$$
+CREATE PROCEDURE get_league_mgr ()
+BEGIN
+SELECT data
+FROM league_mgr
+WHERE gid = 1;
+END$$
+
+DROP PROCEDURE IF EXISTS save_league_mgr$$
+CREATE PROCEDURE save_league_mgr (IN param1 MEDIUMBLOB)
+BEGIN
+INSERT INTO league_mgr(gid, data)
+VALUES(1, param1)
+ON DUPLICATE KEY UPDATE
+data = param1;
+END$$
+
+DELIMITER ;

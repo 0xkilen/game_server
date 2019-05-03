@@ -1,0 +1,313 @@
+package proto.data;
+
+import "data_base.proto";
+
+message grid {
+        required int32 row = 1;
+        required int32 col = 2;
+}
+
+message battle_grid {
+        required uint32 actor = 1;
+        required grid grid = 2;
+        optional uint64 _role = 3;
+}
+
+message battle_input {
+        required int32 round = 1;
+        required grid actor_grid = 2;
+        required uint32 skill_pttid = 3;
+        required grid target_grid = 4;
+        optional bool is_auto = 5;
+}
+
+message battle_input_array {
+        repeated battle_input inputs = 1;
+}
+
+message battle_actor_damage {
+        required battle_grid grid = 1;
+        required int32 damage = 2;
+        optional int32 heal = 3;
+        optional uint64 role = 4;
+        optional int32 hp = 5;
+        optional int32 max_hp = 6;
+}
+
+message battle_damage_info {
+        optional int32 finish_round = 1;
+        repeated battle_actor_damage actor_damage = 2;
+        optional battle_env_data teama_battle_env_data = 3;
+        optional battle_env_data teamb_battle_env_data = 4;
+}
+
+message battle_random_info {
+        repeated double randoms = 1;
+}
+
+message battle_info {
+        optional proto.data.battle_input_array inputs = 1;
+        optional bool skip_battle = 2 [default = false];
+        optional battle_damage_info damage_info = 3;
+        optional proto.data.battle_detailed_info detailed_info = 4;
+        optional battle_random_info random_info = 5;
+}
+
+message battle_detailed_info {
+        message actor {
+                optional uint64 role = 1 [default = 0];
+                required uint32 actor = 2;
+                optional uint32 hp = 3;
+                optional grid grid = 4;
+        }
+        message damage_record {
+                optional int32 round = 1;
+                optional actor caster_actor = 2;
+                optional uint32 skill = 3;
+                optional uint32 damage = 4;
+                optional uint32 heal = 5;
+                repeated actor target_actors = 6;
+        }
+        repeated damage_record detailed_damages = 1;
+}
+
+message unite_skill {
+        required uint32 actor = 1;
+        required uint32 united_actor = 2;
+        required uint32 skill_pttid = 3;
+        optional uint32 intimacy_star = 4;
+}
+
+message battle_grid_array {
+        repeated battle_grid grids = 1;
+}
+
+message united_skill_array {
+        repeated unite_skill unite_skills = 1;
+}
+
+message battle_formation_skills {
+        repeated uint32 skills = 2;
+}
+
+message battle_formation_child {
+        required uint64 gid = 1;
+        required battle_grid grid = 2;
+}
+
+message battle_formation {
+        required battle_grid_array grids = 1;
+        repeated unite_skill unite_skills = 2;
+        repeated uint32 skills = 3;
+        repeated battle_formation_skills formation_skills = 4;
+        optional string name = 5;
+        optional battle_formation_child child = 6;
+}
+
+enum battle_origin_type {
+        BOT_NONE = 1;
+        BOT_ADVENTURE = 2;
+        BOT_ARENA = 3;
+        BOT_FIEF = 4;
+        BOT_LIEMING = 5;
+        BOT_LEAGUE = 6;
+        BOT_MANSION = 7;
+        BOT_TOWER = 8;
+        BOT_GUANPIN = 9;
+        BOT_MARRIAGE = 10;
+}
+
+message battle_formation_selection {
+        required battle_origin_type type = 1;
+        required int32 formation_idx = 2;
+}
+
+message battle_env_data {
+        repeated battle_env_buffs battle_env_buffs = 1;
+        repeated battle_env_attrs battle_env_attrs = 2;
+}
+
+message battle_env_attrs_array {
+        repeated battle_env_attrs battle_env_attrs = 1;
+}
+
+message battle_env_attrs {
+        required uint64 role = 1;
+        optional battle_env_league_data league = 2;
+}
+
+message battle_env_league_data {
+        repeated uint32 bonus_cities = 1;
+}
+
+message battle_env_buff {
+        required uint32 buff = 1;
+        optional uint32 end_time = 2;
+        optional uint32 layer = 3;
+}
+
+message battle_env_buffs {
+        required uint64 role = 1;
+        repeated battle_env_buff buffs = 2;
+}
+
+message battle_custom_data {
+        optional battle_actor child = 1;
+}
+
+message battle {
+        repeated battle_formation formations = 1;
+        repeated battle_formation_selection selections = 2;
+        repeated grid grids = 3;
+        optional battle_env_data battle_env_data = 4;
+        optional battle_custom_data custom_data = 5;
+}
+
+message battle_actor {
+        required uint64 role = 1;
+        optional int64 hp = 4;
+        optional uint32 zhanli = 6;
+        optional int64 shield = 8;
+}
+
+ 
+message battle_team {
+        repeated battle_actor actors = 1;
+        optional uint32 zhanli = 2;
+        optional united_skill_array united_skill = 3;
+}
+
+message battle_record {
+        required uint64 gid = 1;
+        required battle_team formation_a = 2;
+        required battle_team formation_b = 3;
+        required uint32 seed = 4;
+}
+
+message battle_result_hit_all_grids {
+        required uint32 hit_level = 1;
+}
+
+message battle_result_hit_one_grids {
+        required uint32 hit_level = 1;
+}
+
+enum battle_type {
+        BT_NORMAL = 1;
+        BT_HIT_ALL_GRIDS = 2;
+        BT_HIT_ONE_GRID = 3;
+}
+
+enum battle_role_rule {
+        BRR_AUTO = 1;
+        BRR_SEMI_AUTO = 2;
+        BRR_MANUAL = 3;
+}
+
+message light_specific_grid {
+        required grid random_grid = 1;
+        required int32 light_num = 2;
+}
+
+message battle_context {
+        required battle_type type = 1;
+        required uint32 random_seed = 2;
+        required uint32 hit_level = 3;
+        required battle_role_rule role_rule = 4;
+        repeated grid hitted_grids = 5;
+        optional light_specific_grid specific_grid = 6;
+        optional battle_origin_type origin_type = 7;
+}
+
+message battle_result {
+        required result result = 1;
+        optional uint32 pttid = 2;
+        optional uint64 battle = 3;
+}
+
+message battle_role_array {
+        repeated uint64 roles = 1;
+}
+
+
+message battle_buff_sync {
+        required uint32 buff = 1;
+        optional uint32 skill = 2;
+        required int32 layer = 3;
+        required int32 cd_time = 4;
+        required battle_actor caster = 5;
+        required battle_actor target = 6;
+}
+
+message battle_buff_sync_array {
+        repeated battle_buff_sync actor_buffs = 1;
+}
+
+message battle_skill_sync {
+        required uint32 skill = 1;
+        required int32 cd_time = 2;
+}
+
+message battle_skill_sync_array {
+        repeated battle_skill_sync actor_skills = 1;
+}
+
+message battle_actor_sync {
+        required battle_actor sync_actor = 1;
+        required battle_buff_sync_array sync_buff = 2;
+        required battle_skill_sync_array sync_skill = 3;
+}
+
+message battle_sync {
+        required int32 round = 1;
+        required uint32 pttid = 2;
+        required int32 random_count = 3;
+        required battle_context context = 4;
+        optional battle_grid attack_next_grid = 5;
+        optional battle_grid other_next_grid = 6;
+        repeated battle_actor_sync battle_actors = 7;
+        optional battle_input_array battle_inputs = 8;
+        optional battle_env_data teama_battle_env_data = 9;
+        optional battle_env_data teamb_battle_env_data = 10;
+}
+
+enum battle_reel_type {
+        SKIN_1 = 1;
+        SKIN_2 = 2;
+        SKIN_3 = 3;
+}
+
+enum battle_action_type {
+        CAST_SKILL = 1;
+        EASY_CAST_SKILL = 2;
+        SELECT_SKILL = 3;
+        SELECT_TARGET_AFTER_SKILL = 4;
+        SELECT_TARGET = 5;
+        SELECT_SKILL_AUTO = 6;
+}
+
+enum battle_select_target_type {
+        HP_PERCENT_LIMIT = 1;
+        MOST_HP_PERCENT = 2;
+        LEAST_HP_PERCENT = 3;
+        ZHANLI_MAX = 4;
+        ACTOR_TYPE = 5;
+        MAX_TARGETS = 6;
+        CAN_LIGHT_GRID = 7;
+}
+
+message battle_action {
+        required battle_action_type type = 1;
+        repeated string arg = 2;
+}
+
+message conflict_battle_record {
+        required uint64 gid = 1;
+        required battle_team team_a = 2;
+        required battle_team team_b = 3;
+        required uint32 random_seed = 4;
+        required uint32 pttid = 5;
+        required battle_info battle_info = 6;
+        required battle_context context = 7;
+        required uint64 role = 8;
+}

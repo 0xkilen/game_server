@@ -1,0 +1,6 @@
+﻿id,events.weight,events.events.events.type,events.events.events.arg,events.events.events.arg,events.weight,events.events.events.type,events.events.events.arg,events.events.events.arg,events.weight,events.events.events.type,events.events.events.arg,events.events.events.arg
+1,80,CET_CHANGE_VALUE,CVT_HP_EXP,10,20,CET_CHANGE_VALUE,CVT_HP_EXP,50,,,,
+2,80,CET_CHANGE_VALUE,CVT_ATTACK_EXP,10,20,CET_CHANGE_VALUE,CVT_ATTACK_EXP,50,,,,
+3,80,CET_CHANGE_VALUE,CVT_DEFENCE_EXP,10,20,CET_CHANGE_VALUE,CVT_DEFENCE_EXP,50,,,,
+4,70,CET_NONE,,,25,CET_CHANGE_VALUE,CVT_HEALTH,-30,5,CET_CHANGE_VALUE,CVT_HEALTH,-60
+5,70,CET_CHANGE_VALUE,CVT_GROWTH,100,30,CET_CHANGE_VALUE,CVT_GROWTH,300,,,,

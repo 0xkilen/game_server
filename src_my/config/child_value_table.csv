@@ -1,0 +1,16 @@
+﻿type,name,max_count,min_count,init_count,dec_count,dec_interval,dec_odds,reset_every_day
+CVT_GROWTH,成长值,864000,0,0,,,,
+CVT_HUNGERY,饱食度,200,0,150,1,20,1000,
+CVT_HEALTH,健康度,200,0,150,,,,
+CVT_DIRTY,清洁度,200,0,150,20,180,500,
+CVT_HAPPY,快乐度,200,0,150,5,60,500,
+CVT_SKILL_EXP,技能经验,10000,0,0,,,,
+CVT_HP_EXP,生命经验值,370000,0,0,,,,
+CVT_ATTACK_EXP,攻击经验值,370000,0,0,,,,
+CVT_DEFENCE_EXP,防御经验值,370000,0,0,,,,
+CVT_BOOM_RATE_EXP,暴击经验值,370000,0,0,,,,
+CVT_HIT_RATE_EXP,命中经验值,370000,0,0,,,,
+CVT_ANTI_BOOM_EXP,抗暴经验值,370000,0,0,,,,
+CVT_DODGE_RATE_EXP,闪避经验值,370000,0,0,,,,
+CVT_BATH_CHANCES,清洁次数,2,0,2,,,,2
+CVT_PLAY_CHANCES,玩耍次数,5,0,6,,,,5

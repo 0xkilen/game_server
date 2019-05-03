@@ -1,0 +1,7 @@
+package proto.data;
+
+message server {
+        required uint32 open_day = 1;
+        repeated string white_list = 2;
+        optional uint32 marriage_count = 5;
+}

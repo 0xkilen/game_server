@@ -1,0 +1,205 @@
+package proto.cs;
+
+import "cs_base.proto";
+import "data_base.proto";
+import "data_player.proto";
+import "data_event.proto";
+import "data_resource.proto";
+
+message role_get_info {
+        required uint64 gid = 1;
+        optional bool simple = 2 [default = true];
+}
+
+message c2s_role_get_info_req {
+        extend base {
+                optional c2s_role_get_info_req crgir = 2602;
+        }
+        repeated role_get_info get_info = 1;
+}
+
+message s2c_role_get_info_rsp {
+        extend base {
+                optional s2c_role_get_info_rsp srgir = 2603;
+        }
+        required uint64 gid = 1;
+        required bool simple = 3;
+        required proto.data.result result = 4;
+        optional proto.data.role_info info = 5;
+}
+
+message c2s_role_get_info_by_str_req {
+        extend base {
+                optional c2s_role_get_info_by_str_req crgibsr = 2604;
+        }
+        required string str = 1;
+}
+
+message s2c_role_get_info_by_str_rsp {
+        extend base {
+                optional s2c_role_get_info_by_str_rsp srgibsr = 2605;
+        }
+        required string str = 1;
+        required proto.data.result result = 2;
+        optional proto.data.role_info_array infos = 3;
+}
+
+message s2c_role_update_resource {
+        extend base {
+              optional s2c_role_update_resource srur = 2606;
+        }
+        required proto.data.resource_type type = 1;
+        required int32 value = 2;
+        required uint32 time = 3;
+}
+
+message s2c_role_on_new_day {
+        extend base {
+                optional s2c_role_on_new_day srond = 2609;
+        }
+        required proto.data.event_res event_res = 1;
+}
+
+message s2c_role_levelup_event_notice {
+        extend base {
+                optional s2c_role_levelup_event_notice srlen = 2610;
+        }
+        optional proto.data.event_res event_res = 1;
+}
+
+message c2s_role_comment_req {
+        extend base {
+                optional c2s_role_comment_req crcr = 2611;
+        }
+        required uint64 role = 1;
+        optional uint64 reply_to = 2;
+        required string content = 3;
+}
+
+message s2c_role_comment_rsp {
+        extend base {
+                optional s2c_role_comment_rsp srcr = 2612;
+        }
+        required uint64 role = 1;
+        required proto.data.result result = 2;
+        optional proto.data.comment comment = 3;
+}
+
+message s2c_role_comment_by_other {
+        extend base {
+                optional s2c_role_comment_by_other srcbo = 2613;
+        }
+        required uint64 role = 1;
+        optional proto.data.comment comment = 2;
+}
+
+message c2s_role_fetch_comments_req {
+        extend base {
+                optional c2s_role_fetch_comments_req crfcr = 2614;
+        }
+        required uint64 role = 1;
+}
+
+message s2c_role_fetch_comments_rsp {
+        extend base {
+                optional s2c_role_fetch_comments_rsp srfcr = 2615;
+        }
+        required uint64 role = 1;
+        required proto.data.result result = 2;
+        optional proto.data.comment_array comments = 3;
+}
+
+message c2s_role_delete_comment_req {
+        extend base {
+                optional c2s_role_delete_comment_req crdcr = 2616;
+        }
+        required uint64 role = 1;
+        required uint64 gid = 2;
+}
+
+message s2c_role_delete_comment_rsp {
+        extend base {
+                optional s2c_role_delete_comment_rsp srdcr = 2617;
+        }
+        required uint64 role = 1;
+        required uint64 gid = 2;
+        required proto.data.result result = 3;
+}
+
+message s2c_role_other_deleted_comment {
+        extend base {
+                optional s2c_role_other_deleted_comment srodc = 2618;
+        }
+        required uint64 role = 1;
+        required uint64 gid = 2;
+}
+
+message c2s_role_buy_present_req {
+        extend base {
+                optional c2s_role_buy_present_req crbpr = 2619;
+        }
+        required uint32 present = 1;
+}
+
+message s2c_role_buy_present_rsp {
+        extend base {
+                optional s2c_role_buy_present_rsp srbpr = 2620;
+        }
+        required uint32 present = 1;
+        required proto.data.result result = 2;
+        optional proto.data.event_res event_res = 3;
+        optional uint32 present_count = 4;
+}
+
+message c2s_role_change_setting_req {
+        extend base {
+                optional c2s_role_change_setting_req crcsr = 2624;
+        }
+        optional int32 icon = 1;
+        optional proto.data.custom_icon custom_icon = 2;
+        optional int32 custom_icon_select = 3;
+        optional string welcome = 5;
+}
+
+message s2c_role_change_setting_rsp {
+        extend base {
+                optional s2c_role_change_setting_rsp srcsr = 2625;
+        }
+        optional int32 icon = 1;
+        optional proto.data.custom_icon custom_icon = 2;
+        optional int32 custom_icon_select = 3;
+        optional string welcome = 5;
+        required proto.data.result result = 6;
+}
+
+message s2c_role_update_vigor {
+        extend base {
+              optional s2c_role_update_vigor sruv = 2626;
+        }
+        required int32 vigor = 1;
+}
+
+message c2s_role_change_name_req {
+        extend base {
+                optional c2s_role_change_name_req crcnr = 2629;
+        }
+        required string name = 1;
+}
+
+message s2c_role_change_name_rsp {
+        extend base {
+                optional s2c_role_change_name_rsp srcnr = 2630;
+        }
+        required proto.data.result result = 1;
+        optional string name = 2;
+        optional proto.data.event_res event_res = 3;
+}
+
+message s2c_other_role_resource_changed_notice {
+        extend base {
+                optional s2c_other_role_resource_changed_notice sorrcn = 2634;
+        }
+        required uint64 other = 1;
+        required proto.data.resource_type type = 2;
+        required int64 value = 3;
+}

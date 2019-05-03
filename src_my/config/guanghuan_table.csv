@@ -1,0 +1,12 @@
+﻿id,icon,name,desc,male,files,files,repell,tags.type,tags.value,tags.invisible,quality,pos.x,pos.y,bone,idle_anim,fix_attr.decos.decos.type,fix_attr.decos.decos.change_value,fix_attr.decos.decos.change_percent,fix_attr.decos.decos.type,fix_attr.decos.decos.change_value,fix_attr.decos.decos.change_percent,fix_attr.levelup_growth,levelup_pttid,origins
+150001,ui/hzicon/yichu/guanghuan_aixinwhite,纯白之心,红鸾星魂最纯净的初始状态。,False,spines/guanghuan/UI_whitelove#isFront,,,,,,4,0,250,,,HP,576,,ATTACK,41,,1006,1,
+150002,ui/hzicon/yichu/guanghuan_beidouxing,北斗,更深月色半人家，北斗阑干南斗斜。可以在星语商店购买获得。,False,spines/guanghuan/UI_starlightgh#isFront,spines/guanghuan/UI_starlightghD,,,,,4,0,250,,,HP,576,,ATTACK,41,,1006,1,
+150003,ui/hzicon/yichu/guanghuan_wutai,缤纷,忽逢桃花林，夹岸数百步，中无杂树，芳草鲜美，落英缤纷。可以在星语商店购买获得。,False,spines/guanghuan/gh_wutai#isFront,,,,,,4,0,250,,,HP,576,,ATTACK,41,,1006,1,
+150004,ui/hzicon/yichu/guanghuan_aixinblue,蓝色爱心,激荡出蓝色光芒的红鸾星魂，可通过觉醒第二重获得。,False,spines/guanghuan/UI_bluelove#isFront,,,,,,4,0,250,,,HP,576,,ATTACK,41,,1006,1,
+150005,ui/hzicon/yichu/guanghuan_hudie,翩翩,其形也，翩若惊鸿，婉若游龙。可以在星语商店购买获得。,False,spines/guanghuan/UI_ghbflys#isFront,,,,,,4,0,250,,,HP,576,,ATTACK,41,,1006,1,
+150006,ui/hzicon/yichu/guanghuan_xuehua,白雪,白雪却嫌春色晚，故穿庭树作飞花。可以在星语商店购买获得。,False,spines/guanghuan/gh_piaoxue#isFront,,,,,,4,0,250,,,HP,576,,ATTACK,41,,1006,1,
+150007,ui/hzicon/yichu/guanghuan_aixinred,红色爱心,赤色光芒的红鸾星魂，可通过觉醒第五重获得。,False,spines/guanghuan/UI_redlove#isFront,,,,,,4,0,250,,,HP,576,,ATTACK,41,,1006,1,
+150008,ui/hzicon/yichu/guanghuan_piaohua,春风,春风归从紫皇游，东海宴旸谷。暂时无法获得。,False,spines/guanghuan/gh_piaohua#isFront,,,,,,4,0,250,,,HP,576,,ATTACK,41,,1006,1,
+150009,ui/hzicon/yichu/guanghuan_jinseyumao,金阙,玉楼金阙慵归去，且插梅花醉洛阳。暂时无法获得。,False,spines/guanghuan/gh_jinyumao#isFront,,,,,,4,0,250,,,HP,576,,ATTACK,41,,1006,1,
+150010,ui/hzicon/yichu/guanghuan_aixingold,金色爱心,金色光芒的红鸾星魂，可通过觉醒第八重获得。,False,spines/guanghuan/UI_goldenlove#isFront,,,,,,4,0,250,,,HP,576,,ATTACK,41,,1006,1,
+150011,ui/hzicon/yichu/guanghuan_heiseyumao,暗鸦,淡黄杨柳暗栖鸦。玉人和月摘梅花。暂时无法获得。,False,spines/guanghuan/gh_heiyumao#isFront,,,,,,4,0,250,,,HP,576,,ATTACK,41,,1006,1,

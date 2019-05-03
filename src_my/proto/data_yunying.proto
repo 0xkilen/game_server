@@ -1,0 +1,406 @@
+package proto.data;
+
+import "data_base.proto";
+import "data_event.proto";
+
+enum announcement_type {
+        FLOW_LIGHT_ANNOUNCEMENT = 1;
+        SYSTEM_ANNOUNCEMENT = 2;
+}
+
+enum gonggao_type {
+        BEFORE_LOGIN_ANNOUNCEMENT = 1;
+        SERVER_ANNOUNCEMENT = 2;
+}
+
+message yunying_punish {
+        required uint32 until_time = 1;
+        required string reason = 2;
+}
+
+message yunying {
+        optional yunying_punish gag = 1;
+        optional yunying_punish ban = 2;
+}
+
+message server_ids {
+        repeated int32 ids = 1;
+}
+
+message yunying_item {
+        required uint32 itemId = 1;
+        required string itemName = 2;
+        required uint32 itemNum = 3;
+        required string itemType = 4;
+}
+
+message yunying_role_info {
+        required uint64 roleId = 1;
+        required string uId = 2;
+        required string roleName = 3;
+        required uint32 roleRank = 4;
+        required gender roleType = 5;
+        required uint32 channelId = 6;
+        required uint32 isOnline = 7;
+        required uint32 lastLoginTime = 8;
+        required uint32 vipRank = 9;
+        required uint32 sumPaidMoney = 10;
+        required uint32 lastDiamond = 11;
+        required string gameUnion = 12;
+        required uint32 regTime = 13;
+        repeated yunying_item items = 14;
+        optional string ext = 15;
+}
+
+message yunying_role_simple_info {
+        required uint64 roleId = 1;
+        required string roleName = 2;
+        required uint32 roleRank = 3;
+        required gender roleType = 4;
+        required uint32 serverId = 5;
+        required uint32 regTime = 6;
+}
+
+message yunying_role_simple_info_array {
+	repeated yunying_role_simple_info role_simple_infos = 1;
+}
+
+message yunying_client_info {
+        optional int32 platform = 1;
+        optional string device_id = 2;
+        optional string device_type = 3;
+        optional string brand = 4;
+        optional string android_id = 5;
+        optional string ios_idfa = 6;
+        optional string ios_idfv = 7;
+        optional string mac = 8;
+        optional string imei = 9;
+        optional int32 channel = 10 [default = 100000];
+        optional int32 ad_channel = 11 [default = 100000];
+        optional string operators = 12;
+        optional string net_type = 13;
+        optional string ppi = 14;
+        optional string pack_type = 15;
+        optional string sdk_version = 16;
+        optional string os_version = 17;
+        optional string game_version = 18;
+}
+
+message yunying_fetch_punished_info {
+        optional uint64 roleId = 1;
+        optional string roleName = 2;
+        optional uint32 serverId = 3;
+        optional string serverName = 4;
+        optional uint32 roleStatus = 5;
+        optional uint32 optTime = 6;
+        optional uint32 lastTime = 7;
+        optional string reason = 8;
+}
+
+message yunying_fetch_punished_info_array {
+        repeated yunying_fetch_punished_info fetch_punished_info = 1;
+}
+
+message yunying_fetch_sent_mail_info {
+        required uint64 mail_gid = 1;
+        required uint64 mailId = 2;
+        required uint64 roleId = 3;
+        required int32 serverId = 4;
+        required string status = 5;
+        optional uint32 createdAt = 6;
+        optional string content = 7;
+        optional event_array events = 8;
+}
+
+message yunying_fetch_sent_mail_info_array {
+        repeated yunying_fetch_sent_mail_info fetch_sent_mail_info = 1;
+}
+
+message yunying_fetch_login_record {
+        optional string serverName = 1;
+        optional uint64 roleId = 2;
+        optional string roleName = 3;
+        optional string channelName = 4;
+        optional string loginType = 5;
+        optional uint32 time = 6;
+        optional string ip = 7;
+}
+
+message yunying_fetch_login_record_array {
+        repeated yunying_fetch_login_record fetch_login_record = 1;
+}
+
+message yunying_fetch_recharge_record {
+        optional string serverName = 1;
+        optional uint64 roleId = 2;
+        optional string roleName = 3;
+        optional uint64 orderNo = 4;
+        optional uint32 money = 5;
+        optional uint32 time = 6;
+}
+
+message yunying_fetch_recharge_record_array {
+        repeated yunying_fetch_recharge_record fetch_recharge_record = 1;
+}
+
+message yunying_fetch_currency_record {
+        optional uint64 roleId = 1;
+        optional string roleName = 2;
+        optional uint32 moneyType = 3;
+        optional string moneyName = 4;
+        optional uint32 count = 5;
+        optional int32 type = 6;
+        optional string reason = 7;
+        optional uint32 time = 8;
+}
+
+message yunying_fetch_currency_record_array {
+        repeated yunying_fetch_currency_record fetch_currency_record = 1;
+}
+
+message white_list {
+        required uint32 serverId = 1;
+        required string ip = 2;
+}
+
+message white_list_array {
+        repeated white_list white_lists = 1;
+}
+
+message rank_info_list {
+        required string rankType = 1;
+        required string rankName = 2;
+}
+
+message rank_info_list_array {
+        repeated rank_info_list rank_info_list = 1;
+}
+
+message yunying_item_change {
+	required uint64 roleId = 1;
+	required string roleName = 2;
+        required int32 itemId = 3;
+        required string itemName = 4;
+        required uint32 count = 5;
+        required int32 type = 6;
+        required int32 reason = 7;
+        required uint32 time = 8;
+}
+
+message announcement {
+        optional int32 server_id = 1;
+        optional bool publish = 2;
+        optional announcement_type type = 3;
+        optional uint32 times = 4;
+        optional uint32 start_time = 5;
+        optional uint32 stop_time = 6;
+        optional string content = 8;
+        optional uint32 interval_time = 9;
+        optional uint32 system_id = 10;
+        optional uint32 channel_id = 11;
+}
+
+message images_announcement {
+        required string content = 1;
+        required uint32 until_time = 2;
+}
+
+message images_announcement_array {
+        repeated images_announcement images = 1;
+}
+
+message gonggao {
+        optional bool publish = 1;
+        optional gonggao_type type = 2;
+        optional string title = 3;
+        optional string content = 4;
+        optional uint32 system_id = 5;
+        optional uint32 channel_id = 6;
+}
+
+message gonggao_array {
+	repeated gonggao gonggao = 1;
+}
+
+message yunying_item_change_array {
+	repeated yunying_item_change item_change = 1;
+}
+
+enum yunying_activity_id {
+        YAI_ONLINE_TIME = 1;
+        YAI_LOGIN_DAYS = 2;
+        YAI_SEVEN_DAYS_FULI = 3;
+        YAI_SEVEN_DAYS_GOOD = 4;
+        YAI_SEVEN_DAYS_QUEST = 5;
+        YAI_SEVEN_DAYS_REWARD = 6;
+}
+
+enum yunying_play_id {
+        YPI_LEAGUE_LUCKY_ISSUE_BAG = 1;
+        YPI_ARENA = 2;
+        YPI_LIEMING = 3;
+        YPI_MULTI_LIEMING = 4;
+        YPI_LEAGUE_LUCKY_OPEN_BAG = 5;
+        YPI_FEIGE = 6;
+        YPI_MARRIAGE = 7;
+        YPI_GUANPIN_PROMOTE = 8;
+        YPI_SET_FORMATION = 9;
+        YPI_TOWER = 10;
+        YPI_JOIN_LEAGUE = 11;
+}
+
+enum yunying_mission_type {
+        YMT_ZHUXIAN = 1;
+        YMT_LIEZHUAN = 2;
+        YMT_LEAGUE_CAMPAGIN = 3;
+}
+
+enum yunying_quest_type {
+        YQT_NORMAL = 1;
+        YQT_EVERYDAY = 2;
+        YQT_ACHIEVEMENT = 3;
+        YQT_SEVEN_DAYS = 4;
+}
+
+message yunying_bi_info {
+        optional string open_id = 1;
+        optional string channel_id = 2;
+        optional string server_id = 3;
+        optional string device_id = 4;
+        optional string ip = 5;
+        optional string version = 6;
+        optional int32 os_type = 7;
+        optional string uid = 8;
+        optional string role_id = 9;
+        optional uint32 act_time = 10;
+        optional string reason_id = 13;
+        optional string time = 15;
+        optional string online_cnt = 16;
+        optional uint32 role_level = 17;
+        optional uint32 role_exp = 18;
+        optional uint32 money_gold = 19;
+        optional uint32 war_value = 20;
+        optional string online_time = 21;
+        optional string role_name = 22;
+        optional uint32 before_level = 23;
+        optional uint32 after_level = 24;
+        optional uint32 create_time = 25;
+        optional string coin_type = 26;
+        optional string coin_num = 27;
+        optional string coin_cnt = 28;
+        optional string item_id = 31;
+        optional string item_type = 32;
+        optional string item_num = 33;
+        optional string mission_point = 36;
+        optional string task_point = 37;
+        optional string task_id = 38;
+        optional string task_type = 39;
+        optional uint32 cost_time = 40;
+        optional string mission_id = 41;
+        optional string mission_type = 42;
+        optional string duration = 43;
+        optional string is_succ = 44;
+        optional string reason = 45;
+        optional string activity_id = 46;
+        optional string activity_type = 47;
+        optional string play_id = 48;
+        optional string play_type = 49;
+        optional string guide_id = 50;
+        optional string scene_id = 51;
+        optional string money_type = 54;
+        optional uint32 before_money = 55;
+        optional uint32 after_money = 56;
+        optional uint32 pay_amount = 57;
+        optional string pay_type = 58;
+        optional string goods_type = 59;
+        optional string goods_id = 60;
+        optional string order_id = 61;
+        optional string cp_order_id = 62;
+        optional int32 change_money = 63;
+        optional int32 change_type = 64;
+        optional string prop_type = 65;
+        optional string prop_id = 66;
+        optional uint32 before_prop = 67;
+        optional uint32 after_prop = 68;
+        optional int32 change_prop = 69;
+        optional string shop_type = 72;
+        optional uint32 is_discount = 73;
+        optional uint32 is_promotion = 74;
+        optional uint32 change_num = 75;
+        optional uint32 before_num = 76;
+        optional uint32 after_num = 77;
+        optional string gift_id = 78;
+        optional string gift_name = 79;
+        optional string exchange_code = 80;
+        optional int32 before_exp = 81;
+        optional int32 after_exp = 82;
+        optional uint32 is_sucess = 83;
+        optional string fail_reason = 84;
+        optional string play_info = 85;
+        optional string role_guild = 86;
+        optional string task_name = 87;
+        optional uint32 money_silver = 88;
+        optional string role_occupation = 89;
+        optional uint32 is_vip = 90;
+        optional uint32 vip_level = 91;
+        optional uint32 partner_id = 92;
+        optional uint32 add_exp = 93;
+        optional string before_score = 94;
+        optional string after_score = 95;
+        optional string before_soul_id = 97;
+        optional string after_soul_id = 98;
+        optional string soul_id = 99;
+        optional string cost_prop = 100;
+        optional string start_info = 101;
+        optional uint32 formation_id = 102;
+        optional string ext = 103;
+}
+
+message rank_list {
+        required uint64 role = 1;
+        required string rolename = 2;
+        required uint32 rank = 3;
+        optional uint32 level = 4;
+        optional uint32 value_1 = 5;
+        optional uint32 value_2 = 6;
+}
+
+message rank_list_array {
+        repeated rank_list rank_list = 1;
+}
+
+message money_list {
+	required uint32 id= 1;
+	required string name = 2;
+        required string type = 3;
+}
+
+message money_list_array {
+	repeated money_list money_list  = 1;
+}
+
+message dec_item {
+        required uint32 pttid = 1;
+        required uint32 count = 2;
+}
+
+message dec_item_array {
+        repeated dec_item dec_items = 1;
+}
+
+message activity_list {
+        required uint32 activityId = 1;
+        required string activityName = 2;
+}
+
+message activity_config {
+        required uint32 typeId = 1;
+        required string typeName = 2;
+        repeated activity_list activityList = 3;
+}
+
+message activity_config_array {
+        required string code = 1;
+        required string msg = 2;
+        repeated activity_config data = 3;
+}

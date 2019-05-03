@@ -1,0 +1,176 @@
+Available targets, with examples:
+  make help                          This message
+  make                               Build everything, including ENDECA_ROOT
+  make unit-test-bins                Just build the unit tests
+  make unit-test-objs                Build the objects for all unit tests
+  make test                          Build and run all the unit tests
+  make cluster-tests                 Build all the cluster cppunit tests. Note
+                                     that they do not count amongst the unit
+                                     tests.
+  make production                    Build everything other than the unit tests
+  make clean                         Remove the build output directory for the
+                                     current subdirectory and all installed
+                                     items with SRC_DIR inside this
+                                     subdirectory
+  make clobber                       Remove all build output for the flavor
+  make run-dgraph CMD_ARGS=--help    Run the binary $(BIN_dgraph) with CMD_ARGS
+                                     An invalid run- target lists valid ones
+  make path/to/output/file           Build the given output file
+  make print-var VARNAME=FOO         Echo FOO=<value of FOO>
+  make print-var                     Print out all variables (may be slow)
+  make build-var VARNAME=BIN_dgraph  Evaluate $(VARNAME) and build that
+  make compile                       Build all object files
+  make compile-dgraph                Build the objects for a bin or lib
+  make BIN_dgraph                    Build a specific package or packages
+  make build-obj SRC=MyClass.cpp     Build the object for one source file
+  make dump-dep-graph                Write out package dependencies in DOT
+    [DEP_GRAPH_ROOT=package]         format in the build directory; if
+                                     DEP_GRAPH_ROOT is specified, only output
+                                     dependencies of that package
+  make doxygen                       Build doxygen code documentation
+
+------------------------------------------------------------------------------
+
+Configuration variables can be set as environment variables:
+  FOO=BAR make test
+or as arguments to make:
+  make FOO=BAR test
+or in Makefile.local, at the top of the source tree:
+  echo FOO=BAR >> Makefile.local
+
+Available configuration variables, with their defaults:
+
+  FLAVOR=debug                       Which flavor of build to make
+    You can get a list of valid flavors by choosing an invalid one
+  OUT_BASE=..                        Write build output under here
+  INSTALL_ROOT=../<platform>/install Create installed IAP here
+  ENDECA_ROOT=<absolute version of $(INSTALL_ROOT)>
+
+  DEV_TOOLS=/usr/dev_tools/111703   Where to find gcc, bash, etc.
+  JAVA_HOME=$(DEV_TOOLS)/java
+  ANT_HOME=$(DEV_TOOLS)/ant
+  PERL_HOME=/usr/dev_tools/perl-88830
+
+  SVNVERSION=$(DEV_TOOLS)/bin/svnversion Set to override the default
+                                     svnversion
+
+  CMD_ARGS=                          Argument list for run-foo
+  CMD_PREFIX=                        Prefix for run-foo, e.g. /usr/bin/gdb
+    A common use is with gdb:  CMD_PREFIX='/usr/bin/gdb --args'
+    You can also use CMD_PREFIX to set environment variables that your prefix
+    needs, for example:  CMD_PREFIX='PATH=/usr/bin:/bin /usr/bin/ddd'
+
+  CCACHE=/usr/bin/ccache             Set to override the default ccache
+  USE_CCACHE=                        Set to nonempty to enable ccache
+
+  DISTCC=/usr/bin/distcc             Set to override the default distcc
+  USE_DISTCC=                        Set to nonempty to enable distcc
+
+  USE_GOLD=1                         Set to use the gold linker instead of bfd
+  GOLD_THREADS=n                     Set to enable gold threaded mode
+  GOLD_INCREMENTAL=1                 Set to link incrementally
+  UNCOMPRESSED_DEBUG=1               Set to *not* compress debug sections
+
+  VALGRIND=/usr/bin/valgrind         Set to override the default valgrind
+  VALGRIND_OPTS=[some defaults]      Set to override the default valgrind opts
+
+  PURIFY=[arch-specific default]     Set to override the default purify
+  QUANTIFY=[arch-specific default]   Set to override the default quantify
+
+  DOXYGEN=doxygen                    Set to override the default doxygen
+                                      (search path /usr/local/bin:/usr/bin)
+  DOT=$DEV_TOOLS/bin/dot             Set to override the default dot
+
+  BITS=                              Set to 32 to force a 32-bit build
+
+  QUIET=                             Set to non-empty to stop all controlled
+                                     prints.
+  VERBOSE=                           Set to 1 to print all commands and the
+                                     usual set of timestamps
+                                     Set to 2 to print all commands, and
+                                     additional timestamps
+                                     If neither QUIET or VERBOSE are set, the
+                                     usual timestamps and the  names of the
+                                     files being compiled are printed
+
+  DISABLE_PDB=                       Set to disable PDB-file creation (Windows)
+
+  LLVM_NDEBUG=                       Set to disable use of LLVM asserts and
+                                     function verification (except on Windows)
+                                     in checked builds
+
+  DISABLE_EVE_TRANSITION_CHECK=      Set to disable EVE state machine
+                                     transition checking in checked builds
+
+  PRINT_CMDS=                        Set to non-zero to enable printing of all
+                                     commands
+  PRINT_C_CXX_CMDS=                  Set to non-zero to enable printing of
+                                     commands for compiling C/C++ files
+  PRINT_STATIC_LINK_CMDS=            Set to non-zero to enable printing of
+                                     commands for linking static libraries
+  PRINT_SHARED_LINK_CMDS=            Set to non-zero to enable printing of
+                                     commands for linking shared libraries
+  PRINT_EXE_LINK_CMDS=               Set to non-zero to enable printing of
+                                     commands for linking executable files
+  PRINT_PRINT_XSLTPROC_CMDS=         Set to non-zero to enable printing of
+                                     commands for running xsltproc
+  PRINT_CLANG_CMDS                   Set to non-zero to enable printing of
+                                     commands for running clang
+  PRINT_AST_PYTHON_CMDS              Set to non-zero to enable printing of
+                                     commands for running Python for AST
+  PRINT_CP_CMDS                      Set to non-zero to enable printing of
+                                     commands for copying things from prebuilt
+
+        Any of these can be used as target-specific variables, e.g.,
+        $(LIB_foo): PRINT_CMDS = 1
+        will turn on command printing just for the foo library.
+  PRINT_TIMESTAMPS                   Set to 1 to print the usual set of time-
+                                     stamps. Set to 2 to print the entity
+                                     timestamps as well
+  PRINT_FILE_SEARCH                  Set to 1 to print information on file
+                                     searches
+  PRINT_TOPO_SORT_LINES              Set to 1 to print information on package
+                                     dependencies
+  PRINT_D_FILE_INCLUDES              Set to 1 to print a message for each
+                                     include of a .d file (only on Windows)
+
+  USE_CACHED_XQUERY_PRECOMPUTE      Set to non-empty to use cached
+                                    xquery-precompute results
+
+------------------------------------------------------------------------------
+
+Running make in a subdirectory:
+
+Subdirectory makefiles change the scope of the default target (make with no
+goals) and of the "clean" and "test" targets, to affect only that subdirectory
+and its children.  In particular, they affect build products of entities
+defined under that subdirectory, wherever those build products end up.  For
+example, building in ene/graph will put a dgraph binary in
+$(INSTALL_ROOT)/bin.
+
+------------------------------------------------------------------------------
+
+Output will get written to a $(OUT_BASE)/<build-spec>, where <build-spec>
+specifies the target OS, CPU arch, optimization level, and instrumentation, if
+any.  The build also creates a symlink from $(OUT_BASE)/os-cpu-$(FLAVOR) to
+$(OUT_BASE)/<build-spec>.  The result of this is that FLAVORs that do builds in
+the same way will share build output directories.  But if you want to ask make
+to build a particular file, you need to give it the <build-spec> path, not the
+symlink.
+
+------------------------------------------------------------------------------
+
+Note that `make -jFOO` works for all targets, though running the test target
+with -j will interleave the output of the unit tests, which might be hard to
+read.
+
+------------------------------------------------------------------------------
+
+This make runs as a single process that knows how to build all output files, so
+you can ask for any set of output files, and it will build just those and the
+files they need.
+
+------------------------------------------------------------------------------
+
+For instructions on how to add new code to the build, see the tutorials in
+makefiles/doc/tutorial/, starting with makefiles/doc/tutorial/intro

@@ -1,0 +1,20 @@
+package proto.data;
+
+import "data_base.proto";
+import "data_event.proto";
+
+message mail {
+        required uint64 gid = 1;
+        optional uint32 pttid = 2;
+        optional string title = 3;
+        optional string content = 4;
+        optional event_array events = 5;
+        required uint32 time = 6;
+        optional dynamic_data dynamic_data = 7;
+        optional bool already_read = 8;
+        optional bool fetched = 9;
+}
+
+message mail_array {
+	repeated mail mails = 1;
+}

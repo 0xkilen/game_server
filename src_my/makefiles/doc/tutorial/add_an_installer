@@ -1,0 +1,53 @@
+# To add a new binary to the build
+
+% mkdir installers/foo_project  # the path in which the installer project files will live
+
+# copy into installers/foo_project the files foo.proj
+
+# Make a up a name for your installer package.  Let's call it "foo"
+# Then write a bunch of definitions in the INSTALL_foo "namespace" in make, in a
+# file called VARS.mk in the directory where the source lives.
+
+% cat > installers/foo_project/VARS.mk
+
+# Pick a name for the installer
+INSTALL_foo_NAME := foo_1.0_installer.tgz
+
+# Pick a directory tree to put the installed files under. So, if we want to
+# be able to extract foo_1.0_installer.tgz and get out of it
+# foo/bar/bin, foo/bar/lib, foo/bar/conf, then we set 
+INSTALL_foo_OUTPUT_DIR_ROOT := foo/bar
+
+# Pick a list of binaries to install. We'll also get any files that they depend
+# on that are in the $(INSTALL_ROOT) directory
+INSTALL_foo_BINS := dgraph agraph
+
+# Pick a list of CP_* rules that we want the results of
+INSTALL_foo_CPS := DTD
+
+# Remove any dependents that we dont really want
+INSTALL_foo_FILTER_OUT := bin/conf/forge_%.dtd
+
+# Add additional files to the install, that are copied from installers/foo_project
+# into the installed directory (foo/bar in this case, so we would get
+# foo/bar/installer_only/spam when we run the installer). We could, for instance
+# conditionalize this on OS so that we get the right set of post install
+# customization files per OS specific installer
+INSTALL_foo_STATIC_SRC_DIR := installers/foo_project
+INSTALL_foo_STATIC_FILES := installer_only/spam
+
+# Now we'll define the command that is used build the installer. It is passed
+# as its first argument the path to the directory that contains all the files
+# we want to put in the installer, and is executed in the context of the rule
+# that builds the installer (so $@ is the name of the installer in its final
+# location). We want to simply tar and gzip the directory contents to create
+# a tgz file, so we use the command:
+define INSTALL_foo_BUILD_CMD
+	$(call TGZ,$(1),$@)
+endef
+
+# Now, let's build the installer for foo
+% make INSTALL_foo
+
+# And we can find it in our output dir, like
+% tar -xzf ../linux-x86_64-release/install/installers/foo_1.0_installer.tgz

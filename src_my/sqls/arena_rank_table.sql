@@ -1,0 +1,26 @@
+DROP TABLE IF EXISTS arena_rank;
+CREATE TABLE IF NOT EXISTS arena_rank (
+gid BIGINT UNSIGNED NOT NULL UNIQUE,
+data MEDIUMBLOB NOT NULL
+)
+CHARACTER SET = utf8
+ENGINE = InnoDB;
+
+DELIMITER $$
+
+DROP PROCEDURE IF EXISTS get_arena_rank$$
+CREATE PROCEDURE get_arena_rank ()
+BEGIN
+SELECT data
+FROM arena_rank
+WHERE gid = 1;
+END$$
+
+DROP PROCEDURE IF EXISTS save_arena_rank$$
+CREATE PROCEDURE save_arena_rank (IN param1 MEDIUMBLOB)
+BEGIN
+INSERT INTO arena_rank(gid, data)
+VALUES(1, param1)
+ON DUPLICATE KEY UPDATE
+data = param1;
+END$$

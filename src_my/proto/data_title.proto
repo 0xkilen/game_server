@@ -1,0 +1,19 @@
+package proto.data;
+
+enum title_tag {
+        TT_GROWTH = 1;
+        TT_COMPETITION = 2;
+        TT_ACTIVITY = 3;
+        TT_GONGDOU = 4;
+}
+
+message title {
+        required uint32 pttid = 1;
+        optional uint32 got_time = 2;
+        optional bool read = 3;
+}
+
+message title_array {
+        repeated title titles = 1;
+        optional uint32 selected = 2;
+}

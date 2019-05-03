@@ -1,0 +1,6 @@
+package proto.data;
+
+message voice {
+        optional string id = 1;
+        optional double seconds = 2;
+}

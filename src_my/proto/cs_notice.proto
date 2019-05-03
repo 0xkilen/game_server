@@ -1,0 +1,45 @@
+package proto.cs;
+
+import "cs_base.proto";
+import "data_notice.proto";
+
+message notice {
+        required uint64 gid = 1;
+        required bool already_read = 2;
+        required proto.data.notice data = 3;
+}
+
+message s2c_sync_notices {
+        extend base {
+                optional s2c_sync_notices ssn = 1800;
+        }
+        repeated notice notices = 1;
+}
+
+message s2c_add_notice {
+        extend base {
+                optional s2c_add_notice san = 1801;
+        }
+        required notice notice = 1;
+}
+
+message c2s_notice_set_already_read_req {
+        extend base {
+                optional c2s_notice_set_already_read_req cnsarr = 1802;
+        }
+        required uint64 gid = 1;
+}
+
+message s2c_notice_set_already_read_rsp {
+        extend base {
+                optional s2c_notice_set_already_read_rsp snsarr = 1803;
+        }
+        required uint64 gid = 1;
+}
+
+message c2s_notice_delete_req {
+        extend base {
+                optional c2s_notice_delete_req cndr = 1804;
+        }
+        repeated uint64 gids = 1;
+}

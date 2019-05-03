@@ -1,0 +1,52 @@
+package proto.data;
+
+message relation_friend {
+        required uint64 role = 1;
+        optional int32 intimacy = 2;
+}
+
+message relation_application {
+        required uint64 role = 1;
+        optional bool read = 2;
+        required uint32 time = 3;
+}
+
+message relation_role {
+        required uint64 role = 1;
+        optional uint32 time = 2;
+}
+
+message relation {
+        repeated relation_friend friends = 1;
+        repeated relation_application applications = 2;
+        repeated relation_role blacklist = 3;
+        repeated relation_role follows = 4;
+        repeated uint64 helpers = 5;
+        repeated uint64 teammates = 6;
+}
+
+enum relation_suggestion_type {
+        RST_LEVEL = 1;
+        RST_POPULAR = 2;
+        RST_TEAMMATE = 3;
+        RST_LEAGUE = 4;
+        RST_HELPER = 5;
+        RST_LOCATION = 6;
+        RST_ROMANCE = 7;
+        RST_STRANGER = 8;
+        RST_FOLLOW = 9;
+        RST_BLACKLIST = 10;
+        RST_FRIEND = 11;
+}
+
+enum relation_suggestion_origin {
+        RSO_FRIENDS = 1;
+        RSO_GONGDOU = 2;
+}
+
+message relation_gift_record {
+        required uint64 from = 1;
+        required uint32 gift = 2;
+        required uint32 count = 3;
+}
+

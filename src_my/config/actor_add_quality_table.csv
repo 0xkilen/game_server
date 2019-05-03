@@ -1,0 +1,6 @@
+﻿quality,conditions.conditions.type,conditions.conditions.arg,conditions.conditions.arg,conditions.conditions.type,conditions.conditions.arg,conditions.conditions.arg,conditions.conditions.type,conditions.conditions.arg,conditions.conditions.arg,conditions.conditions.type,conditions.conditions.arg,conditions.conditions.arg,conditions.conditions.type,conditions.conditions.arg,conditions.conditions.arg,conditions.conditions.type,conditions.conditions.arg,conditions.conditions.arg,conditions.conditions.type,conditions.conditions.arg,conditions.conditions.arg,conditions.conditions.type,conditions.conditions.arg,conditions.conditions.arg
+1,COST_RESOURCE,GOLD,100000,,,,,,,,,,,,,,,,,,,,,
+2,COST_RESOURCE,GOLD,100000,,,,,,,,,,,,,,,,,,,,,
+3,COST_RESOURCE,GOLD,1000000,COST_ITEM,71,1,COST_ITEM,72,1,COST_ITEM,73,1,,,,ACTOR_LEVEL_GE,20,,ACTOR_STEP_GE,20,,ACTOR_STAR_GE,2,
+4,COST_RESOURCE,GOLD,4000000,COST_ITEM,74,1,COST_ITEM,75,1,COST_ITEM,76,1,COST_ITEM,77,1,ACTOR_LEVEL_GE,30,,ACTOR_STEP_GE,50,,ACTOR_STAR_GE,3,
+5,FAIL,ACTOR_QUALITY_MAX,,,,,,,,,,,,,,,,,,,,,,

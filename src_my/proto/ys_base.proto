@@ -1,0 +1,81 @@
+package proto.ys;
+
+message base {
+	extensions 100 to max;
+}
+
+message header {
+        required string name = 1;
+        required string value = 2;
+}
+
+message param {
+        required string name = 1;
+        optional string value = 2;
+}
+
+message request {
+        extend base {
+              optional request req = 100;
+        }
+        required string method = 1;
+        required string uri = 2;
+        required int32 http_version_major = 3;
+        required int32 http_version_minor = 4;
+        repeated header headers = 5;
+        repeated param params = 6;
+}
+
+enum status {
+        OK = 200;
+        CREATED = 201;
+        ACCEPTED = 202;
+        NO_CONTENT = 204;
+        MULTIPLE_CHOICES = 300;
+        MOVED_PERMANENTLY = 301;
+        MOVED_TEMPORARILY = 302;
+        NOT_MODIFIED = 304;
+        BAD_REQUEST = 400;
+        UNAUTHORIZED = 401;
+        FORBIDDEN = 403;
+        NOT_FOUND = 404;
+        INTERNAL_SERVER_ERROR = 500;
+        NOT_IMPLEMENTED = 501;
+        BAD_GATEWAY = 502;
+        SERVICE_UNAVAILABLE = 503;
+};
+
+message reply {
+        extend base {
+              optional reply rep = 200;
+        }
+        required status status = 1;
+        repeated header headers = 2;
+        required string content = 3;
+}
+
+enum error_code {
+        NO_ERROR = 10000;
+        INVALID_ARG = 10001;
+        INVALID_SIGNITURE = 10002;
+        PUNISH_FAILED = 10003;
+        CANCEL_PUNISH_FAILED = 10004;
+        RECHARGE_RECORD_FAILED = 10005;
+        BROADCAST_FAILED = 10006;
+        SEND_MAIL_FAILED = 10007;
+        RECHARGE_FAILED = 10008;
+        BUSY = 10009;
+        CANNOT_FIND_SERVER = 10010;
+        INVALID_URI = 10011;
+        FIND_ROLE_FAILED = 10012;
+        FETCH_WORLD_CHAT_FAILED = 10013;
+        FETCH_ARENA_LIST_FAILED = 10014;
+        FAILED = 10015;
+        RECHARGE_ORDER_RECHARGED = 10016;
+}
+
+message result {
+        required int32 code = 1;
+        optional string msg = 2;
+}
+

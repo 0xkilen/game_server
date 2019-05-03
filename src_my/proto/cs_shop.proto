@@ -1,0 +1,83 @@
+package proto.cs;
+
+import "cs_base.proto";
+import "data_base.proto";
+import "data_event.proto";
+import "config_shop.proto";
+import "data_shop.proto";
+
+message c2s_shop_check_req {
+        extend base {
+                optional c2s_shop_check_req cscr = 1000;
+        }
+        required uint32 pttid = 1;
+        required int32 version = 2;
+}
+
+message s2c_shop_check_rsp {
+        extend base {
+                optional s2c_shop_check_rsp sscr = 1001;
+        }
+        required proto.data.result result = 1;
+        required uint32 pttid = 2;
+        optional proto.config.shop shop = 3;
+        optional proto.data.event_res event_res = 4;
+}
+
+message buy_good {
+        required uint32 shop = 1;
+        required uint32 good_id = 2;
+        required uint32 count = 3;
+}
+
+message c2s_shop_buy_req {
+        extend base {
+                optional c2s_shop_buy_req csbr = 1002;
+        }
+        repeated buy_good buy_goods = 1;
+}
+
+message s2c_shop_buy_rsp {
+        extend base {
+                optional s2c_shop_buy_rsp ssbr = 1003;
+        }
+        required proto.data.result result = 1;
+        optional proto.data.event_res res = 2;
+}
+
+message c2s_mys_shop_refresh_req {
+        extend base {
+                optional c2s_mys_shop_refresh_req cmsrr = 1004;
+        }
+        required uint32 pttid = 1;
+        required bool free = 2;
+}
+
+message s2c_mys_shop_refresh_rsp {
+        extend base {
+                optional s2c_mys_shop_refresh_rsp smsrr = 1005;
+        }
+        required uint32 pttid = 1;
+        required bool free = 2;
+        required proto.data.result result = 3;
+        optional proto.data.event_res event_res = 4;
+        optional proto.data.mys_shop mys_shop = 5;
+}
+
+message c2s_mys_shop_buy_req {
+        extend base {
+                optional c2s_mys_shop_buy_req cmsbr = 1006;
+        }
+        required uint32 pttid = 1;
+        required uint32 good_id = 2;
+}
+
+message s2c_mys_shop_buy_rsp {
+        extend base {
+                optional s2c_mys_shop_buy_rsp smsbr = 1007;
+        }
+        required uint32 pttid = 1;
+        required uint32 good_id = 2;
+        required proto.data.result result = 3;
+        optional proto.data.event_res event_res = 4;
+}

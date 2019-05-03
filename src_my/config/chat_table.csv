@@ -1,0 +1,10 @@
+﻿type,name,conditions.conditions.type,conditions.conditions.arg,conditions.conditions.arg,conditions.conditions.type,conditions.conditions.arg,conditions.conditions.arg,send_cd
+CT_WORLD,世界,LEVEL_GE,20,,,,,5
+CT_PRIVATE,私聊,,,,,,,
+CT_CROSS_WORLD,跨服,LEVEL_GE,20,,COST_ITEM,87,1,
+CT_SYSTEM,系统,,,,,,,
+CT_LEAGUE,家族,,,,,,,
+CT_BANQUET,宴会,,,,,,,
+CT_ROOM,组队,,,,,,,
+CT_WORLD_LABA,喇叭,LEVEL_GE,20,,COST_ITEM,86,1,
+CT_COMMON,综合,,,,,,,

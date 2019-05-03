@@ -1,0 +1,7 @@
+package proto.cs;
+
+message base {
+		extensions 100 to max;
+		optional uint32 time = 1;
+		optional bool mirror = 2;
+}

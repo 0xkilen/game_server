@@ -1,0 +1,7 @@
+﻿level,common.quests,common.quests,common.quests,common.other_quest,common.quest_spot,common.cost_exp,common.random_plot,common.random_plot,common.random_plot,common.appearance,common.desc,common.unlock_role_level
+1,301,302,303,303,1,0,210100,210104,210105,1,<color= #814F3D>可派遣伙伴数</color></c><color=#5E7407>1。</color></c><br/><color= #814F3D>派遣伙伴最高可以获得绿色品质的菜肴。</color></c>,28
+2,301,302,303,303,2,200,210100,210104,210105,1,<color= #814F3D>可派遣伙伴数</color></c><color=#5E7407>2。</color></c><br/><color= #814F3D>派遣伙伴最高可以获得绿色品质的菜肴。</color></c>,28
+3,304,305,306,306,2,600,210100,210104,210105,2,<color= #814F3D>可派遣伙伴数</color></c><color=#5E7407>2。</color></c><br/><color= #814F3D>派遣伙伴最高可以获得蓝色品质的菜肴。</color></c>,28
+4,307,308,309,309,2,1200,210100,210104,210105,2,<color= #814F3D>可派遣伙伴数</color></c><color=#5E7407>2。</color></c><br/><color= #814F3D>派遣伙伴最高可以获得紫色品质的菜肴。</color></c>,28
+5,307,308,309,309,3,2500,210100,210104,210105,2,<color= #814F3D>可派遣伙伴数</color></c><color=#5E7407>3。</color></c><br/><color= #814F3D>派遣伙伴最高可以获得紫色品质的菜肴。</color></c>,28
+6,310,311,312,312,3,5000,210100,210104,210105,3,<color= #814F3D>可派遣伙伴数</color></c><color=#5E7407>3。</color></c><br/><color= #814F3D>派遣伙伴最高可以获得金色品质的菜肴。</color></c>,28

@@ -1,0 +1,7 @@
+﻿id,icon,name,male,arg,arg,arg,arg,need.part,need.pttid,repell
+300001,ui/nielian/lianbuicon6_yanjingnv,络腮胡,False,face_gongdou1,face_gongdou1/0,,,,,
+300002,ui/nielian/lianbuicon6_yanjingnv,大黑痣,False,face_gongdou2,face_gongdou2/0,,,,,
+308001,ui/nielian/lianbuicon6_yanjingnv,香肠嘴,False,mouse_gongdou1,mouse_gongdou1/0,,,,,
+400001,ui/nielian/lianbuicon6_yanjingnv,猪鼻子,True,nose_gongdou,nose_gongdou1/0,,,,,
+403001,ui/nielian/lianbuicon6_yanjingnv,黑眼圈,True,eyes_gongdou1,eyes_gongdou1/0,eyes_gongdou2,eyes_gongdou1/0,,,
+407001,ui/nielian/lianbuicon6_yanjingnv,红腮,True,saihong_gongdou1,saihong_gongdou1/0,saihong_gongdou2,saihong_gongdou1/0,,,

@@ -1,0 +1,126 @@
+package proto.data;
+
+enum resource_type {
+        NONE_RESOURCE = 0;
+        POWER = 1;
+        EXP = 2;
+        GOLD = 3;
+        DIAMOND = 4;
+        ACTOR_EXP = 6;
+        POWER_GROW_MAX = 7;
+        LEAGUE_DONATION = 8;
+        ARENA_REPUTATION = 9;
+        ARENA_CHANCE = 10;
+        MING_PAI = 11;
+        HUANZHUANG_PVP_VOTE_FEMALE = 12;
+        HUANZHUANG_PVP_VOTE_MALE = 13;
+        HUANZHUANG_PVP_UPVOTE_CHANCE = 14;
+        BANQUET_PRESTIGE = 15;
+        EVERYDAY_QUEST_SCORE = 16;
+        GIVE_GIFT = 17;
+        RECEIVE_GIFT = 18;
+        VIGOR = 19;
+        ADVENTURE_CHANCE = 20;
+        SEVEN_DAYS_POINT_A = 21;
+        SEVEN_DAYS_POINT_B = 22;
+        COUPON_A = 23;
+        COUPON_B = 24;
+        LEAGUE_LUCKY_BAG_ISSUE = 30;
+        LEAGUE_LUCKY_BAG_OPEN = 31;
+        LEAGUE_LUCKY_BAG_BUY_ISSUE = 32;
+        LEAGUE_LUCKY_BAG_BUY_OPEN = 33;
+        LEAGUE_CHALLENGE_CAMPAIGN = 34;
+        LEAGUE_BUY_CHALLENGE = 35;
+        FIEF_INCIDENT_CHANCE = 36;
+        VIP_EXP = 37;
+        MANSION_FURNITURE_COIN = 38;
+        FIEF_BOSS_AWARD_CHANCE = 39;
+        TIAN_SHU_MO = 40;
+        VIGOR_GROW_MAX = 41;
+        LI_JUAN = 42;
+        RED = 43;
+        BLUE = 44;
+        ZHENGJI = 45;
+        GONGDOU_RESPECT = 47;
+        GONGDOU_SLANDER = 48;
+        GONGDOU_SLAP = 49;
+        GONGDOU_SORCERY = 50;
+        GONGDOU_DEFORM = 51;
+        GONGDOU_POISON = 52;
+        GONGDOU_CURE = 53;
+        GONGDOU_LASH = 54;
+        GONGDOU_LETTER = 55;
+        GONGDOU_PRISON = 56;
+        GONGDOU_EMPEROR_VISIT = 57;
+        GONGDOU_EMPEROR = 58;
+        GONGDOU_NURTURE = 59;
+        TOWER_REFRESH_CHANCE = 60;
+        MEIMING = 71;
+        HUANZHUANG_PVP_GUESS_VOTE = 72;
+        LOVE = 73;
+        STAR_WISH = 74;
+        EVERYDAY_QUEST_WEEK_SCORE = 75;
+        MARRIAGE_GUESTURE_REWARD_CHANCE = 76;
+        MARRIAGE_DEVOTION = 77;
+        STAR_FRAGMENT = 78;
+        STAR_SOUL = 79;
+        STAR_IRON = 80;
+        FENG_YU = 81;
+        LEVELUP_AURA_CHANCE = 82;
+        LEAGUE_NORMAL_DONATE_TIMES = 83;
+        LEAGUE_GENEROUS_DONATE_TIMES = 84;
+        ACTIVITY_BUQIAN_TIMES = 85;
+        RANK_LIKE_TIMES = 86;
+        MANSION_FARM_STEAL_PLANT_TIMES = 87;
+        MANSION_BANQUET_LEFT_RESERVE_TIMES = 88;
+        ACTIVITY_PRIZE_WHEEL_CHANCE_A = 89;
+        ACTIVITY_PRIZE_WHEEL_CHANCE_B = 90;
+        LEAGUE_HELP_OTHER_QUEST = 91;
+        EQUIPMENT_SOUL_A = 92;
+        EQUIPMENT_SOUL_B = 93;
+        EQUIPMENT_SOUL_C = 94;
+        EQUIPMENT_CONPON = 95;
+        TEA_PARTY_FAVOR = 96;
+        TEA_PARTY_COUPON_A = 97;
+        TEA_PARTY_COUPON_B = 98;
+        TEA_PARTY_COUPON_C = 99;
+
+        MANSION_FISHING_FREE_TIMES = 100;
+        MANSION_FARM_WATER_FREE_TIMES = 101;
+        MANSION_FARM_DISINSECT_FREE_TIMES = 102;
+        MANSION_FARM_STEAL_PLANT_FREE_TIMES = 103;
+}
+
+message resource {
+        required resource_type type = 1;
+        required int64 value = 2;
+}
+
+message resource_grow_time {
+        required resource_type type = 1;
+        required uint32 time = 2;
+}
+
+message resources {
+        repeated resource values = 1;
+        repeated resource_grow_time grow_time = 2;
+        required uint32 reset_day = 3;
+        required int32 reset_monday = 4;
+}
+
+enum league_resource_type {
+        LRT_MONEY = 1;
+        LRT_EXP = 2;
+        LRT_CAMPAIGN_REFRESH_TIMES = 3;
+        LRT_INVITE_CITY_TIMES = 4;
+}
+
+message league_resource {
+        required league_resource_type type = 1;
+        required int64 value = 2;
+        optional uint32 last_update_time = 3;
+}
+
+message league_resources {
+        repeated league_resource resources = 1;
+}

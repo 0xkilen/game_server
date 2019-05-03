@@ -1,0 +1,22 @@
+package proto.data;
+
+message recharge_order {
+        required uint64 gid = 1;
+        required uint32 pttid = 2;
+}
+
+message recharge_day {
+        required uint32 pttid = 1;
+        required uint32 day = 2;
+}
+
+message recharge {
+        repeated recharge_order orders = 1;
+        optional uint32 paid_money = 2;
+        repeated uint32 recharged_pttids = 3;
+        repeated recharge_day days = 4;
+        repeated recharge_day last_process_days = 5;
+        repeated uint32 got_vip_boxes = 6;
+        repeated uint32 got_vip_buy_boxes = 7;
+        repeated uint64 recharged_gids = 8;
+}

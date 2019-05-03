@@ -1,0 +1,28 @@
+DROP TABLE IF EXISTS gonggaos;
+CREATE TABLE IF NOT EXISTS gonggaos (
+gid BIGINT UNSIGNED UNIQUE,
+data BLOB
+)
+CHARACTER SET = utf8
+ENGINE = InnoDB;
+
+DELIMITER $$
+
+DROP PROCEDURE IF EXISTS load_gonggao$$
+CREATE PROCEDURE load_gonggao ()
+BEGIN
+SELECT data
+FROM gonggaos
+WHERE gid = 1;
+END$$
+
+DROP PROCEDURE IF EXISTS update_gonggao$$
+CREATE PROCEDURE update_gonggao(IN param1 BLOB)
+BEGIN
+INSERT INTO gonggaos(gid, data)
+VALUES(1, param1)
+ON DUPLICATE KEY UPDATE
+data = param1;
+END$$
+
+DELIMITER ;

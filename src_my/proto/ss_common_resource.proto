@@ -1,0 +1,50 @@
+package proto.ss;
+
+import "ss_base.proto";
+import "data_base.proto";
+import "data_common_resource.proto";
+
+message s2cr_lock_fanli_req {
+        extend base {
+                optional s2cr_lock_fanli_req slfr = 14000;
+        }
+        required string username = 1;
+}
+
+message cr2s_lock_fanli_rsp {
+        extend base {
+                optional cr2s_lock_fanli_rsp clfr = 14001;
+        }
+        required string username = 1;
+        required proto.data.result result = 2;
+        optional proto.data.fanli_array fanlis = 3;
+}
+
+message s2cr_remove_fanli {
+        extend base {
+                optional s2cr_remove_fanli srf = 14002;
+        }
+        required string username = 1;
+}
+
+message s2cr_lock_come_back_req {
+        extend base {
+                optional s2cr_lock_come_back_req slcbr = 14003;
+        }
+        required string username = 1;
+}
+
+message cr2s_lock_come_back_rsp {
+        extend base {
+                optional cr2s_lock_come_back_rsp clcbr = 14004;
+        }
+        required string username = 1;
+        required proto.data.result result = 2;
+}
+
+message s2cr_remove_come_back {
+        extend base {
+                optional s2cr_remove_come_back srcb = 14005;
+        }
+        required string username = 1;
+}

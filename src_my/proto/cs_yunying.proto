@@ -1,0 +1,21 @@
+package proto.cs;
+
+import "cs_base.proto";
+import "data_base.proto";
+import "data_event.proto";
+
+message c2s_yunying_cdkey_req {
+        extend base {
+                optional c2s_yunying_cdkey_req cycr = 3700;
+        }
+        required string code = 1;
+}
+
+message s2c_yunying_cdkey_rsp {
+        extend base {
+                optional s2c_yunying_cdkey_rsp sycr = 3701;
+        }
+        required proto.data.result result = 1;
+        optional proto.data.event_res event_res = 2;
+        optional string msg = 3;
+}

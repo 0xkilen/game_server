@@ -1,0 +1,42 @@
+package proto.cs;
+
+import "cs_base.proto";
+import "data_base.proto";
+import "data_player.proto";
+import "data_chat.proto";
+import "data_event.proto";
+import "data_voice.proto";
+
+message c2s_chat_req {
+        extend base {
+                optional c2s_chat_req ccr = 1502;
+        }
+        required proto.data.chat_type type = 1;
+        optional uint64 to = 2;
+        optional string content = 3;
+        optional proto.data.voice voice = 4;
+}
+
+message s2c_chat_rsp {
+        extend base {
+                optional s2c_chat_rsp scr = 1503;
+        }
+        required proto.data.result result = 1;
+        optional proto.data.event_res event_res = 2;
+}
+
+message s2c_chat {
+        extend base {
+                optional s2c_chat sc = 1504;
+        }
+        optional proto.data.role_info from = 1;
+        required uint32 time = 2;
+        optional uint32 from_server = 3;
+        optional uint64 to = 4;
+        required proto.data.chat_type type = 5;
+        optional string content = 6;
+        optional proto.data.voice voice = 7;
+        optional uint32 system_chat = 8;
+        optional proto.data.dynamic_data data = 9;
+}
+

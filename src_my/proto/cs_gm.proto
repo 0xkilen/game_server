@@ -1,0 +1,26 @@
+package proto.cs;
+
+import "cs_base.proto";
+import "data_base.proto";
+import "data_event.proto";
+
+message c2s_gm_exec_event_req {
+        extend base {
+                optional c2s_gm_exec_event_req cgeer = 1700;
+        }
+        required proto.data.event_array events = 1;
+}
+
+message s2c_gm_exec_event_rsp {
+        extend base {
+                optional s2c_gm_exec_event_rsp sgeer = 1701;
+        }
+        optional proto.data.event_res_array res_array = 1;
+}
+
+message s2c_gm_exec_command_rsp {
+        extend base {
+                optional s2c_gm_exec_command_rsp sgecr = 1702;
+        }
+        required proto.data.result result = 1;
+}

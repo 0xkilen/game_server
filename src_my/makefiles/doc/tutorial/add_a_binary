@@ -1,0 +1,80 @@
+# To add a new binary to the build:
+
+% mkdir ene/tools/boom  # the path could be anywhere
+
+# copy into ene/tools/boom the files foo.cpp, foo.hpp, bar.cpp, and bar.hpp
+
+# Make a up a name for your binary.  Let's call it "boom"
+# Then write a bunch of definitions in the BIN_boom "namespace" in make, in a
+# file called VARS.mk in the directory where the source lives.
+
+% cat > ene/tools/boom/VARS.mk
+# The following line is boilerplate
+# This the only time you should use := in VARS.mk
+# For all other variable assignments, you should use = not :=
+BIN_boom_SRC_DIR := $(SRC_DIR)
+
+# Now tell the make system how to build 'boom'
+# First, the list of source files, relative to $(BIN_boom_SRC_DIR)
+BIN_boom_SRC = foo.cpp bar.cpp
+
+# When compiling the files in $(BIN_boom_SRC), add the following directories to
+# the include path:
+BIN_boom_OTHER_INC_DIRS = some/dir
+
+# When compiling the files in in $(BIN_boom_SRC), add the following flags when
+# compiling C or C++ files, respectively:
+BIN_boom_OTHER_CFLAGS = -ansi
+BIN_boom_OTHER_CXXFLAGS = -fvtable-gc
+
+# Then, the "packages" used by boom.  These are all the libraries, either built
+# from source or from prebuilts, which boom needs to compile and link:
+BIN_boom_USE_PACKAGES = portable llvm
+
+# When linking the binary, we may want to include files which are not object
+# files resulting from compiling $(BIN_boom_SRC).  Such files should be
+# specified in this way, relative to the top of the source tree, not relative
+# to $(BIN_boom_SRC_DIR):
+BIN_boom_OTHER_LINK_INPUTS = path/to/foo.res
+
+# If we want this binary to get built into $ENDECA_ROOT/bin then we need to set
+# BIN_boom_INSTALL to non-empty:
+BIN_boom_INSTALL = 1
+
+# If we want to disable tracing of child processes of this process when it is
+# run under valgrind, set BIN_boom_TRACE_CHILDREN to empty:
+BIN_boom_TRACE_CHILDREN =
+^D
+
+# The make system will automatically define a number of variables with the
+# prefix BIN_boom.  Let's look at some:
+% make help
+
+# Read the help message, and find out about the print-var target.
+
+% make print-var VARNAME=BIN_boom
+BIN_boom=../linux-x86_64-debug/build/ene/tools/boom/boom
+
+% make print-var VARNAME=BIN_boom_OBJS
+BIN_boom_OBJS=../linux-x86_64-debug/build/ene/tools/boom/foo.o ../linux-x86_64-debug/build/ene/src/tools/boom/bar.o
+
+# Now, let's build boom
+% make build-var VARNAME=BIN_boom
+# which is the same as
+% make ../linux-x86_64-debug/build/ene/tools/boom/boom
+
+# And run it!
+% make run-boom CMD_ARGS='boomarg1 boomarg2'
+
+# Oops, it crashed!  Let's run it under the debugger!
+% make CMD_PREFIX='/usr/bin/gdb --args' run-boom CMD_ARGS='boomarg1 boomarg2'
+
+# If this is a unit test binary that you want to run during "make test",
+# add it to the UNIT_TEST_BINS:
+UNIT_TEST_BINS += boom
+
+# If this is a binary you want to be in the test tarball, but not executed as a
+# unit test:
+OTHER_TEST_BINS += boom
+
+# For other packaging options, look at src/installers/VARS.mk.

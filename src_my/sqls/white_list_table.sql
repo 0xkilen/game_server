@@ -1,0 +1,27 @@
+DROP TABLE IF EXISTS white_lists;
+CREATE TABLE IF NOT EXISTS white_lists (
+id INT UNSIGNED UNIQUE,
+data MEDIUMBLOB
+)
+CHARACTER SET = utf8
+ENGINE = InnoDB;
+
+DELIMITER $$
+
+DROP PROCEDURE IF EXISTS load_white_list$$
+CREATE PROCEDURE load_white_list ()
+BEGIN
+SELECT data
+FROM white_lists;
+END$$
+
+DROP PROCEDURE IF EXISTS update_white_list$$
+CREATE PROCEDURE update_white_list (IN param1 MEDIUMBLOB)
+BEGIN
+INSERT INTO white_lists(id, data)
+VALUES(1, param1)
+ON DUPLICATE KEY UPDATE
+data = param1;
+END$$
+
+DELIMITER ;

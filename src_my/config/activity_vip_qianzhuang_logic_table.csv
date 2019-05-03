@@ -1,0 +1,2 @@
+﻿id,vip_level,conditions.conditions.type,conditions.conditions.arg,conditions.conditions.arg,events.events.type,events.events.arg,events.events.arg
+1,4,COST_RESOURCE,DIAMOND,988,DEC_RESOURCE,DIAMOND,988

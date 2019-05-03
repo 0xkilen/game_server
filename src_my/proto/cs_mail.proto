@@ -1,0 +1,57 @@
+package proto.cs;
+
+import "cs_base.proto";
+import "data_base.proto";
+import "data_event.proto";
+import "data_mail.proto";
+
+message c2s_mail_set_already_read_req {
+        extend base {
+                optional c2s_mail_set_already_read_req cmsarr = 1901;
+        }
+        repeated uint64 gids = 1;
+}
+
+message s2c_mail_set_already_read_rsp {
+        extend base {
+                optional s2c_mail_set_already_read_rsp smsarr = 1902;
+        }
+        repeated uint64 gids = 1;
+}
+
+message c2s_mail_delete_req {
+        extend base {
+                optional c2s_mail_delete_req cmdr = 1903;
+        }
+        repeated uint64 gids = 1;
+}
+
+message s2c_mail_delete_rsp {
+        extend base {
+                optional s2c_mail_delete_rsp smdr = 1904;
+        }
+        required proto.data.result result = 1;
+        repeated uint64 gids = 2;
+}
+
+message c2s_mail_fetch_req {
+        extend base {
+                optional c2s_mail_fetch_req cmfr = 1905;
+        }
+        repeated uint64 gids = 1;
+}
+
+message s2c_mail_fetch_rsp {
+        extend base {
+                optional s2c_mail_fetch_rsp smfr = 1906;
+        }
+        repeated uint64 gids = 1;
+        optional proto.data.event_res res = 2;
+}
+
+message s2c_mail_new_mails {
+        extend base {
+                optional s2c_mail_new_mails smnm = 1907;
+        }
+        required proto.data.mail_array mails = 1;
+}

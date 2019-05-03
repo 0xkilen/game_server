@@ -1,0 +1,50 @@
+package proto.config;
+
+enum server_status {
+        YONGJI = 1;
+        LIUCHANG = 2;
+        WEIHU = 3;
+        ZHUNBEI = 4;
+}
+
+message serverlist {
+        required uint32 server_id = 1;
+        required string servername = 2;
+        required string ip = 3;
+        required uint32 port = 4;
+        optional server_status status = 5 [default = LIUCHANG];
+        optional bool _in_white_list = 6;
+        optional bool suggest = 7;
+        optional bool new = 8;
+        repeated uint32 channel_ids = 9;
+        optional bool not_recomment = 10;
+}
+
+message serverlist_file {
+        repeated serverlist entry = 1;
+}
+
+message simple_server {
+        required string ip = 1;
+        required uint32 port = 2;
+        repeated uint32 channel_ids = 3;
+}
+
+message logind_server {
+        required uint32 id = 1;
+        required simple_server server = 2;
+}
+
+message logind_server_file {
+        repeated logind_server entry = 1; 
+}
+
+message specific_server_list {
+        required uint32 id = 1;
+        repeated string client_versions = 2;
+        repeated uint32 server_ids = 3;
+}
+
+message specific_server_list_file {
+        repeated specific_server_list entry = 1;
+}

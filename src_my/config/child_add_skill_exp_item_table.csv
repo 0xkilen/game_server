@@ -1,0 +1,4 @@
+﻿item,conditions.conditions.type,conditions.conditions.arg,conditions.conditions.arg,conditions.conditions.type,conditions.conditions.arg,conditions.conditions.arg,events.events.type,events.events.arg,events.events.arg,events.events.type,events.events.arg,events.events.arg
+9528,CCT_VALUE_GE,CVT_SKILL_EXP,0,CCT_VALUE_LE,CVT_SKILL_EXP,1600,CET_CHANGE_VALUE,CVT_SKILL_EXP,30,CET_CHANGE_CONTRIBUTION,1,
+9529,CCT_VALUE_GE,CVT_SKILL_EXP,1600,CCT_VALUE_LE,CVT_SKILL_EXP,5300,CET_CHANGE_VALUE,CVT_SKILL_EXP,50,CET_CHANGE_CONTRIBUTION,1,
+9530,CCT_VALUE_GE,CVT_SKILL_EXP,5300,CCT_FAIL,SKILL_LEVEL_MAX,,CET_CHANGE_VALUE,CVT_SKILL_EXP,80,CET_CHANGE_CONTRIBUTION,1,

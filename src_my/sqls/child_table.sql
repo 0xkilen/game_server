@@ -1,0 +1,42 @@
+DROP TABLE IF EXISTS child;
+CREATE TABLE IF NOT EXISTS child (
+gid BIGINT UNSIGNED NOT NULL UNIQUE,
+data MEDIUMBLOB
+)
+CHARACTER SET = utf8
+ENGINE = InnoDB;
+
+DELIMITER $$
+
+DROP PROCEDURE IF EXISTS add_child$$
+CREATE PROCEDURE add_child (IN param1 BIGINT UNSIGNED, IN param2 MEDIUMBLOB)
+BEGIN
+INSERT INTO child(gid, data)
+VALUES(param1, param2);
+END$$
+
+DROP PROCEDURE IF EXISTS find_child$$
+CREATE PROCEDURE find_child (IN param1 BIGINT UNSIGNED)
+BEGIN
+SELECT data
+FROM child
+WHERE gid = param1;
+END$$
+
+DROP PROCEDURE IF EXISTS get_children$$
+CREATE PROCEDURE get_children (IN param1 INT, IN param2 INT)
+BEGIN
+SELECT gid, data
+FROM child
+LIMIT param1, param2;
+END$$
+
+DROP PROCEDURE IF EXISTS update_child$$
+CREATE PROCEDURE update_child (IN param1 BIGINT UNSIGNED, IN param2 MEDIUMBLOB)
+BEGIN
+UPDATE child
+SET data = param2
+WHERE gid = param1;
+END$$
+
+DELIMITER ;

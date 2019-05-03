@@ -1,0 +1,62 @@
+# To add a new shared library to the build:
+
+% mkdir ene/tools/boom  # the path could be anywhere
+
+# copy into ene/tools/boom the files foo.cpp, foo.hpp, bar.cpp, and bar.hpp
+
+# Make a up a name for your shared library.  Let's call it "libboom.so"
+# Then write a bunch of definitions in the SHLIB_boom "namespace" in make, in a
+# file called VARS.mk in the directory where the source lives.
+
+% cat > ene/tools/boom/VARS.mk
+# The following line is boilerplate
+# This the only time you should use := in VARS.mk
+# For all other variable assignments, you should use = not :=
+SHLIB_boom_SRC_DIR := $(SRC_DIR)
+
+# Now tell the make system how to build 'boom'
+# First, the list of source files, relative to $(SHLIB_boom_SRC_DIR)
+SHLIB_boom_SRC = foo.cpp bar.cpp
+
+# When compiling the files in $(SHLIB_boom_SRC), add the following directories
+# to the include path:
+SHLIB_boom_OTHER_INC_DIRS = some/dir
+
+# When compiling the files in in $(SHLIB_boom_SRC), add the following flags
+# when compiling C or C++ files, respectively:
+SHLIB_boom_OTHER_CFLAGS = -ansi
+SHLIB_boom_OTHER_CXXFLAGS = -fvtable-gc
+
+# Then, the "packages" used by boom.  These are all the libraries, either built
+# from source or from prebuilts, which boom needs to compile and link.  Note
+# that any libraries included in a shared library need to have _FOR_SHLIB set
+# (see add_a_library).
+SHLIB_boom_USE_PACKAGES = eosi aspell
+
+# When linking the shared library, we may want to include files which are not
+# object files resulting from compiling $(SHLIB_boom_SRC).  Such files should be
+# specified in this way, relative to the top of the source tree, not relative
+# to $(SHLIB_boom_SRC_DIR):
+SHLIB_boom_OTHER_LINK_INPUTS = path/to/foo.res
+
+# If we want this shared library to get built into $ENDECA_ROOT/bin then we
+# need to set SHLIB_boom_INSTALL to non-empty:
+SHLIB_boom_INSTALL = 1
+^D
+
+# The make system will automatically define a number of variables with the
+# prefix SHLIB_boom.  Let's look at some:
+% make help
+
+# Read the help message, and find out about the print-var target.
+
+% make print-var VARNAME=SHLIB_boom
+SHLIB_boom=../linux-x86_64-debug/build/ene/tools/boom/libboom.so
+
+% make print-var VARNAME=SHLIB_boom_OBJS
+SHLIB_boom_OBJS=../linux-x86_64-debug/build/ene/tools/boom/foo.o ../linux-x86_64-debug/build/ene/src/tools/boom/bar.o
+
+# Now, let's build libboom
+% make build-var VARNAME=SHLIB_boom
+# which is the same as
+% make ../linux-x86_64-debug/build/ene/tools/boom/libboom.so

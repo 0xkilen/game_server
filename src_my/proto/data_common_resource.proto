@@ -1,0 +1,10 @@
+package proto.data;
+
+message fanli {
+        required uint32 recharge = 1;
+        required uint32 count = 2;
+}
+
+message fanli_array {
+        repeated fanli fanlis = 1;
+}

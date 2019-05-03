@@ -1,0 +1,4 @@
+﻿pttid,name,president_name,icon,origin_friendliness.city,origin_friendliness.friendliness,origin_friendliness.city,origin_friendliness.friendliness,origin_friendliness.city,origin_friendliness.friendliness,origin_friendliness.city,origin_friendliness.friendliness
+1,叱云家,叱云柔,icon/item/icon_tilis,1,100,4,200,7,300,10,400
+2,拓跋家,拓跋浚,icon/item/icon_tilis,2,600,5,700,8,800,,
+3,李家,李长乐,icon/item/icon_tilis,3,1000,,,,,,

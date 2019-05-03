@@ -1,0 +1,151 @@
+package proto.data;
+
+import "data_resource.proto";
+import "data_shop.proto";
+import "data_title.proto";
+import "data_quest.proto";
+import "data_base.proto";
+
+message event {
+        enum event_type {
+                ADD_RESOURCE = 1;
+                DEC_RESOURCE = 2;
+                ADD_ACTOR = 3;
+                ADD_ITEM = 4;
+                REMOVE_ITEM = 5;
+                ADD_BUY_GOOD_TIMES = 6;
+                PASS_ADVENTURE = 7;
+                RESET_RESOURCE = 8;
+                LEVELUP_ACTOR_SKILL = 9;
+                ADD_SPINE_COLLECTION = 10;
+                ADD_HUANZHUANG_COLLECTION = 11;
+                ACCEPT_QUEST = 12;
+                REMOVE_QUEST = 13;
+                ACTOR_LEVELUP = 14;
+                ADD_EQUIPMENT = 16;
+                EQUIPMENT_LEVELUP = 17;
+                LEVELUP = 18;
+                CHANGE_ACTOR_INTIMACY = 19;
+                ACTOR_ADD_STEP = 22;
+                ACTOR_ADD_STAR = 23;
+                ACTOR_ADD_PIN = 24;
+                ROLE_ADD_FATE = 25;
+                PASS_LIEMING = 26;
+                REMOVE_EQUIPMENT = 27;
+                ADD_EQUIPMENT_EXP = 28;
+                DROP = 29;
+                ACTOR_UNLOCK_SKILL = 30;
+                NONE = 31;
+                CHANGE_INTIMACY = 32;
+                ADD_TITLE = 33;
+                ADD_PRESENT = 34;
+                DEC_PRESENT = 35;
+                ADD_RESOURCE_IGNORE_MAX = 36;
+                EQUIPMENT_ADD_QUALITY = 38;
+                EQUIPMENT_CHANGE_RAND_ATTR = 39;
+                MANSION_ADD_HALL_QUEST = 40;
+                PASS_ADVENTURE_ALL = 41;
+                PASS_ADVENTURE_CHAPTER = 42;
+                PLOT_LOCK_OPTION = 43;
+                PLOT_UNLOCK_OPTION = 44;
+                TRIGGER_FEIGE = 45;
+                ADD_FEIGE_CHUANWEN = 46;
+                ADD_FEIGE_CG = 47;
+                ADD_FEIGE_MINGYUN = 48;
+                MANSION_COOK_ADD_RECIPE = 49;
+                DEC_GONGDOU_EFFECT = 50;
+                ACTOR_ADD_SKIN = 51;
+                TRIGGER_MAJOR_CITY_BUBBLE = 52;
+                ADD_HUANZHUANG_EXP = 53;
+                RESET_HUANZHUANG = 54;
+                HUANZHUANG_LEVELUP = 55;
+                BROADCAST_SYSTEM_CHAT = 56;
+                EQUIPMENT_XILIAN = 57;
+                EQUIPMENT_XILIAN_CONFIRM = 58;
+                ADD_JADE = 59;
+                REMOVE_JADE = 60;
+                DROP_RECORD = 61;
+                ADD_DAIYANREN_POINTS = 62;
+                REMOVE_BUY_GOOD_TIMES = 63;
+        }
+        required event_type type = 1;
+        repeated string arg = 2;
+}
+
+message event_array {
+        repeated event events = 1;
+}
+
+message event_array_and_delimiter {
+        optional event_array events = 1;
+        optional int32 reserved = 2;
+}
+
+message event_res_friend_intimacy {
+        required uint64 other = 1;
+        required int32 old_value = 2;
+        required int32 cur_value = 3;
+}
+
+message event_res_resource {
+        required proto.data.resource_type type = 1;
+        required int64 old_count = 2;
+        required int64 cur_count = 3;
+}
+
+message event_res_item {
+        required uint32 pttid = 1;
+        required int32 old_count = 2;
+        required int32 cur_count = 3;
+        optional uint32 from_actor = 4;
+}
+
+message event_res_role_levelup {
+        required uint32 old_level = 1;
+        required uint32 cur_level = 2;
+        required uint32 levelup_time = 3;
+}
+
+message event_res_role_add_fate {
+        required uint32 old_fate = 1;
+        required uint32 cur_fate = 2;
+}
+
+message event_res_change_present {
+        required uint32 pttid = 1;
+        required uint32 old_count = 2;
+        required uint32 cur_count = 3;
+}
+
+message event_res_array {
+        repeated event_res event_reses = 1;
+}
+
+message drop_record {
+        required uint32 pttid = 1;
+        required int32 idx = 2;
+}
+
+message remove_shop_record {
+        required uint32 shop = 1;
+        required uint32 good = 2;
+}
+
+message event_res {
+        repeated event_res_resource change_resources = 1;
+        repeated event_res_item add_items = 7;
+        repeated event_res_item dec_items = 8;
+        repeated shop_record shop_records = 9;
+        repeated proto.data.quest accept_quests = 16;
+        repeated uint32 remove_quests = 17;
+        optional event_res_role_levelup role_levelup = 20;
+        optional event_res_role_add_fate role_add_fate = 23;
+        repeated event_res_friend_intimacy friend_intimacy = 28;
+        repeated title add_titles = 29;
+        repeated event_res_change_present change_presents = 30;
+        repeated uint64 remove_jades = 50;
+        repeated drop_record drop_records = 51;
+        optional uint32 daiyanren_point = 52;
+        optional proto.data.ce_origin ce_origin = 999;
+        repeated remove_shop_record remove_shop_records = 1000;
+}

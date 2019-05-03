@@ -1,0 +1,8 @@
+﻿day,events.events.type,events.events.arg,events.events.arg
+1,ADD_RESOURCE,EQUIPMENT_CONPON,8
+2,ADD_ITEM,212,30
+3,ADD_ITEM,85,3
+4,ADD_ITEM,6903,3
+5,ADD_ITEM,19,10
+6,ADD_RESOURCE,DIAMOND,600
+7,ADD_ITEM,101,30

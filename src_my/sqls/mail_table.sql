@@ -1,0 +1,43 @@
+DROP TABLE IF EXISTS mails;
+CREATE TABLE IF NOT EXISTS mails (
+gid BIGINT UNSIGNED NOT NULL UNIQUE,
+rolegid BIGINT UNSIGNED NOT NULL,
+data MEDIUMBLOB NOT NULL,
+INDEX(rolegid)
+)
+CHARACTER SET = utf8
+ENGINE = InnoDB;
+
+DELIMITER $$
+
+DROP PROCEDURE IF EXISTS add_mail$$
+CREATE PROCEDURE add_mail (IN param1 BIGINT UNSIGNED, IN param2 BIGINT UNSIGNED, IN param3 MEDIUMBLOB)
+BEGIN
+INSERT INTO mails(gid, rolegid, data)
+VALUES(param1, param2, param3);
+END$$
+
+DROP PROCEDURE IF EXISTS find_mails$$
+CREATE PROCEDURE find_mails (IN param1 BIGINT UNSIGNED)
+BEGIN
+SELECT data
+FROM mails
+WHERE rolegid = param1;
+END$$
+
+DROP PROCEDURE IF EXISTS get_mails$$
+CREATE PROCEDURE get_mails (IN param1 INT, IN param2 INT)
+BEGIN
+SELECT gid, rolegid, data
+FROM mails
+LIMIT param1, param2;
+END$$
+
+DROP PROCEDURE IF EXISTS delete_mail$$
+CREATE PROCEDURE delete_mail (IN param1 BIGINT UNSIGNED)
+BEGIN
+DELETE FROM mails
+WHERE gid = param1;
+END$$
+
+DELIMITER ;

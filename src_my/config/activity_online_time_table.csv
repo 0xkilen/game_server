@@ -1,0 +1,6 @@
+﻿day,rewards.minutes,rewards.events.events.type,rewards.events.events.arg,rewards.events.events.arg,rewards.minutes,rewards.events.events.type,rewards.events.events.arg,rewards.events.events.arg,rewards.minutes,rewards.events.events.type,rewards.events.events.arg,rewards.events.events.arg,rewards.minutes,rewards.events.events.type,rewards.events.events.arg,rewards.events.events.arg
+0,5,ADD_ITEM,1,3,10,ADD_RESOURCE,GOLD,20000,15,ADD_RESOURCE,EQUIPMENT_CONPON,3,30,ADD_RESOURCE,COUPON_A,3
+2,5,ADD_ITEM,1,3,10,ADD_RESOURCE,GOLD,20000,15,ADD_RESOURCE,EQUIPMENT_CONPON,3,30,ADD_RESOURCE,COUPON_A,3
+4,5,ADD_ITEM,1,3,10,ADD_RESOURCE,GOLD,20000,15,ADD_RESOURCE,EQUIPMENT_CONPON,3,30,ADD_RESOURCE,COUPON_A,3
+7,5,ADD_ITEM,1,3,10,ADD_RESOURCE,GOLD,20000,15,ADD_RESOURCE,EQUIPMENT_CONPON,3,30,ADD_RESOURCE,COUPON_A,3
+10,5,ADD_ITEM,1,3,10,ADD_RESOURCE,GOLD,20000,15,ADD_RESOURCE,EQUIPMENT_CONPON,3,30,ADD_RESOURCE,COUPON_A,3

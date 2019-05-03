@@ -1,0 +1,42 @@
+# To add a new C# binary to the build:
+
+% mkdir ene/tools/boom  # the path could be anywhere
+
+# copy into ene/tools/boom the files foo.cs and bar.cs
+
+# Make a up a name for your binary.  Let's call it "boom"
+# Then write a bunch of definitions in the CSHARP_boom "namespace" in make, in a
+# file called VARS.mk in the directory where the source lives.
+
+% cat > ene/tools/boom/VARS.mk
+# The following line is boilerplate
+# This the only time you should use := in VARS.mk
+# For all other variable assignments, you should use = not :=
+CSHARP_boom_SRC_DIR := $(SRC_DIR)
+
+# Now tell the make system how to build 'boom'
+# First, the list of source files, relative to $(CSHARP_boom_SRC_DIR)
+CSHARP_boom_SRC = foo.cs bar.cs
+
+# Now tell the make system what kind of assembly is built
+# by this package
+CSHARP_boom_TYPE = exe
+# options are: exe, library
+
+# Then, the "packages" used by boom.  These are C# assemblies
+# from source or from prebuilts, which boom needs to compile and link:
+CSHARP_boom_USE_PACKAGES = thing1 thing2
+
+# If we want this assembly to get copied into $ENDECA_ROOT/bin then we need to
+# set CSHARP_boom_INSTALL to non-empty:
+CSHARP_boom_INSTALL = 1
+
+# If there are external references we need to use, name them
+# here.  Only system assemblies should be named here; any
+# 3rd party assembly should be installed in prebuilts.
+CSHARP_boom_REFERENCES = thing3
+
+# For some applications, it may be necessary to pass specific options to the
+# C# compiler
+CSHARP_boom_OTHER_CSCFLAGS = -win32res:myresourcefile.res
+^D

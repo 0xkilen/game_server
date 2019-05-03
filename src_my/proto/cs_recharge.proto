@@ -1,0 +1,86 @@
+package proto.cs;
+
+import "cs_base.proto";
+import "data_base.proto";
+import "data_event.proto";
+
+message c2s_recharge_req {
+        extend base {
+                optional c2s_recharge_req crr = 3600;
+        }
+        required uint32 pttid = 1;
+}
+
+message s2c_recharge_rsp {
+        extend base {
+              optional s2c_recharge_rsp srr = 3601;
+        }
+        required uint32 pttid = 1;
+        required uint32 price = 2;
+        required proto.data.result result = 3;
+        optional uint64 order = 4;
+}
+
+message s2c_recharge_done {
+        extend base {
+              optional s2c_recharge_done srd = 3602;
+        }
+        optional uint64 order = 1;
+        required uint32 pttid = 2;
+        required proto.data.event_res event_res = 3;
+}
+
+message c2s_recharge_day_get_req {
+        extend base {
+                optional c2s_recharge_day_get_req crdgr = 3603;
+        }
+        required uint32 pttid = 1;
+}
+
+message s2c_recharge_day_get_rsp {
+        extend base {
+                optional s2c_recharge_day_get_rsp srdgr = 3604;
+        }
+        required uint32 pttid = 1;
+        required proto.data.result result = 2;
+        optional proto.data.event_res event_res = 3;
+}
+
+message c2s_recharge_get_vip_box_req {
+        extend base {
+              optional c2s_recharge_get_vip_box_req crgvbr = 3605;
+        }
+        required uint32 vip_level = 1;
+}
+
+message s2c_recharge_get_vip_box_rsp {
+        extend base {
+              optional s2c_recharge_get_vip_box_rsp srgvbr = 3606;
+        }
+        required uint32 vip_level = 1;
+        required proto.data.result result = 2;
+        optional proto.data.event_res event_res = 3;
+}
+
+message c2s_recharge_get_vip_buy_box_req {
+        extend base {
+              optional c2s_recharge_get_vip_buy_box_req crgvbbr = 3607;
+        }
+        required uint32 vip_level = 1;
+}
+
+message s2c_recharge_get_vip_buy_box_rsp {
+        extend base {
+              optional s2c_recharge_get_vip_buy_box_rsp srgvbbr = 3608;
+        }
+        required uint32 vip_level = 1;
+        required proto.data.result result = 2;
+        optional proto.data.event_res event_res = 3;
+}
+
+message s2c_recharge_day_update_sync {
+        extend base {
+              optional s2c_recharge_day_update_sync srdus = 3609;
+        }
+        required uint32 pttid = 1;
+}

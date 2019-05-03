@@ -1,0 +1,24 @@
+package proto.ss;
+
+import "ss_base.proto";
+import "data_yunying.proto";
+
+message s2lg_register_req {
+        extend base {
+                optional s2lg_register_req srr = 15000;
+        }
+}
+
+message lg2s_register_rsp {
+        extend base {
+                optional lg2s_register_rsp lrr = 15001;
+        }
+}
+
+message s2l_bi_info_sync {
+        extend base {
+                optional s2l_bi_info_sync sbis = 16000;
+        }
+        required string addr = 1;
+        required proto.data.yunying_bi_info yunying_bi_info = 2;
+}

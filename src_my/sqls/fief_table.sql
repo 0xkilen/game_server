@@ -1,0 +1,42 @@
+DROP TABLE IF EXISTS fiefs;
+CREATE TABLE IF NOT EXISTS fiefs (
+gid BIGINT UNSIGNED UNIQUE,
+data MEDIUMBLOB
+)
+CHARACTER SET = utf8
+ENGINE = InnoDB;
+
+DELIMITER $$
+
+DROP PROCEDURE IF EXISTS add_fief$$
+CREATE PROCEDURE add_fief (IN param1 BIGINT UNSIGNED, IN param2 MEDIUMBLOB)
+BEGIN
+INSERT INTO fiefs(gid, data)
+VALUES(param1, param2);
+END$$
+
+DROP PROCEDURE IF EXISTS find_fief$$
+CREATE PROCEDURE find_fief (IN param1 BIGINT UNSIGNED)
+BEGIN
+SELECT data
+FROM fiefs
+WHERE gid = param1;
+END$$
+
+DROP PROCEDURE IF EXISTS get_fiefs$$
+CREATE PROCEDURE get_fiefs (IN param1 INT, IN param2 INT)
+BEGIN
+SELECT gid, data
+FROM fiefs
+LIMIT param1, param2;
+END$$
+
+DROP PROCEDURE IF EXISTS update_fief$$
+CREATE PROCEDURE update_fief (IN param1 BIGINT UNSIGNED, IN param2 MEDIUMBLOB)
+BEGIN
+UPDATE fiefs
+SET data = param2
+WHERE gid = param1;
+END$$
+
+DELIMITER ;

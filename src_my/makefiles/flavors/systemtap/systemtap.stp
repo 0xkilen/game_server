@@ -1,0 +1,67 @@
+/*
+ * SystemTap script to capture page fault / disk activity
+ */
+
+probe process.start {
+	if (target_set_pid(pid())) {
+		printf("%u c %u %u %s\n", gettimeofday_ns(), pid(), tid(), execname());
+	}
+}
+
+probe process.exit {
+	if (target_set_pid(pid())) {
+		printf("%u e %u %u %s %u\n", gettimeofday_ns(), pid(), tid(), execname(), code);
+	}
+}
+
+/* these don't seem to work right in 2.6.22
+probe vm.mmap {
+	if (target_set_pid(pid())) {
+		printf("mm %u %u %u %p %u\n", gettimeofday_ns(), pid(), tid(), address, length);
+	}
+}
+
+probe vm.munmap {
+	if (target_set_pid(pid())) {
+		printf("mu %u %u %u %p %u\n", gettimeofday_ns(), pid(), tid(), address, length);
+	}
+}
+*/
+
+global pftime[32]
+global pfaddr[32]
+
+probe vm.pagefault {
+	if (target_set_pid(pid())) {
+		t = tid();
+		pftime[t] = gettimeofday_ns();
+		pfaddr[t] = address;
+	}
+}
+
+probe vm.pagefault.return {
+	if (target_set_pid(pid())) {
+		t = tid();
+		now = gettimeofday_ns();
+		then = pftime[t];
+		printf("%u f %u %u %p\n", now, t, now-then, pfaddr[t]);
+	}
+}
+
+probe ioscheduler.elv_completed_request {
+	/* n.b. only display I/O from sd* or md* */
+	if (disk_major >= 8) {
+		offset = $rq->sector;
+		size = $rq->nr_sectors;
+		if (size != 0) {
+			if (cmd_flags & 1) {
+				printf("%u w %u %u %u %u\n", gettimeofday_ns(), offset, size, disk_major, disk_minor);
+			}
+			else {
+				printf("%u r %u %u %u %u\n", gettimeofday_ns(), offset, size, disk_major, disk_minor);
+			}
+		}
+	}
+}
+
+

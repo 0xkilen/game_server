@@ -1,0 +1,17 @@
+﻿id,seed_item,sow_seed_count,sow_conditions.conditions.type,sow_conditions.conditions.arg,sow_conditions.conditions.arg,growths.minutes,growths.appearance,growths.minutes,growths.appearance,growths.minutes,growths.appearance,growths.minutes,growths.appearance,harvests.count,harvests.protected_count,harvests.count,harvests.protected_count,harvests.count,harvests.protected_count,harvests.count,harvests.protected_count,harvests.count,harvests.protected_count,harvests.count,harvests.protected_count,harvest_events.events.type,harvest_events.events.arg,harvest_events.events.arg,insect.appear_minutes,insect.appear_rate,insect.effect_minutes,steal_count,water_dec_minutes
+1,6401,1,COST_RESOURCE,VIGOR,2,,youmiao_1,30,baicai_1,30,baicai_2,,baicai_3,10,4,10,4,15,4,15,4,20,4,20,4,ADD_ITEM,6201,1,20,800,5,2,30
+2,6402,1,COST_RESOURCE,VIGOR,2,,youmiao_1,30,juhua_1,30,juhua_2,,juhua_3,10,4,10,4,15,4,15,4,20,4,20,4,ADD_ITEM,6202,1,20,800,5,2,30
+3,6403,1,COST_RESOURCE,VIGOR,2,,youmiao_1,30,dacong_1,30,dacong_2,,dacong_3,10,4,10,4,15,4,15,4,20,4,20,4,ADD_ITEM,6203,1,20,800,5,2,30
+4,6404,1,COST_RESOURCE,VIGOR,2,,youmiao_1,30,bocai_1,30,bocai_2,,bocai_3,10,4,10,4,15,4,15,4,20,4,20,4,ADD_ITEM,6204,1,20,800,5,2,30
+5,6405,1,COST_RESOURCE,VIGOR,2,,youmiao_1,60,luobo_1,60,luobo_2,,luobo_3,8,3,8,3,12,3,12,3,15,3,15,3,ADD_ITEM,6205,1,40,800,5,2,60
+6,6406,1,COST_RESOURCE,VIGOR,2,,youmiao_1,60,baocai_1,60,baocai_2,,baocai_3,8,3,8,3,12,3,12,3,15,3,15,3,ADD_ITEM,6206,1,40,800,5,2,60
+7,6407,1,COST_RESOURCE,VIGOR,2,,youmiao_1,60,yueji_1,60,yueji_2,,yueji_3,8,3,8,3,12,3,12,3,15,3,15,3,ADD_ITEM,6207,1,40,800,5,2,60
+8,6408,1,COST_RESOURCE,VIGOR,2,,youmiao_1,60,tudou_1,60,tudou_2,,tudou_3,8,3,8,3,12,3,12,3,15,3,15,3,ADD_ITEM,6208,1,40,800,5,2,60
+9,6409,1,COST_RESOURCE,VIGOR,2,,youmiao_1,120,qingjiao_1,120,qingjiao_2,,qingjiao_3,5,2,5,2,8,2,8,2,10,2,10,2,ADD_ITEM,6209,1,40,800,5,2,60
+10,6410,1,COST_RESOURCE,VIGOR,2,,youmiao_1,120,donggua_1,120,donggua_2,,donggua_3,5,2,5,2,8,2,8,2,10,2,10,2,ADD_ITEM,6210,1,80,800,5,2,120
+11,6411,1,COST_RESOURCE,VIGOR,2,,youmiao_1,120,dujuan_1,120,dujuan_2,,dujuan_3,5,2,5,2,8,2,8,2,10,2,10,2,ADD_ITEM,6211,1,80,800,5,2,120
+12,6412,1,COST_RESOURCE,VIGOR,2,,youmiao_1,120,nangua_1,120,nangua_2,,nangua_3,5,2,5,2,8,2,8,2,10,2,10,2,ADD_ITEM,6212,1,80,800,5,2,120
+13,6413,1,COST_RESOURCE,VIGOR,2,,youmiao_1,240,qiezi_1,240,qiezi_2,,qiezi_3,5,2,5,2,8,2,8,2,10,2,10,2,ADD_ITEM,6213,1,80,800,5,2,120
+14,6414,1,COST_RESOURCE,VIGOR,2,,youmiao_1,240,wandou_1,240,wandou_2,,wandou_3,5,2,5,2,8,2,8,2,10,2,10,2,ADD_ITEM,6214,1,80,800,5,2,120
+15,6415,1,COST_RESOURCE,VIGOR,2,,youmiao_1,240,maodou_1,240,maodou_2,,maodou_3,5,2,5,2,8,2,8,2,10,2,10,2,ADD_ITEM,6215,1,80,800,5,2,120
+16,6416,1,COST_RESOURCE,VIGOR,2,,youmiao_1,240,yumeiren_1,240,yumeiren_2,,yumeiren_3,5,2,5,2,8,2,8,2,10,2,10,2,ADD_ITEM,6216,1,80,800,5,2,120

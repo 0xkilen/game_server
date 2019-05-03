@@ -1,0 +1,89 @@
+package proto.ss;
+
+import "ss_base.proto";
+import "data_base.proto";
+import "data_player.proto";
+import "data_activity.proto";
+
+message s2d_create_role_req {
+        extend base {
+                optional s2d_create_role_req scrr = 10400;
+        }
+        required string username = 1;
+        required proto.data.role role = 2;
+}
+
+message d2s_create_role_rsp {
+        extend base {
+                optional d2s_create_role_rsp dcrr = 10401;
+        }
+        required proto.data.result result = 1;
+        required string username = 2;
+        optional proto.data.role role = 3;
+}
+
+message s2d_find_role_req {
+        extend base {
+                optional s2d_find_role_req sfrr = 10402;
+        }
+        required string username = 1;
+        optional uint32 sid = 2;
+        optional uint32 gm_id = 3;
+}
+
+message s2d_find_role_by_gid_req {
+        extend base {
+                optional s2d_find_role_by_gid_req sfrbgr = 10403;
+        }
+        required uint64 gid = 1;
+}
+
+message d2s_find_role_rsp {
+        extend base {
+                optional d2s_find_role_rsp dfrr = 10404;
+        }
+        required proto.data.result result = 1;
+        required string username = 2;
+        optional proto.data.role role = 3;
+        optional uint32 sid = 4;
+        optional uint32 server_id = 5;
+        optional uint32 gm_id = 6;
+}
+
+message d2s_find_role_by_gid_rsp {
+        extend base {
+                optional d2s_find_role_by_gid_rsp dfrbgr = 10405;
+        }
+        required uint64 gid = 1;
+        required proto.data.result result = 2;
+        optional string username = 3;
+        optional proto.data.role role = 4;
+}
+
+message s2d_update_role_req {
+        extend base {
+                optional s2d_update_role_req surr = 10406;
+        }
+        required proto.data.role role = 1;
+}
+
+message s2d_load_activity_mgr_req {
+        extend base {
+                optional s2d_load_activity_mgr_req slamr = 10826;
+        }
+}
+
+message d2s_load_activity_mgr_rsp {
+        extend base {
+                optional d2s_load_activity_mgr_rsp dlamr = 10827;
+        }
+        required proto.data.result result = 1;
+        optional proto.data.activity_mgr data = 2;
+}
+
+message s2d_save_activity_mgr_req {
+        extend base {
+                optional s2d_save_activity_mgr_req ssamr = 10828;
+        }
+        required proto.data.activity_mgr data = 1;
+}

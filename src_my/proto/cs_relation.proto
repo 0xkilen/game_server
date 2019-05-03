@@ -1,0 +1,256 @@
+package proto.cs;
+
+import "cs_base.proto";
+import "data_base.proto";
+import "data_event.proto";
+import "data_relation.proto";
+import "data_player.proto";
+
+message c2s_relation_apply_friend_req {
+        extend base {
+                optional c2s_relation_apply_friend_req crafr = 1600;
+        }
+        required uint64 gid = 2;
+}
+
+message s2c_relation_apply_friend_rsp {
+        extend base {
+                optional s2c_relation_apply_friend_rsp srafr = 1601;
+        }
+        required proto.data.result result = 1;
+        optional uint64 gid = 2;
+}
+
+message s2c_relation_friend_application {
+        extend base {
+                optional s2c_relation_friend_application srfa = 1602;
+        }
+        required proto.data.relation_application application = 1;
+        optional uint64 remove_application = 2;
+}
+
+message s2c_relation_new_friend {
+        extend base {
+                optional s2c_relation_new_friend srnf = 1603;
+        }
+        required uint64 gid = 1;
+}
+
+message c2s_relation_add_in_blacklist_req {
+        extend base {
+                optional c2s_relation_add_in_blacklist_req craibr = 1604;
+        }
+        required uint64 gid = 1;
+}
+
+message s2c_relation_add_in_blacklist_rsp {
+        extend base {
+                optional s2c_relation_add_in_blacklist_rsp sraibr = 1605;
+        }
+        required proto.data.result result = 1;
+        optional proto.data.relation_role role = 2;
+}
+
+message c2s_relation_suggest_friends_req {
+        extend base {
+                optional c2s_relation_suggest_friends_req crsfr = 1606;
+        }
+        required proto.data.relation_suggestion_origin origin = 1;
+}
+
+message relation_suggestion {
+        required uint64 role = 1;
+        required proto.data.relation_suggestion_type type = 2;
+}
+
+message s2c_relation_suggest_friends_rsp {
+        extend base {
+                optional s2c_relation_suggest_friends_rsp srsfr = 1607;
+        }
+        required proto.data.relation_suggestion_origin origin = 1;
+        repeated relation_suggestion suggestion = 2;
+}
+
+message c2s_relation_approve_application_req {
+        extend base {
+                optional c2s_relation_approve_application_req craar = 1608;
+        }
+        required uint64 gid = 1;
+}
+
+message s2c_relation_approve_application_rsp {
+        extend base {
+                optional s2c_relation_approve_application_rsp sraar = 1609;
+        }
+        required proto.data.result result = 1;
+        required uint64 gid = 2;
+        required bool had_apply = 3;
+}
+
+message c2s_relation_decline_application_req {
+        extend base {
+                optional c2s_relation_decline_application_req crdar = 1610;
+        }
+        required uint64 gid = 1;
+}
+
+message s2c_relation_decline_application_rsp {
+        extend base {
+                optional s2c_relation_decline_application_rsp srdar = 1611;
+        }
+        required proto.data.result result = 1;
+        required uint64 gid = 2;
+}
+
+message c2s_relation_remove_friend_req {
+        extend base {
+                optional c2s_relation_remove_friend_req crrfr = 1612;
+        }
+        required uint64 gid = 1;
+}
+
+message s2c_relation_remove_friend_rsp {
+        extend base {
+                optional s2c_relation_remove_friend_rsp srrfr = 1613;
+        }
+        required proto.data.result result = 1;
+        optional uint64 gid = 2;
+}
+
+message s2c_relation_removed_by_friend {
+        extend base {
+                optional s2c_relation_removed_by_friend srrbf = 1614;
+        }
+        required uint64 gid = 1;
+}
+
+message c2s_relation_remove_from_blacklist_req {
+        extend base {
+                optional c2s_relation_remove_from_blacklist_req crrfbr = 1615;
+        }
+        required uint64 gid = 1;
+}
+
+message s2c_relation_remove_from_blacklist_rsp {
+        extend base {
+                optional s2c_relation_remove_from_blacklist_rsp srrfbr = 1616;
+        }
+        required proto.data.result result = 1;
+        optional uint64 gid = 2;
+}
+
+message s2c_relation_added_in_blacklist {
+        extend base {
+                optional s2c_relation_added_in_blacklist sraib = 1617;
+        }
+        required uint64 gid = 1;
+}
+
+message s2c_relation_update_friend_intimacy {
+        extend base {
+                optional s2c_relation_update_friend_intimacy srufi = 1618;
+        }
+        required uint64 gid = 1;
+        required int32 intimacy = 2;
+}
+
+message c2s_relation_follow_req {
+        extend base {
+                optional c2s_relation_follow_req crfr = 1619;
+        }
+        required uint64 gid = 1;
+}
+
+message s2c_relation_follow_rsp {
+        extend base {
+                optional s2c_relation_follow_rsp srfr = 1620;
+        }
+        required proto.data.result result = 1;
+        optional proto.data.relation_role role = 2;
+}
+
+message c2s_relation_unfollow_req {
+        extend base {
+                optional c2s_relation_unfollow_req crur = 1621;
+        }
+        required uint64 gid = 1;
+}
+
+message s2c_relation_unfollow_rsp {
+        extend base {
+                optional s2c_relation_unfollow_rsp srur = 1622;
+        }
+        required uint64 gid = 1;
+        required proto.data.result result = 2;
+}
+
+message c2s_relation_send_gifts_req {
+        extend base {
+                optional c2s_relation_send_gifts_req crsgr = 1623;
+        }
+        required uint64 role = 1;
+        required uint32 item = 2;
+        required uint32 count = 3;
+}
+
+message s2c_relation_receive_gifts_notice {
+        extend base {
+                optional s2c_relation_receive_gifts_notice srrgn = 1624;
+        }
+        required uint32 item = 1;
+        required uint32 count = 2;
+        required uint64 role = 3;
+        optional proto.data.comment comment = 4;
+        required proto.data.event_res event_res = 5;
+}
+
+message s2c_relation_send_gifts_rsp {
+        extend base {
+                optional s2c_relation_send_gifts_rsp srsgr = 1625;
+        }
+        required uint64 role = 1;
+        required uint32 item = 2;
+        required uint32 count = 3;
+        required proto.data.result result = 4;
+        optional proto.data.event_res event_res = 5;
+}
+
+message c2s_relation_set_read_req {
+        extend base {
+                optional c2s_relation_set_read_req crsrr = 1626;
+        }
+        required proto.data.gid_array roles = 1;
+}
+
+message s2c_relation_set_read_rsp {
+        extend base {
+                optional s2c_relation_set_read_rsp srsrr = 1627;
+        }
+        required proto.data.gid_array roles = 1;
+}
+
+message c2s_relation_get_online_friends_req {
+        extend base {
+                optional c2s_relation_get_online_friends_req crgofr = 1628;
+        }
+}
+
+message s2c_relation_get_online_friends_rsp {
+        extend base {
+                optional s2c_relation_get_online_friends_rsp srgofr = 1629;
+        }
+        repeated uint64 roles = 1;
+}
+
+message c2s_relation_get_online_follows_req {
+        extend base {
+                optional c2s_relation_get_online_follows_req crgofor = 1630;
+        }
+}
+
+message s2c_relation_get_online_follows_rsp {
+        extend base {
+                optional s2c_relation_get_online_follows_rsp srgofor = 1631;
+        }
+        repeated uint64 roles = 1;
+}

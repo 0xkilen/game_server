@@ -1,0 +1,6 @@
+OPT = 1
+CHECKED = 1
+ALLOCATOR_PKG = 
+INSTRUMENTATION_STYLE = checked-asan
+FLAVOR_CFLAGS = -DEXIT_CLEANUP -fsanitize=address -DASAN
+FLAVOR_LDFLAGS = -fsanitize=address

@@ -1,0 +1,5 @@
+﻿id,type,name,icon,reset_every_day
+1,LRT_MONEY,家族资金,icon/resource/jiazuzijin,
+2,LRT_EXP,家族经验,icon/resource/jiazujinyan,
+3,LRT_CAMPAIGN_REFRESH_TIMES,家族boss重置次数,icon/resource/meiming,1
+4,LRT_INVITE_CITY_TIMES,家族邀请次数,icon/resource/meiming,2

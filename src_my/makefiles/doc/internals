@@ -1,0 +1,155 @@
+** How the make system is implemented **
+
+Please read `make help` and the tutorial first.
+
+(Wow, wasn't that fun?!)
+
+
+-- Namespaces ------------------------------------------------------
+
+There are a number of concepts used in the build system:
+
+The "namespace":  a prefix that is shared by a set of related variables.  For
+instance, the following prefixes correspond to variables related to the
+following things:
+
+BIN_foo_*        building the binary called "foo"
+LIB_bar_*        building the library called "foo"
+CP_baz_*         copying a set of files between a particular pair of dirs
+PKG_whee_*       using a package called "whee"
+
+A "package" contains definitions about how to *use* a library.  It can
+correspond to a prebuilt library, or a library built by the make system.  The
+make system will automatically create a package for each library it is told how
+to build, with a conservative set of required include directories.  In some
+cases, a library may hide its use of another library, so that its clients can
+use a smaller set of include directories.  In this case, you should override
+the package's *_INC_DIRS variable.  For an example of this, see
+makefiles/packages/optispell.mk.
+
+
+-- INCLUDER files --------------------------------------------------
+
+-- THIS SECTION OUT OF DATE --
+
+For BIN_*, LIB_*, and CP_*, the system uses the following pattern:
+
+The user sets up some variables BIN_foo_*.
+
+The system looks through BIN_*_SRC_DIR, and appends each * to ALL_BINS.
+
+Then, after all the variables have been set, the make system loops through
+ALL_BINS, for each of them setting an immediate variable and re-including a
+"rules" file.  The "includer" files are created as $(BUILD_ROOT)/*_RULES.mk,
+and each of those repeatedly include makefiles/*_rules.mk.
+
+This mechanism avoids the order-of-evaluation problems that one encounters in
+the presence of a large body of rule and variable definitions.  Rule
+definitions force immediate (parse-time) evaluation of the target and
+dependencies for that rule, so we want to make sure that rules are parsed after
+the users has finished defining all their variables.  We do this by splitting
+the user-configurable files into VARS.mk and RULES.mk files.  Also, we avoid
+boilerplate in the RULES.mk files by auto-generating rules for common cases
+(libraries, binaries, and copied files).
+
+
+-- Control flow ----------------------------------------------------
+
+-- THIS SECTION OUT OF DATE --
+
+The exact flow of the Makefile is as follows:
+
+  1.  Determine our build settings:  architecture, profiler, memchecker, etc.
+  2.  Include pattern files for various tools (bison and re2c at the moment).
+  These need $(BUILD_ROOT) to be defined, so #2 depends on #1.
+  3.  Walk the source tree, looking for VARS.mk files, and build up
+  $(BUILD_ROOT)/USER_VARS.mk, which will include all of them.  This also
+  depends on #1.  Then include USER_VARS.mk.
+  4.  Include the package definitions in makefiles/packages/*.mk.  This depends
+  on #1.
+
+** At this point, all user-defined variables should be known
+
+  5.  Generate default package definitions for the libraries in $(ALL_LIBS),
+  into $(BUILD_ROOT)/LIB_PKG_DEFAULTS.mk.  This depends on #3.  Then include
+  LIB_PKG_DEFAULTS.mk.
+  6.  Walk $(ALL_LIBS), building up $(BUILD_ROOT)/LIB_RULES.mk, which as
+  mentioned above will repeatedly include makefiles/lib_rules.mk, once for each
+  library.  This depends on #4 and #5, since we need to know how to use the
+  packages.  Include LIB_RULES.mk.
+  7.  Walk $(ALL_BINS), doing the same as in #6, except for BINS instead of
+  LIBS.  Also depends on #4 and #5.  Include BIN_RULES.mk.
+  8.  Walk $(ALL_CPS), doing the same as in #6, except for CPS instead of LIBS.
+  Depends on #6 and #7, since installable LIBS and BINS create CP_foo entities
+  for themselves.  Include CP_RULES.mk.
+  9.  Walk the source tree, looking for RULES.mk files, and build up
+  $(BUILD_ROOT)/USER_RULES.mk, which will include all of them.  We do this
+  last, so that any variables defined by any previous step will be available to
+  the user rule definitions.
+  10.  Various phony targets.  These depend on #6, #7, and #8, to know what the
+  names of all the build products are.
+
+
+-- Use of patterns -------------------------------------------------
+
+Many of the rules employed by the make system are pattern rules, which are used
+in conjunction with target-specific variable overrides.  For example, in
+makefiles/src_rules.mk (the rules file for C and C++), we see:
+
+$($(TARGET_NAME)_OBJS): TARGET_NAME := $(TARGET_NAME)
+
+which for a given $(TARGET_NAME) -- that's BIN_foo or LIB_foo -- remembers the
+value of TARGET_NAME for later user by the command to build the object files
+for that $(TARGET_NAME).  Essentially, TARGET_NAME is saved as a pointer to
+more build information, stored in variables that start with the prefix
+BIN_foo or LIB_foo.
+
+Currently used patterns are C and C++ compilation, and bison and re2c
+invocation.  Library archiving and binary linking are done with explicit
+commands, not patterns.
+
+
+-- Generated source ------------------------------------------------
+
+The patterns all put their output in the build output directory, but can take
+their input from either the source directory or the build output directory.
+This enables us to chain for example from a bison input file in the source
+directory to a C++ source file in the build output directory, and then to an
+object file in the build output directory.
+
+As mentioned in the tutorial, users who want to specify generated source files
+for a given LIB_foo or BIN_foo simply add the generated source filename to
+(taking LIB_foo for example) LIB_foo_SRC.  The make system will look in
+$(LIB_foo_SRC_DIR) for each filename in $(LIB_foo_SRC), and for those it
+doesn't find, it assumes that filename is for a generated file.  It then puts
+in an order-only dependency:
+
+$($(TARGET_NAME)_OBJS): | $(addprefix $($(TARGET_NAME)_OUT_DIR)/,$($(TARGET_NAM
+E)_GENERATED_SRC))
+
+This tells make that it should make sure to generate all the source files prior
+to compiling any of them.  This ensures that generated header files are created
+before the compiler tries to include them.  Once they've been created, the
+automatic include dependency tracking mechanism works just fine.
+
+
+-- Automatic include dependency tracking ---------------------------
+
+Unlike some make systems you may have used in the past, there is no separate
+"make depend" phase to the build.  With gcc at least, include dependency
+information is created as a side-effect of compilation.  This works because for
+the dependency list of a source file to change, the file itself must change, so
+we need to recompile it anyway, so it's OK if the dependency list of that file
+is now incorrect.  The only problem with such an approach is when header files
+are deleted:  for that we use a workaround where the header dependency file
+includes empty rules to make all the headers.  For more explanation, see Paul
+Smith's page "Advanced Auto-Dependency Generation":
+
+  http://make.paulandlesley.org/autodep.html#combine
+
+Note that as of gcc 4.0, gcc added a feature (-MP) that removes the need for
+Paul's sed commands, so we just use -MMD -MP for our autodep generation.
+
+Also, note that Paul Smith isn't just some random person:  he's the gmake
+maintainer.
+

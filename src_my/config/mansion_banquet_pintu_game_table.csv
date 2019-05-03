@@ -1,0 +1,14 @@
+﻿id,desc,image,need_step,pintu_events.activity,pintu_events.atmosphere,pintu_events.finish_events.events.type,pintu_events.finish_events.events.arg,pintu_events.finish_events.events.arg,pintu_events.unfinish_events.events.type,pintu_events.unfinish_events.events.arg,pintu_events.unfinish_events.events.arg
+1,拼图进行中,cg_chiyunnannormal,25,30,5,DROP,15007,1,DROP,15008,1
+2,拼图进行中,cg_duizhi,25,30,5,DROP,15007,1,DROP,15008,1
+3,拼图进行中,cg_gaoyuelixizao,25,30,5,DROP,15007,1,DROP,15008,1
+4,拼图进行中,cg_huoyanmache,25,30,5,DROP,15007,1,DROP,15008,1
+5,拼图进行中,cg_lichangletiaowu,25,30,5,DROP,15007,1,DROP,15008,1
+6,拼图进行中,cg_limindechuidi,25,30,5,DROP,15007,1,DROP,15008,1
+7,拼图进行中,cg_limindexishui,25,30,5,DROP,15007,1,DROP,15008,1
+8,拼图进行中,cg_tobajintanqin,25,30,5,DROP,15007,1,DROP,15008,1
+9,拼图进行中,cg_tuobadiguangjie,25,30,5,DROP,15007,1,DROP,15008,1
+10,拼图进行中,cg_tuobayubidong,25,30,5,DROP,15007,1,DROP,15008,1
+11,拼图进行中,cg_tuobayutuobajin,25,30,5,DROP,15007,1,DROP,15008,1
+12,拼图进行中,cg_yuexiajuntao,25,30,5,DROP,15007,1,DROP,15008,1
+13,拼图进行中,cg_yuexiatuobajun,25,30,5,DROP,15007,1,DROP,15008,1

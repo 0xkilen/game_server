@@ -1,0 +1,3 @@
+﻿id,buy_conditions.conditions.type,buy_conditions.conditions.arg,buy_conditions.conditions.arg,drop
+1,COST_RESOURCE,GOLD,100000,50101
+2,COST_RESOURCE,DIAMOND,200,50102

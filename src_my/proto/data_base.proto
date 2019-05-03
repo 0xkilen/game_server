@@ -1,0 +1,529 @@
+package proto.data;
+
+enum result {
+        NONE = 0;
+        OK = 1;
+        CONTINUE = 2;
+        NOT_ENOUGH = 3;
+        NOT_FOUND = 4;
+        NAME_EXIST = 5;
+        REDIRECT = 6;
+        INTERNAL_ERROR = 7;
+        AGAIN = 8;
+        RUNNING = 9;
+        SERVICE_NOT_AVAILABLE = 10;
+        FAILED = 11;
+        CONFLICT = 15;
+        DUPLICATE = 16;
+        BEYOND_LIMIT = 22;
+        HAS_DIRTY_WORD = 23;
+        EMPTY_NAME = 24;
+        NAME_TOO_LONG = 25;
+        EMPTY_CONTENT = 26;
+        CONTENT_TOO_LONG = 27;
+        NO_SUCH_SCENE = 28;
+        NAME_TOO_SHORT = 29;
+        NAME_INVALID_CHAR = 30;
+        LOGIN_ELSEWHERE = 31;
+        KICKED = 32;
+        SERVER_CLOSE = 33;
+        NOT_IN_THE_WHITE_LIST = 34;
+        RANDOM_FAILED = 35;
+        LOGIN_SERVER_FULL = 36;
+        NO_SUCH_CHANNEL_ID = 39;
+        LOGIN_INTERRUPTED = 40;
+        CLIENT_VERSION_TOO_OLD = 41;
+        CLIENT_VERSION_INVAILD = 42;
+        TIMEOUT = 43;
+        NAME_NOT_CHANGED = 44;
+        OTHER_FORMER_NAME = 45;
+        ONLY_CHINESE_CAN_BE_USED = 46;
+        FORBID_NAME = 47;
+
+        MAIL_DUPLICATE_FETCH = 400;
+        MAIL_NOTHING_TO_FETCH = 401;
+
+        SHOP_NO_SUCH_GOOD = 800;
+        SHOP_GOOD_WITHDRAW = 801;
+        SHOP_INVALID_MYSTERIOUS_GOOD = 802;
+        SHOP_NEED_UPDATE = 803;
+        MYS_SHOP_NO_SUCH_GOOD = 805;
+        MYS_SHOP_REFRESH_GOODS_WRONG_TIME = 806;
+        SHOP_BUY_GOOD_TIMES_REACH_MAX = 807;
+        SHOP_NO_SUCH_SHOP = 808;
+        MYS_SHOP_INVALID_MYS_SHOP = 809;
+        SHOP_GOOD_REACH_ALL_TIMES_LIMIT = 810;
+        SHOP_NOT_ACRIVITY_FESTIVAL_TIME = 811;
+
+        QUEST_NOT_ACCEPTED = 1000;
+        QUEST_NOT_FINISHED = 1001;
+        QUEST_ALREADY_GOT_THIS_REWARD = 1002;
+        QUEST_ALREADY_COMMITTED = 1003;
+        QUEST_INVAILID_QUEST = 1004;
+
+        RELATION_ALREADY_FRIEND = 1100;
+        RELATION_IN_BLACKLIST = 1101;
+        RELATION_ALREADY_APPLIED = 1102;
+        RELATION_NO_SUCH_APPLICATION = 1103;
+        RELATION_NO_SUCH_FRIEND = 1104;
+        RELATION_NOT_IN_BLACKLIST = 1105;
+        RELATION_ALREADY_IN_BLACKLIST = 1106;
+        RELATION_INTIMACY_NOT_ENOUGH = 1107;
+        RELATION_ALREADY_IN_FOLLOWLIST = 1108;
+        RELATION_NOT_IN_FOLLOWLIST = 1109;
+        RELATION_FOLLOWLIST_FULL = 1110;
+        RELATION_FRIENDLIST_FULL = 1111;
+        RELATION_OTHER_FRIENDLIST_FULL = 1112;
+        RELATION_BLACKLIST_FULL = 1113;
+        RELATION_OTHER_IN_BLACKLIST = 1114;
+        RELATION_OTHER_IS_SELF = 1115;
+        RELATION_TOO_MANY_FRIENDS = 1116;
+        RELATION_OTHER_IS_SPOUSE = 1117;
+        RELATION_INVAILID_GIFT = 1118;
+
+        ROOM_ALREADY_IN_ROOM = 1500;
+        ROOM_NO_SUCH_ROOM = 1501;
+        ROOM_FULL = 1502;
+        ROOM_VIOLATE_PUBLICITY = 1503;
+        ROOM_VIOLATE_LIMITATION = 1504;
+        ROOM_NOT_IN_ROOM = 1505;
+        ROOM_NOT_IN_SAME_ROOM = 1506;
+        ROOM_NOT_OWNER = 1507;
+        ROOM_NOT_ENOUGH_MEMBERS = 1508;
+        ROOM_NOT_IN_WAITING = 1509;
+        ROOM_EMBATTEL_ACTOR_NOT_ALLOW = 1510;
+        ROOM_OWNER_ZHU_ACTOR_NOT_IN_FORMATION = 1511;
+        ROOM_MEMBER_ZHU_ACTOR_IN_FORMATION = 1512;
+        ROOM_EMBATTLE_ACTOR_COUNT_ERROR = 1513;
+        ROOM_ROLES_CHANGED = 1514;
+        ROOM_WRONG_STATE = 1515;
+        ROOM_LIEMING_OWNER_SELECT_ACTOR = 1516;
+        ROOM_LIEMING_SELECT_ACTOR_INVALID_IDX = 1517;
+        ROOM_LIEMING_NOT_ENOUGH_ACTORS = 1518;
+        ROOM_LIEMING_ACTOR_BELONGS_TO_OTHER = 1519;
+        ROOM_LIEMING_NOT_THIS_ACTORS_TURN = 1520;
+        ROOM_LIEMING_ALREADY_SET_READY = 1521;
+        ROOM_LIEMING_ALREADY_STARTED = 1522;
+        ROOM_LIEMING_ACTOR_ROLE_NOT_FOUND = 1523;
+        ROOM_LIEMING_ACTOR_NOT_FOUND_IN_ROLE = 1524;
+        ROOM_LIEMING_INVALID_ROLE_ACTOR_COUNT = 1525;
+        ROOM_LIEMING_NOT_STARTED = 1526;
+        ROOM_WRONG_TYPE = 1527;
+        ROOM_LIEMING_ALREADY_READY = 1528;
+        ROOM_LIEMING_NOT_ALL_READY = 1529;
+        ROOM_LIEMING_NEED_SELECT_ACTOR = 1530;
+        ROOM_CLOSE_PIT_COUNT_ERROR = 1531;
+        ROOM_LIEMING_HAS_NOT_READY = 1532;
+        ROOM_LIEMING_NOT_ALL_ROLE_LOADING_FINISH = 1533;
+        ROOM_LIEMING_BATTLE_NOT_END = 1534;
+        ROOM_LIEMING_ROLE_BATTLE_ALREADY_AUTO = 1535;
+        ROOM_LIEMING_ROLE_BATTLE_NOT_AUTO = 1536;
+        ROOM_INVITE_IN_CD = 1537;
+        ROOM_INVITEE_NOT_ONLINE = 1538;
+        ROOM_INVALID_INVITEE = 1539;
+        ROOM_LIEMING_OTHER_INPUT_NOT_FINISH = 1540;
+        ROOM_LIEMING_IS_WAITTING_INPUT = 1541;
+        ROOM_LIEMING_ALREADY_FINISH = 1542;
+        ROOM_LIEMING_ALREADY_USED_ACTOR = 1543;
+        ROOM_INVITE_INVALID = 1544;
+        ROOM_OWNER_LEAVE = 1545;
+        ROOM_TIME_OUT = 1546;
+        ROOM_ROLE_NOT_ENOUGH = 1547;
+        ROOM_LIEMING_STARTED = 1548;
+
+        ROLE_NO_SUCH_ITEM = 1600;
+        ROLE_ITEM_NOT_ENOUGH = 1601;
+        ROLE_LEVEL_NOT_ENOUGH = 1602;
+        ROLE_NOT_ENOUGH_RESOURCE = 1603;
+        ROLE_NOT_ENOUGH_ITEM = 1604;
+        ROLE_WRONG_GENDER = 1605;
+        ROLE_VIP_LEVEL_NOT_ENOUGH = 1606;
+        ROLE_NO_SUCH_EQUIPMENT = 1607;
+        ROLE_NO_SUCH_ACTOR = 1608;
+        ROLE_HAS_SUCH_ACTOR = 1609;
+        ROLE_IS_BANNED = 1610;
+        ROLE_EAT_ALREADY_ATE = 1611;
+        ROLE_EAT_WRONG_TIME = 1612;
+        ROLE_COMMENT_IN_CD = 1613;
+        ROLE_COMMENT_NO_SUCH_ROLE = 1614;
+        ROLE_COMMENT_NO_SUCH_COMMENT = 1615;
+        ROLE_COMMENT_CANNOT_FETCH_SELF = 1616;
+        ROLE_COMMENT_NEITHER_OWNER_NOR_WRITER = 1617;
+        ROLE_NOT_ENOUGH_PRESENT = 1618;
+        ROLE_UPVOTE_ALREADY_UPVOTED_TODAY = 1619;
+        ROLE_STILL_HAS_OTHER_PRESENT = 1620;
+        ROLE_TOO_MANY_ITEM = 1621;
+        ROLE_TODAY_RECHARGE_NOT_ENOUGH = 1622;
+        ROLE_RESOURCE_REACH_MAX = 1627;
+        ROLE_FATE_MAX = 1628;
+        ROLE_SHARE_ALREADY_SHARED = 1629;
+        ROLE_PIN_GREATER_THAN_NEED = 1630;
+        ROLE_INVALID_ICON = 1631;
+        ROLE_PIN_AND_NEED_NOT_EQUAL = 1632;
+        ROLE_NO_SUCH_SKIN = 1633;
+        ROLE_NO_SUCH_TITLE = 1634;
+        ROLE_EQUIPED_EQUIPMENT_PART = 1635;
+        ROLE_DOES_NOT_HAVE_NOT_EQUIPED_EQUIPMENT = 1636;
+        ROLE_FIRST_LOGIN_DAY_MISMATCH = 1637;
+        ROLE_NO_SUCH_JADE = 1638;
+        ROLE_ZHANLI_NOT_ENOUGH = 1639;
+        ROLE_LEVEL_TOO_HIGH = 1640;
+        ROLE_VIP_LEVEL_TOO_HIGH = 1641;
+        ROLE_SPOUSE_VIP_LEVEL_NOT_ENOUGH = 1642;
+        ROLE_SPOUSE_VIP_LEVEL_TOO_HIGH = 1643;
+
+        
+        CHAT_GAG = 2200;
+        CHAT_CONTENT_ALL_SPACE = 2201;
+        CHAT_NEED_TO = 2202;
+        CHAT_TO_IN_BLACKLIST = 2203;
+        CHAT_NOT_BANQUET_TIME = 2204;
+        CHAT_IN_CD = 2205;
+
+        ITEM_CANNOT_USE_DIRECTLY = 2300;
+        ITEM_USE_TOO_MANY = 2301;
+        ITEM_USE_EXCEED_EVERYDAY_COUNT_LIMIT = 2302;
+
+        ACTIVITY_LOGIN_DAYS_NOT_ENOUGH = 2400;
+        ACTIVITY_LOGIN_DAYS_INVALID_DAY = 2401;
+        ACTIVITY_LOGIN_DAYS_ALREADY_REWARD = 2402;
+        ACTIVITY_ONLINE_TIME_INVALID_DAY = 2403;
+        ACTIVITY_ONLINE_TIME_INVALID_IDX = 2404;
+        ACTIVITY_ONLINE_TIME_NOT_ENOUGH = 2405;
+        ACTIVITY_ONLINE_TIME_ALREADY_REWARD = 2406;
+        ACTIVITY_SEVEN_DAYS_INVALID_BEGIN_DAY = 2407;
+        ACTIVITY_SEVEN_DAYS_INVALID_DAY = 2408;
+        ACTIVITY_SEVEN_DAYS_ROLE_DAY_NOT_ENOUGH = 2409;
+        ACTIVITY_SEVEN_DAYS_INVALID_FULI_IDX = 2410;
+        ACTIVITY_SEVEN_DAYS_ROLE_DAY_NOT_MATCH = 2411;
+        ACTIVITY_SEVEN_DAYS_INVALID_FULI_QUEST_IDX = 2412;
+        ACTIVITY_SEVEN_DAYS_TOO_LATE = 2413;
+        ACTIVITY_SEVEN_DAYS_INVALID_QUEST_IDX = 2414;
+        ACTIVITY_SEVEN_DAYS_ALREADY_GOT_REWARD = 2416;
+        ACTIVITY_QIANDAO_DAY_ALREADY_QIANDAO = 2417;
+        ACTIVITY_QIANDAO_DAY_NOT_BUQIAN = 2418;
+        ACTIVITY_QIANDAO_LEIQIAN_REWARD_HAS_GOT = 2419;
+        ACTIVITY_QIANDAO_DAY_NOT_LEIQIAN_REWARD = 2420;
+        ACTIVITY_QIANDAO_LEIQIAN_DAYS_NOT_ENOUGH = 2421;
+        ACTIVITY_EVERYDAY_LIBAO_INVALID_LIBAO = 2422;
+        ACTIVITY_EVERYDAY_LIBAO_ALREADY_BUY_THIS = 2423;
+        ACTIVITY_CHAOZHI_LIBAO_INVALID_RECHARGE = 2425;
+        ACTIVITY_THE_CHAOZHI_LIBAO_HAS_BUY = 2426;
+        ACTIVITY_FIRST_RECHARGE_ALREADY_GOT = 2427;
+        ACTIVITY_ALREADY_BUY_EMPEROR_QIANHZUANG = 2429;
+        ACTIVITY_ALREADY_BUY_VIP_QIANHZUANG = 2430;
+        ACTIVITY_VIP_QIANZHUANG_INVALID_PTTID = 2431;
+        ACTIVITY_EMPEROR_QIANZHUANG_INVALID_PTTID = 2432;
+        ACTIVITY_VIP_QIANZHUANG_NOT_ENOUGH_VIP_LEVEL = 2433;
+        ACTIVITY_EMPEROR_QIANZHUANG_NOT_ENOUGH_VIP_LEVEL = 2434;
+        ACTIVITY_VIP_QIANZHUANG_ALREADY_GOT = 2435;
+        ACTIVITY_EMPEROR_QIANZHUANG_ALREADY_GOT = 2436;
+        ACTIVITY_FUND_QIANZHUANG_INVALID_PTTID = 2437;
+        ACTIVITY_FUND_QIANZHUANG_ALREADY_GOT = 2438;
+        ACTIVITY_FUND_QIANZHUANG_NOT_ENOUGH = 2439;
+        ACTIVITY_BUY_EMPEROR_QIANHZUANG_NOT_ENOUGH = 2440;
+        ACTIVITY_BUY_VIP_QIANHZUANG_NOT_ENOUGH = 2441;
+        ACTIVITY_INVALID_LIMIT_LIBAO = 2442;
+        ACTIVITY_NO_SUNCH_LIMIT_LIBAO_BUY = 2443;
+        ACTIVITY_ALREADY_BUY_LIMIT_LIBAO = 2444;
+        ACTIVITY_LIMIT_LIBAO_INVALID_RECHARGE = 2445;
+        ACTIVITY_LIMIT_LIBAO_NOT_ENOUGH_LEVEL = 2447;
+        ACTIVITY_QIANDAO_MONTH_INVALID = 2448;
+        ACTIVITY_QIANDAO_MDAY_INVALID = 2449;
+        ACTIVITY_NOT_RECHARGED = 2450;
+        ACTIVITY_RECHARGE_ID_NOT_EXIST = 2451;
+        ACTIVITY_FESTIVAL_INVALID_EXCHANGE = 2452;
+        ACTIVITY_FESTIVAL_EXCHANGE_TIMES_NOT_ENOUGH = 2455;
+        ACTIVITY_FESTIVAL_SHOP_TIMES_NOT_ENOUGH = 2456;
+        ACTIVITY_HAS_NOT_RECHARGED_DAY = 2457;
+        ACTIVITY_PRIZE_WHEEL_NOT_ONGOING = 2458;
+        ACTIVITY_PRIZE_WHEEL_INVALID_IDX = 2459;
+        ACTIVITY_LIMIT_LIBAO_NO_UPDATE = 2460;
+        ACTIVITY_LIMIT_LIBAO_TIMEOUT = 2461;
+        ACTIVITY_DISCOUNT_GOODS_NOT_START = 2462;
+        ACTIVITY_DISCOUNT_GOODS_HAS_END = 2463;
+        ACTIVITY_DAIYANREN_FINISHED = 2464;
+        ACTIVITY_DAIYANREN_INVALID_REWARD_IDX = 2465;
+        ACTIVITY_DAIYANREN_ALREADY_GOT_REWARD = 2466;
+        ACTIVITY_DAIYANREN_POINTS_NOT_ENOUGH = 2467;
+        ACTIVITY_ON_GOING = 2468;
+        ACTIVITY_INVALID_START_TIME = 2469;
+        ACTIVITY_PRIZE_WHEEL_INVALID_PTTID = 2470;
+        ACTIVITY_INVALID_DURATION = 2471;
+        ACTIVITY_TEA_PARTY_NOT_ONGOING = 2472;
+        ACTIVITY_TEA_PARTY_PTTID_MISMATCH = 2473;
+        ACTIVITY_TEA_PARTY_INVALID_FAVOR_REWARD_IDX = 2474;
+        ACTIVITY_TEA_PARTY_ALREADY_GOT_THIS_FAVOR_REWARD = 2475;
+
+        TITLE_INVALID_TITLE = 2500;
+
+        RECHARGE_NO_SUCH_ORDER = 2700;
+        RECHARGE_ORDER_PRICE_MISMATCH = 2701;
+        RECHARGE_DAYS_ORDER_CD = 2702;
+        RECHARGE_INVAILID_VIP_LEVEL = 2703;
+        RECHARGE_ALREADY_GOT_THIS_VIP_BOX = 2704;
+        RECHARGE_ALREADY_GOT_THIS_VIP_BUY_BOX = 2705;
+        RECHARGE_NO_SUCH_VIP_BOX = 2706;
+        RECHARGE_NO_SUCH_VIP_BUY_BOX = 2707;
+        RECHARGE_NO_SUCH_ROLE = 2708;
+        RECHARGE_INVALID_PTTID = 2709;
+        RECHARGE_DAY_ALREADY_GOT = 2710;
+        RECHARGE_ORDER_ALREADY_EXIST = 2711;
+        RECHARGE_VIP_LEVEL_NOT_ENOUGH = 2712;
+        RECHARGE_NOT_RECHARGE = 2713;
+        RECHARGE_DAYS_NO_MORE = 2714;
+        RECHARGE_ORDER_RECHARGED = 2715;
+        RECHARGE_ONE_TIME_RECHARGED = 2716;
+
+        SUIT_NOT_ON_THIS_ACTOR = 3100;
+
+        DUPLICATED_PLOT = 3200;
+        FIEF_NOT_DEFEAT_PLOT_PLAY_TIME = 3201;
+        FIEF_NOT_LEAVE_PLOT_PLAY_TIME = 3202;
+        FIEF_NOT_SUCH_PLOT = 3203;
+
+        XINSHOU_INVALID_XINSHOU = 3300;
+        XINSHOU_INVALID_GROUP = 3301;
+        XINSHOU_GUIDE_ALREADY_SELECTED = 3302;
+        XINSHOU_PTTID_AND_GROUP_MISMATCH = 3303;
+        XINSHOU_GROUP_NOT_PASSED = 3304;
+
+        SERVER_OPEN_DAY_MISMATCH = 3838;
+
+        MAJOR_CITY_BUBBLE_NOT_EXIST = 3900;
+        MAJOR_CITY_BUBBLE_HAS_READ = 3901;
+
+        RANK_ROLE_NOT_IN_RANK = 4500;
+        RANK_ALREADY_GIVE_ROLE_A_LIKE = 4501;
+        RANK_CAN_NOT_GIVE_THIS_ROLE_A_LIKE = 4502;
+
+        ITEM_XINWU_COMPOSE_INVALID_XINWU = 4600;
+        ITEM_XINWU_COMPOSE_INVALID_COUNT = 4601;
+        ITEM_XINWU_DECOMPOSE_INVALID_XINWU = 4602;
+        ITEM_XINWU_DECOMPOSE_INVALID_COUNT = 4603;
+
+        FANLI_NO_FANLI = 4700;
+        FANLI_LOCKED_BY_OTHER = 4701;
+        FANLI_NOT_LOCKED = 4702;
+
+        COME_BACK_NO_COME_BACK = 4800;
+        COME_BACK_LOCKED_BY_OTHER = 4801;
+        COME_BACK_NOT_LOCKED = 4802;
+}
+
+enum attack_type {
+        PHYSICAL = 1;
+        MAGICAL = 2;
+}
+
+enum gender {
+        MALE = 0;
+        FEMALE = 1;
+        GENDER_COUNT = 2;
+}
+
+message pttid_array {
+        repeated uint32 pttids = 1;
+}
+
+message gid_array {
+        repeated uint64 gids = 1;
+}
+
+message idx_array {
+        repeated int32 idx = 1;
+}
+
+message string_array {
+        repeated string strs = 1;
+}
+
+message position {
+        required double x = 1;
+        required double y = 2;
+}
+
+message position_array {
+        repeated position positions = 1;
+        optional int32 reserved = 2;
+}
+
+message size {
+        required double width = 1;
+        required double height = 2;
+}
+
+enum ce_origin {
+        CO_YUNYING_RECHARGE = 100; // 充值
+        CO_MAIL_ATTACHMENT = 101; // 邮件附件
+        CO_LEVELUP = 103; // 升级
+        CO_YUNYING_MANUAL_RECHARGE = 104; // 手动充值
+        CO_YUNYING_CDKEY = 105; // 兑换cdkey
+        CO_VIP_BOX = 106; // vip赠送礼包
+        CO_VIP_BUY_BOX = 107; // vip购买礼包
+        CO_SHARE = 109; // 分享
+        CO_YUNYING_ADD_STUFF = 110; // gm加东西
+        CO_YUNYING_DEC_STUFF = 111; // gm减东西
+
+        CO_XINSHOU_PLOT = 200; // 新手剧情
+
+        CO_RELATION_SEND_GIFT = 700; // 送礼物
+        CO_RELATION_RECEIVE_GIFT = 701; // 收礼物
+        CO_SEND_GIFT_FAIL_EVENT_REVERT = 702; // 送礼物回退
+
+        CO_CHAT_GM = 900; // 聊天频道GM
+
+        CO_ITEM_USE = 1200; // 使用道具
+        CO_ITEM_XINWU_COMPOSE = 1201; // 魂魄合成信物
+        CO_ITEM_XINWU_DECOMPOSE = 1202; // 信物分解为魂魄
+
+        CO_ACTIVITY_LOGIN_DAYS_REWARD = 1500; // 七日登陆活动奖励
+        CO_ACTIVITY_ONLINE_TIME_REWARD = 1501; // 在线奖励
+        CO_ACTIVITY_SEVEN_DAYS_FULI = 1502; // 七日目标福利
+        CO_ACTIVITY_SEVEN_DAYS_QUEST = 1504; // 七日目标奖励
+        CO_ACTIVITY_SEVEN_DAYS_GET_REWARD = 1505; // 七日奖励
+        CO_ACTIVITY_QIANDAO_REWARD = 1506; // 签到奖励
+        CO_ACTIVITY_QIANDAO_BUQIAN_REWARD = 1507; // 补签奖励
+        CO_ACTIVITY_QIANDAO_LEIQIAN_REWARD = 1508; // 累签奖励
+        CO_ACTIVITY_EVERYDAY_LIBAO = 1509; // 单日特惠礼包
+        CO_ACTIVITY_LIBAO_CHAOZHI = 1510; // 超值礼包
+        CO_ACTIVITY_FIRST_RECHARGE_GET_REWARD = 1511; //首次充值奖励
+        CO_ACTIVITY_VIP_QIANZHUANG_BUY = 1512; //购买贵族钱庄
+        CO_ACTIVITY_EMPEROR_QIANZHUANG_BUY = 1513; //购买帝王钱庄
+        CO_ACTIVITY_VIP_QIANZHUANG_GET_REWARD = 1514; //领取贵族钱庄奖励
+        CO_ACTIVITY_EMPEROR_QIANZHUANG_GET_REWARD = 1515; //领取帝王钱庄奖励
+        CO_ACTIVITY_FUND_GET_REWARD = 1516; //领取基金奖励
+        CO_ACTIVITY_LIMIT_LIBAO = 1517; // 限时礼包
+        CO_ACTIVITY_FESTIVAL_EXCHANGE = 1518; // 节日兑换
+        CO_ACTIVITY_START_PRIZE_WHEEL = 1519; // 转盘开始
+        CO_ACTIVITY_FINISH_PRIZE_WHEEL = 1520; // 转盘结束
+        CO_ACTIVITY_PRIZE_WHEEL_SPIN = 1521; // 转盘
+        CO_ACTIVITY_RESET_DISCOUNT_GOODS = 1522; // 折扣重置
+        CO_ACTIVITY_DAIYANREN_REWARD = 1523; // 代言人活动奖励
+        CO_ACTIVITY_START_TEA_PARTY = 1524; // 茶会开始
+        CO_ACTIVITY_FINISH_TEA_PARTY = 1525; // 茶会结束
+        CO_ACTIVITY_TEA_PARTY_FAVOR_REWARD = 1526; //茶会阶段奖励
+        CO_ACTIVITY_LEIJI_RECHARGE = 1527; // 累计充值
+        CO_ACTIVITY_LEIJI_CONSUME = 1528; // 累计消费
+        CO_GENERAL_MONTH_CARD = 1529; // 赐物月卡
+        CO_GOLD_MONTH_CARD = 1530; // 赐金月卡
+        CO_ACTIIVTY_SEVEN_DAY_FULI = 1531; // 每日福利
+        CO_ACTIIVTY_SEVEN_DAY_REWARD = 1532; // 每日目标奖励
+        CO_ACTIVITY_DISCOUNT_GOODS = 1533; // 折扣贩售
+        CO_ACTIVITY_FESTIVAL_SHOP_BUY = 1534; // 购买节日折扣礼包
+        CO_ACTIVITY_FESTIVAL_RECHARGE = 1535; // 节日充值
+        CO_ACTIVITY_FESTIVAL_FULI = 1536; // 节日福利
+        CO_ACTIVITY_CONTINUE_RECAHRGE = 1537; // 连续充值
+        CO_ACTIVITY_LIMIT_PLAY = 1538; // 限时任务
+        CO_ACTIVITY_DAIYANREN_GET_REWARD = 1539; // 代言人全服任务奖励
+        CO_ACTIVITY_DAIYANREN_FULI_REWARD = 1540; // 代言人福利任务奖励
+        CO_ACTIVITY_DAIYANREN_DUIHUAN_REWARD = 1541; // 代言人兑换任务奖励
+        CO_ACTIVITY_PRIZE_WHEEL_SPIN_PUTONG_ONE_TIME = 1542; // 普通转盘一次
+        CO_ACTIVITY_PRIZE_WHEEL_SPIN_PUTONG_TEN_TIMES = 1543; // 普通转盘10次
+        CO_ACTIVITY_PRIZE_WHEEL_SPIN_HAOHUA_ONE_TIME = 1544; // 豪华转盘一次
+        CO_ACTIVITY_PRIZE_WHEEL_SPIN_HAOHUA_TEN_TIMES = 1545; // 豪华转盘10次
+
+        CO_SHOP_REFRESH_MYS_SHOP = 1800; // 刷新神秘商店
+        CO_SHOP_BUY_MYS_SHOP = 1801; // 神秘商店购买
+        CO_SHOP_BUY = 1802; // 商店购买
+
+        CO_QUEST_COMMIT = 1900; // 提交任务
+        CO_QUEST_COMMIT_EVERYDAY_QUEST = 1901; // 提交每日任务
+        CO_QUEST_EVERYDAY_QUEST_REWARD = 1902; // 每日任务奖励
+
+        CO_CHAT = 2000; // 聊天
+
+        CO_ROLE_BUY_PRESENT = 2100; // 购买礼物
+        CO_ROLE_UPVOTED_GIVE_PRESENT = 2101; // 被点赞给出礼物
+        CO_ROLE_UPVOTE_GET_PRESENT = 2102; // 点赞获得礼物
+        CO_ROLE_GROW_RESOURCE = 2103; // 资源增长
+        CO_ROLE_CHANGE_NAME = 2104; // 改名
+        CO_ROLE_CHANGE_NAME_REVERT = 2105; // 改名回退
+
+
+        CO_GET_RECHARGE = 2800; // 领取月卡
+
+
+        CO_RANK_GIVE_A_LIKE = 3200; //排行榜点赞
+        CO_RANK_GIVE_A_LIKE_FILED = 3201; //排行榜点赞失败
+}
+
+message ce_env {
+        repeated uint32 actors = 1;
+        optional uint32 adventure = 2;
+        optional uint32 skill = 3;
+        optional uint64 equipment = 4;
+        optional uint32 item = 5;
+        optional uint32 lieming = 6;
+        optional uint32 cost_percent = 7;
+        optional uint32 add_percent = 8;
+        optional uint64 other = 9;
+        optional uint32 intimacy_gain_percent = 10;
+        optional ce_origin origin = 11;
+        optional int32 guanpin = 12;
+        optional uint32 buy_count = 13;
+        optional idx_array idx = 14;
+        optional string huanzhuang_part = 15;
+        optional uint32 huanzhuang_pttid = 16;
+        optional uint64 child = 17;
+        optional uint64 role = 18;
+}
+
+message time_point {
+        required int32 hour = 1;
+        required int32 min = 2;
+}
+
+message time_period {
+        required time_point begin = 1;
+        required time_point end = 2;
+}
+
+enum message_position {
+        MP_CENTRE_UP = 1;
+        MP_CENTRE_DOWN = 2;
+        MP_SYSTEM_CHAT = 3;
+        MP_PRIVATE_CHAT = 4;
+}
+
+message dynamic_data {
+        repeated string name = 1;
+        optional uint32 time = 2;
+        optional uint32 arena_rank = 3;
+        optional uint32 huanzhuang_pvp_personal_level = 5;
+        optional uint64 yunying_mail_id = 6;
+        optional uint32 yunying_system_announcement_id = 7;
+        optional uint32 yunying_flow_announcement_id = 8;
+        optional uint32 gift = 9;
+        optional uint32 gift_count = 10;
+        repeated message_position position = 11;
+        optional gender gender = 15;
+        repeated uint32 item = 16;
+        repeated uint32 title = 17;
+        optional int32 rank = 20;
+        optional uint32 item_count = 21;
+        optional uint64 from = 23;
+        optional uint32 count = 25;
+        optional uint32 boss = 26;
+        repeated uint64 gids = 28;
+        optional uint32 throw_ball_count = 31;
+        optional uint32 from_server = 32;
+}
+
+enum dir {
+        UP = 1;
+        DOWN = 2;
+        LEFT = 3;
+        RIGHT = 4;
+}
+
+message day_range {
+        required uint32 begin = 1;
+        required uint32 end = 2;
+}
+
+message ipport {
+        required string ip = 1;
+        required uint32 port = 2;
+}
+

@@ -1,0 +1,28 @@
+DROP TABLE IF EXISTS mansion_mgr;
+CREATE TABLE IF NOT EXISTS mansion_mgr (
+gid BIGINT UNSIGNED NOT NULL UNIQUE,
+data MEDIUMBLOB
+)
+CHARACTER SET = utf8
+ENGINE = InnoDB;
+
+DELIMITER $$
+
+DROP PROCEDURE IF EXISTS get_mansion_mgr$$
+CREATE PROCEDURE get_mansion_mgr ()
+BEGIN
+SELECT data
+FROM mansion_mgr
+WHERE gid = 1;
+END$$
+
+DROP PROCEDURE IF EXISTS save_mansion_mgr$$
+CREATE PROCEDURE save_mansion_mgr (IN param1 MEDIUMBLOB)
+BEGIN
+INSERT INTO mansion_mgr(gid, data)
+VALUES(1, param1)
+ON DUPLICATE KEY UPDATE
+data = param1;
+END$$
+
+DELIMITER ;

@@ -1,0 +1,31 @@
+package proto.data;
+
+enum item_tag {
+        IT_FISH = 1;
+}
+
+message item {
+        required uint32 pttid = 1;
+        required int32 count = 2;
+        optional bool confirmed = 3;
+}
+
+message item_array {
+        repeated item items = 1;
+        repeated uint32 unorganized_items = 2;
+        optional uint32 item_used_day = 3;
+        repeated item_count everyday_used_counts = 4;
+}
+
+message item_count {
+        required uint32 pttid = 1;
+        required uint32 count = 2;
+}
+
+message item_count_array {
+        repeated item_count item_counts = 1;
+}
+
+message item_append_data {
+        optional string name = 1;
+}

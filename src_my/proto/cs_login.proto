@@ -1,0 +1,92 @@
+package proto.cs;
+
+import "cs_base.proto";
+import "data_base.proto";
+import "data_player.proto";
+import "data_yunying.proto";
+import "data_activity.proto";
+import "config_serverlist.proto";
+
+message c2s_login_req {
+        extend base {
+                optional c2s_login_req clr = 100;
+        }
+        required string username = 1;
+        optional proto.data.yunying_client_info client_info = 2;
+        repeated uint32 client_version = 3;
+        optional uint32 tree_children_node = 4;
+        optional bool robot_role = 5;
+        required uint32 server_id = 6;
+}
+
+message s2c_login_rsp {
+        extend base {
+                optional s2c_login_rsp slr = 101;
+        }
+        required string username = 1;
+        required proto.data.result result = 2;
+        optional proto.data.role role = 3;
+        optional int32 seconds_west = 4;
+        optional uint32 server_open_day = 5;
+        optional bool testin = 6;
+        optional proto.data.activity_mgr activity_mgr = 14;
+        repeated string images_announcements = 15;
+        optional bool skip_xinshou = 16 [default = false];
+}
+
+message c2s_create_role_req {
+        extend base {
+                optional c2s_create_role_req ccrr = 102;
+        }
+        required string name = 1;
+        required proto.data.gender gender = 2;
+        optional uint32 channel_id = 5;
+        optional bool robot = 6;
+}
+
+message s2c_create_role_rsp {
+        extend base {
+                optional s2c_create_role_rsp scrr = 103;
+        }
+        required proto.data.result result = 1;
+}
+
+message s2c_quit {
+        extend base {
+                optional s2c_quit sq = 104;
+        }
+        required proto.data.result reason = 1;
+        optional bool same_ip = 2;
+}
+
+message c2s_ping_req {
+        extend base {
+                optional c2s_ping_req cpr = 105;
+        }
+}
+
+message s2c_ping_rsp {
+        extend base {
+                optional s2c_ping_rsp spr = 106;
+        }
+}
+
+message c2l_fetch_info_req {
+        extend base {
+                optional c2l_fetch_info_req cfir = 107;
+        }
+        required uint32 channel_id = 1;
+        repeated uint32 client_version = 3;
+        optional string username = 4;
+}
+
+message l2c_fetch_info_rsp {
+        extend base {
+                optional l2c_fetch_info_rsp lfir = 108;
+        }
+        repeated proto.config.serverlist servers = 1;
+        optional string hot_update_url = 2;
+        optional proto.data.gonggao before_login = 3;
+        optional proto.data.gonggao server = 4;
+        repeated uint32 server_ids = 5;
+}

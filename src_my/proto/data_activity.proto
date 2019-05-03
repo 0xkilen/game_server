@@ -1,0 +1,253 @@
+package proto.data;
+
+
+message activity_login_days {
+        repeated uint32 got_reward_days = 1;
+}
+
+message activity_online_time {
+        optional uint32 got_reward_day = 1;
+        repeated int32 got_reward_idx = 2;
+}
+
+message activity_one_seven_days {
+        required uint32 begin_day = 1;
+        optional bool got_reward = 2;
+        optional bool quests_accepted = 3;
+        optional bool fuli_quests_accepted = 4;
+        optional uint32 fuli_quests_activate_day = 5;
+        optional bool passed = 6;
+}
+
+message activity_seven_days {
+        repeated activity_one_seven_days one_seven_days = 1;
+        optional bool reset_point = 2;
+}
+
+message activity_qiandao {
+        optional uint32 month = 1;
+        repeated uint32 days = 2;
+        repeated uint32 received_leiqian_days = 3;
+}
+
+message activity_everyday_libao {
+        required uint32 pttid = 1;
+        required uint32 day = 2;
+}
+
+message activity_chaozhi_libao {
+        required activity_chaozhi_libao_type type = 1;
+        required int32 buy_idx = 2;
+}
+
+enum activity_chaozhi_libao_type {
+        ACLT_RESOURCE = 1;
+        ACLT_HUANZHUANG = 2;
+}
+
+message activity_qianzhuang {
+        required bool vip_buy = 1;
+        required bool emperor_buy = 2;
+        repeated uint32 vip_got = 3;
+        repeated uint32 emperor_got = 4;
+        repeated uint32 fund_got = 5;
+}
+
+message activity_passed_limit_libao {
+        required uint32 pttid = 1;
+        required uint32 until_time = 2;
+}
+
+message activity_limit_libao {
+        repeated uint32 bought = 1;
+        required uint32 cur = 2;
+        required uint32 time = 3;
+        repeated activity_passed_limit_libao passed = 4;
+}
+
+message activity_festival {
+        optional uint32 pttid = 1;
+        optional uint32 start_day = 2;
+        optional uint32 duration = 3;
+        repeated activity_festival_exchange festival_exchange = 4;
+        repeated activity_festival_shop festival_shop = 5;
+}
+
+message activity_festival_exchange_times {
+        required uint32 exchange = 1;
+        required uint32 times = 2;
+}
+
+message activity_festival_exchange {
+        required uint32 id = 1;
+        repeated activity_festival_exchange_times exchange_times = 4;
+}
+
+message activity_festival_good_times {
+        required uint32 good = 1;
+        required uint32 times = 2;
+}
+
+message activity_festival_shop {
+        required uint32 id = 1;
+        repeated activity_festival_good_times good_times = 2;
+}
+
+message activity_prize_wheel {
+        optional uint32 start_day = 1;
+        optional uint32 duration = 2;
+        optional uint32 pttid = 3;
+        optional bool ongoing = 4;
+}
+
+message activity_tea_party {
+        optional uint32 start_day = 1;
+        optional uint32 duration = 2;
+        optional uint32 pttid = 3;
+        optional bool ongoing = 4;
+        repeated uint32 got_favor_rewards = 5;
+}
+
+message activity_continue_recharge {
+        optional uint32 start_day = 1;
+        optional uint32 duration = 2;
+        optional uint32 pttid = 3;
+        optional uint32 cur_quest = 4;
+        optional uint32 quest_idx = 5;
+        optional uint32 update_quests_activate_day = 6;
+        optional uint32 day_recharge = 7;
+}
+
+message activity_discount_goods {
+        optional uint32 start_day = 1;
+        optional uint32 duration = 2;
+        optional uint32 pttid = 3;
+}
+
+message activity_daiyanren {
+        repeated uint32 got_reward = 1;
+        optional bool finished = 2;
+}
+
+message activity_limit_play {
+        optional uint32 start_day = 1;
+        optional uint32 duration = 2;
+        optional uint32 pttid = 3;
+}
+
+message activity_leiji_recharge {
+        optional uint32 start_day = 1;
+        optional uint32 duration = 2;
+        optional uint32 pttid = 3;
+}
+
+message activity_leiji_consume {
+        optional uint32 start_day = 1;
+        optional uint32 duration = 2;
+        optional uint32 pttid = 3;
+}
+
+message activity_recharge_rank {
+        optional uint32 start_day = 1;
+        optional uint32 duration = 2;
+}
+
+message activity {
+        optional activity_login_days login_days = 1;
+        optional activity_online_time online_time = 2;
+        optional activity_seven_days seven_days = 3;
+        optional activity_qiandao qiandao_data = 4;
+        repeated activity_everyday_libao everyday_libao = 5;
+        repeated activity_chaozhi_libao chaozhi_libao = 6;
+        optional bool recharge_get_first_reward = 7;
+        optional uint32 leiji_recharge_count = 8;
+        optional uint32 leiji_consume_count = 9;
+        optional activity_qianzhuang activity_qianzhuang = 10;
+        optional activity_limit_libao limit_libao = 11;
+        optional activity_festival festival = 12;
+        optional activity_prize_wheel prize_wheel = 14;
+        optional activity_continue_recharge continue_recharge = 15;
+        optional activity_discount_goods discount_goods = 16;
+        optional activity_daiyanren daiyanren = 17;
+        optional activity_limit_play limit_play = 18;
+        optional activity_leiji_recharge leiji_recharge = 19;
+        optional activity_leiji_consume leiji_consume = 20;
+        optional activity_tea_party tea_party = 21;
+        optional activity_recharge_rank recharge_rank = 22;
+}
+
+message activity_mgr_fund {
+        required int32 value = 1;
+}
+
+message activity_mgr_prize_wheel {
+        optional uint32 start_day = 1;
+        optional uint32 duration = 2;
+        optional uint32 pttid = 3;
+}
+
+message activity_mgr_discount_goods {
+        optional uint32 start_day = 1;
+        optional uint32 duration = 2;
+        optional uint32 pttid = 3;
+}
+
+message activity_mgr_continue_recharge {
+        optional uint32 start_day = 1;
+        optional uint32 duration = 2;
+        optional uint32 pttid = 3;
+}
+
+message activity_mgr_daiyanren {
+        optional uint32 points = 1;
+}
+
+message activity_mgr_limit_play {
+        optional uint32 start_day = 1;
+        optional uint32 duration = 2;
+        optional uint32 pttid = 3;
+}
+
+message activity_mgr_leiji_recharge {
+        optional uint32 start_day = 1;
+        optional uint32 duration = 2;
+        optional uint32 pttid = 3;
+}
+
+message activity_mgr_leiji_consume {
+        optional uint32 start_day = 1;
+        optional uint32 duration = 2;
+        optional uint32 pttid = 3;
+}
+
+message activity_mgr_tea_party {
+        optional uint32 start_day = 1;
+        optional uint32 duration = 2;
+        optional uint32 pttid = 3;
+}
+
+message activity_mgr_recharge_rank {
+        optional uint32 start_day = 1;
+        optional uint32 duration = 2;
+}
+
+message activity_mgr_festival {
+        required uint32 pttid = 1;
+        optional uint32 start_day = 2;
+        optional uint32 duration = 3;
+}
+
+message activity_mgr {
+        optional uint64 gid = 1 [default = 1];
+        optional activity_mgr_fund fund = 2;
+        optional activity_mgr_prize_wheel prize_wheel = 3;
+        optional activity_mgr_discount_goods discount_goods = 5;
+        optional activity_mgr_continue_recharge continue_recharge = 6;
+        optional activity_mgr_daiyanren daiyanren = 7;
+        optional activity_mgr_limit_play limit_play = 8;
+        optional activity_mgr_leiji_recharge leiji_recharge = 9;
+        optional activity_mgr_leiji_consume leiji_consume = 10;
+        optional activity_mgr_tea_party tea_party = 11;
+        optional activity_mgr_recharge_rank recharge_rank = 12;
+        optional activity_mgr_festival festival = 13;
+}

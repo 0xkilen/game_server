@@ -1,0 +1,19 @@
+package proto.data;
+
+import "data_condition.proto";
+import "data_event.proto";
+
+message condevent {
+        optional condition_array conditions = 1;
+        optional event_array events = 2;
+}
+
+message condevent_array {
+        repeated condevent condevents = 1;
+}
+
+message cond_event {
+        optional condition_array conditions = 1;
+        optional event_array _events = 2;
+        optional int32 reserved = 3;
+}

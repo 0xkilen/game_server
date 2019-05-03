@@ -1,0 +1,77 @@
+package proto.config;
+
+import "data_base.proto";
+import "data_resource.proto";
+import "data_condition.proto";
+import "data_event.proto";
+import "data_condevent.proto";
+
+message range_price {
+        required int32 start = 1;
+        required int32 price = 2;
+}
+
+message vip_conditions {
+        required uint32 vip_level = 1;
+        required proto.data.condition_array conditions = 2;
+}
+
+message good {
+        enum good_type {
+                ITEM = 1;
+                RESOURCE = 2;
+                SPINE = 3;
+                HUANZHUANG = 4;
+                EQUIPMENT = 5;
+                MANSION_HALL_QUEST = 6;
+                RECHARGE = 7;
+        }
+        required uint32 id = 1;
+        repeated vip_conditions vip_conditions = 2;
+        optional proto.data.condition_array visible_conditions = 3;
+        required good_type type = 4;
+        repeated string arg = 5;
+        required int32 count = 6;
+        optional proto.data.resource_type price_type = 7;
+        repeated range_price prices = 8;
+        optional bool withdraw = 9;
+        optional uint32 discount = 10;
+        optional uint32 all_time_limit = 11;
+        optional proto.data.condevent_array _condevents = 12;
+        optional uint32 _activity_seven_days_begin_day = 13;
+        optional uint32 _activity_seven_days_day = 14;
+        repeated proto.data.day_range server_open_day_ranges = 15;
+}
+
+message shop {
+        required uint32 id = 1;
+        required int32 version = 2;
+        optional proto.data.condition_array conditions = 3;
+        repeated good goods = 4;
+        optional uint32 _activity_festival = 5;
+        optional uint32 _discount_activity_id = 6;
+}
+
+message shop_file {
+        repeated shop entry = 1;
+}
+
+message mys_good {
+        required uint32 id = 1;
+        required int32 weight = 2;
+        required proto.data.condition_array conditions = 3;
+        required proto.data.event_array events = 4;
+        optional uint32 discount = 5;
+}
+
+message mys_shop {
+        required uint32 id = 1;
+        optional proto.data.condition_array conditions = 2;
+        required proto.data.condition_array refresh_conditions = 3;
+        optional proto.data.event_array _refresh_events = 4;
+        repeated mys_good goods = 5;
+}
+
+message mys_shop_file {
+        repeated mys_shop entry = 1;
+}

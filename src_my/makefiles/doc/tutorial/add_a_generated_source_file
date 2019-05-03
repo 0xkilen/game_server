@@ -1,0 +1,30 @@
+# To add a generated source file to your library or binary, you need to do two
+# things:
+#   1.  Tell the make system to try to compile the generated file
+#   2.  Provide a rule to make the generated file
+#
+# To do (1), just add the name of the generated file to the LIB_foo_SRC
+# variable.  Prior to compiling any objects for LIB_foo, the make system looks
+# in $(LIB_foo_SRC_DIR) for the files in the $(LIB_foo_SRC) list.  Any files it
+# doesn't see there, it assumes must be generated, so it forces the creation of
+# them in $(LIB_foo_OUT_DIR).
+#
+# For this creation to happen, you must have done (2), either by using an
+# existing pattern rule (such as defined in makefiles/bison.mk or
+# makefiles/re2c.mk), or by providing a custom rule in
+# $(LIB_foo_SRC_DIR)/RULES.mk
+#
+# For more on custom rules, see add_a_custom_rule
+
+# Example:
+% ls ene/lib/mylib
+foo.ypp
+bar.cpp
+bar.hpp
+
+% cat > ene/lib/mylib/VARS.mk
+LIB_mylib_SRC_DIR := $(SRC_DIR)
+
+# Note that foo.tab.cpp will be generated using makefiles/bison.mk
+LIB_mylib_SRC = foo.tab.cpp bar.cpp
+^D

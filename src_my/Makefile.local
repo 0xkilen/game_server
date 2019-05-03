@@ -1,0 +1,135 @@
+#
+# Makefile.local
+#
+# This file is included at the beginning of every build.
+#
+# Use this file for variable assignments that you want to have set all the
+# time, for example pointing OUT_BASE somewhere other than "..".
+#
+
+#
+# Example:  defaulting to a release build
+#
+ FLAVOR ?= debug
+#
+
+#
+# Example: choosing Windows compiler
+#
+# TOOLCHAIN_CHOICE ?= vc10
+#
+
+#
+# Example:  using the same OUT_BASE on all hosts
+#
+# OUT_BASE ?= /localdisk/apost/obj/makefile-revamp
+#
+
+#
+# Example:  compile on a platform that is not officially supported but on which
+# a build might still work, i.e., RHEL5
+#
+ IS_OS_SUPPORTED=YES
+#
+
+#
+# Example: disabling PDB file generation on Windows, to avoid annoying linker
+# errors during builds.  Leave PDB files enabled (i.e., this variable set
+# to the empty value) if you want to do real debugging, but if you're just
+# trying to make sure that you haven't broken the Windows build, you can
+# turn this on.
+#
+# DISABLE_PDB=
+#
+
+#
+# Example:  using different OUT_BASE settings on different hosts
+#
+# _ip := $(shell ip | sed 's/[.].*//')
+# OUT_BASE_apostws = /var/tmp/builds/makefile-revamp
+# ifdef OUT_BASE_$(_ip)
+# OUT_BASE ?= OUT_BASE_$(_ip)
+# endif
+#
+
+#
+# Example:  enabling distcc and ccache
+#
+# _ip := $(shell ip | sed 's/[.].*//')
+# ifeq($(_ip),apostws)
+# USE_DISTCC ?= 1
+# DISTCC = /usr/local/bin/distcc
+#
+# USE_CCACHE ?= 1
+# CCACHE = /usr/local/bin/ccache
+# endif
+#
+
+#
+# Example: enabling printing of commands that make executes.
+#
+# All commands:
+# PRINT_CMDS ?= 1
+#
+# Commands for compiling C/C++:
+# PRINT_C_CXX_CMDS ?= 1
+#
+# Commands for linking static libraries:
+# PRINT_STATIC_LINK_CMDS ?= 1
+#
+# Commands for linking shared libraries:
+# PRINT_SHARED_LINK_CMDS ?= 1
+#
+# Commands for linking executables:
+# PRINT_EXE_LINKING_CMDS ?= 1
+#
+# Commands that run xsltproc:
+# PRINT_XSLTPROC_CMDS ?= 1
+#
+# Clang commands
+#  PRINT_CLANG_CMDS ?= 1
+#
+# Python commands used in AST generation
+#  PRINT_AST_PYTHON_CMDS ?= 1
+#
+# Copy commands used to copy prebuilts
+#  PRINT_CP_CMDS ?= 1
+#
+# Timestamps. Use 1 for the usual ones, 2 for that plus the entity timestamps.
+#  PRINT_TIMESTAMPS ?= 1
+#
+# Print information on each file search
+#  PRINT_FILE_SEARCH ?= 1
+#
+# Print information on the package dependencies
+#  PRINT_TOPO_SORT_LINES ?= 1
+#
+# Print infomation on each .d file that is included.
+# PRINT_D_FILE_INCLUDES ?= 1
+#
+#
+#
+# Example:
+#
+# Turn off printing of C/C++ filenames as they are being compiled:
+# PRINT_CPP ?= 0
+#
+
+#
+# Example: use cached copies of NameAndIdTable.cpp and SimplifyTable.cpp in src/xquery/precompute.
+# The default is to generate them, which happens if USE_CACHED_XQUERY_PRECOMPUTE is empty.
+# If set to non-empty, the files NameAndIdTable-cached.cpp and SimplifyTable-cached.cpp in the source tree
+# are used instead. The cached files are checked if generation is used. If a difference is detected, the build fails.
+#
+# USE_CACHED_XQUERY_PRECOMPUTE ?= 1
+#
+
+#
+# Example: turn off transition checking for the EVE state machines (in the
+# generated code).  This has no effect for a release build, but turning this on
+# can dramatically speed up query evaluation in debug or checked builds.
+#
+# The default is to enable transition checking.
+#
+# DISABLE_EVE_TRANSITION_CHECK ?= 1
+#

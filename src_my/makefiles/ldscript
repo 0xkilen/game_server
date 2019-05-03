@@ -1,0 +1,9 @@
+SECTIONS {
+         .etrace : {
+         PROVIDE( _etrace_section_begin = ABSOLUTE(.) );
+         KEEP (*(.etrace_*))
+         PROVIDE( _etrace_section_end = ABSOLUTE(.) );
+         }
+  }
+  INSERT AFTER .ldata;
+  

@@ -1,0 +1,43 @@
+package proto.data;
+
+import "data_voice.proto";
+import "data_base.proto";
+
+message notice_offline_private_chat {
+        required uint64 from = 1;
+        required uint32 time = 2;
+        required string content = 3;
+        optional voice voice = 4;
+}
+
+message notice_removed_by_friend {
+        required uint64 from = 1;
+}
+
+message notice_offline_send_gift {
+        required uint64 from = 1;
+        required uint32 gift = 2;
+        required uint32 count = 3;
+}
+
+message notice_offline_system_chat {
+        required uint64 from = 1;
+        required uint32 system_chat = 2;
+        required dynamic_data data = 3;
+}
+
+message notice {
+        enum notice_type {
+                OFFLINE_PRIVATE_CHAT = 1;
+                REMOVED_BY_FRIEND = 2;
+                OFFLINE_SEND_GIFT = 3;
+                OFFLINE_SYSTEM_CHAT = 4;
+        }
+        required uint64 gid = 1;
+        required notice_type type = 2;
+        required uint32 time = 3;
+        optional notice_offline_private_chat offline_private_chat = 4;
+        optional notice_removed_by_friend removed_by_friend = 5;
+        optional notice_offline_send_gift offline_send_gift = 6;
+        optional notice_offline_system_chat offline_system_chat = 7;
+}

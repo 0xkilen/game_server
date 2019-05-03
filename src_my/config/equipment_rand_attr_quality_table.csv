@@ -1,0 +1,13 @@
+﻿id,qualities.type,qualities.type,qualities.ranges.quality,qualities.ranges.range.min_change_value,qualities.ranges.range.max_change_value,qualities.ranges.range.min_change_percent,qualities.ranges.range.max_change_percent,qualities.ranges.quality,qualities.ranges.range.min_change_value,qualities.ranges.range.max_change_value,qualities.ranges.range.min_change_percent,qualities.ranges.range.max_change_percent,qualities.ranges.quality,qualities.ranges.range.min_change_value,qualities.ranges.range.max_change_value,qualities.ranges.range.min_change_percent,qualities.ranges.range.max_change_percent,qualities.ranges.quality,qualities.ranges.range.min_change_value,qualities.ranges.range.max_change_value,qualities.ranges.range.min_change_percent,qualities.ranges.range.max_change_percent
+1,HP,,2,300,925,12,39,3,926,1850,40,66,4,1851,2775,67,93,5,2776,4000,94,120
+2,ATTACK,,2,30,102,3,11,3,103,205,12,20,4,206,307,21,28,5,308,440,29,36
+3,PHYSICAL_DEFENCE,MAGICAL_DEFENCE,2,30,102,3,12,3,103,205,13,22,4,206,307,23,31,5,308,440,32,40
+4,BOOM_RATE,,2,14,45,,,3,46,77,,,4,78,109,,,5,110,140,,
+5,ANTI_BOOM,,2,14,45,,,3,46,77,,,4,78,109,,,5,110,140,,
+6,HIT_RATE,,2,7,23,,,3,24,39,,,4,40,55,,,5,56,70,,
+7,DODGE_RATE,,2,7,23,,,3,24,39,,,4,40,55,,,5,56,70,,
+8,BOOM_DAMAGE,,2,36,117,,,3,118,198,,,4,199,309,,,5,310,360,,
+9,OUT_DAMAGE_PERCENT,,2,6,19,,,3,20,33,,,4,34,47,,,5,48,60,,
+10,IN_DAMAGE_PERCENT,,2,6,19,,,3,20,33,,,4,34,47,,,5,48,60,,
+11,OUT_HEAL_PERCENT,,2,6,19,,,3,20,33,,,4,34,47,,,5,48,60,,
+12,IN_HEAL_PERCENT,,2,8,26,,,3,27,44,,,4,45,62,,,5,63,80,,

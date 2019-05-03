@@ -1,0 +1,2 @@
+﻿id,max_refresh_times,refresh_conditions.conditions.type,refresh_conditions.conditions.arg,refresh_conditions.conditions.arg,unlock_conditions.conditions.type,unlock_conditions.conditions.arg,unlock_conditions.conditions.arg,open_plot,system_icon,system_name
+1,1,COST_RESOURCE,TOWER_REFRESH_CHANCE,1,LEVEL_GE,60,,500010,icon/xitong/minpai_13#ui/newFunc/dengjitisheng_2z-7,密室

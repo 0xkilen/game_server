@@ -1,0 +1,31 @@
+#pragma once
+
+#include "service_thread.hpp"
+#include <memory>
+
+using namespace std;
+
+namespace nora {
+
+        class client_process_base {
+        public:
+                virtual ~client_process_base() {
+                }
+                virtual uint32_t id() const {
+                        return id_;
+                }
+                virtual void set_id(uint32_t id) {
+                        id_ = id;
+                }
+                void set_st(const shared_ptr<service_thread>& st) {
+                        st_ = st;
+                }
+                virtual void on_stop() {
+                }
+        protected:
+                shared_ptr<service_thread> st_;
+        private:
+                uint32_t id_ = 0;
+        };
+
+}

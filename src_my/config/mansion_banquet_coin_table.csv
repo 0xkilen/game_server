@@ -1,0 +1,7 @@
+﻿id,appearance,seconds,events.events.type,events.events.arg,events.events.arg,activity,spine_loading
+1,icon/resource/yinbi,6,DROP,15001,1,,ui_fudi/yinbi
+2,icon/resource/jiajubi,5.5,DROP,15002,1,,ui_fudi/jiajubi
+3,icon/resource/yuanbao,5,DROP,15003,1,,ui_fudi/jinbi
+4,icon/item/fudai_8,4,DROP,15004,1,,ui_fudi/fudai_8-1
+5,icon/item/fudai_6,3.5,DROP,15005,1,,ui_fudi/fudai_6-1
+6,icon/item/fudai_2,3,DROP,15006,1,,ui_fudi/fudai_2-1

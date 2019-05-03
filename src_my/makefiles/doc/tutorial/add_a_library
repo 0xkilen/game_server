@@ -1,0 +1,88 @@
+# To add a new library to the build:
+
+% mkdir ene/lib/foo  # the path could be anywhere
+
+# copy into ene/lib/foo the files foo.cpp, foo.hpp, bar.cpp, and bar.hpp
+
+# Make a up a name for your library.  Let's call it libfoo.a
+# Then write a bunch of definitions in the LIB_foo "namespace" in make, in a
+# file called VARS.mk in the directory where the source lives.
+
+% cat > ene/newlib/VARS.mk
+# The following line is boilerplate
+# This the only time you should use := in VARS.mk
+# For all other variable assignments, you should use = not :=
+LIB_foo_SRC_DIR := $(SRC_DIR)
+
+# Now tell the make system how to build libfoo.a
+# First, the list of source files, relative to $(LIB_foo_SRC_DIR)
+LIB_foo_SRC = foo.cpp bar.cpp
+
+# When compiling the files in $(LIB_foo_SRC), add the following directories to
+# the include path:
+LIB_foo_OTHER_INC_DIRS = some/dir
+
+# When compiling the files in $(LIB_foo_SRC), add the following flags when
+# compiling C or C++ files, respectively:
+LIB_foo_OTHER_CFLAGS = -ansi
+LIB_foo_OTHER_CXXFLAGS = -fvtable-gc
+
+# If this library will be included in a shared library, it may need to be
+# compiled differently.  For example, on unix it needs to be compiled with
+# -fPIC.  Tell the build system by setting _FOR_SHLIB to nonempty:
+LIB_foo_FOR_SHLIB = 1
+
+# Then, the other "packages" used by foo.  The source files in foo will have
+# the include directories of these packages added to their compile line, and
+# any binary that says it uses foo will be linked not only against foo but also
+# against basis and eosi.  Package dependencies are transitive, so for example
+# saying that foo uses eosi means that foo will also use icu, because eosi uses
+# icu.
+LIB_foo_USE_PACKAGES = basis eosi
+
+# When archiving the library, we may want to include files which are not object
+# files resulting from compiling $(LIB_foo_SRC).  Such files should be specified
+# in this way, relative to the top of the source tree, not relative to
+# $(LIB_foo_SRC_DIR):
+LIB_foo_OTHER_LINK_INPUTS = path/to/foo.res
+
+# If we want this library to get built into $ENDECA_ROOT/lib then we need to
+# set LIB_foo_INSTALL to non-empty:
+LIB_foo_INSTALL = 1
+
+# In very special circumstances, every other package in the make system should
+# depend on a library.  This is specified by:
+GLOBAL_PKGS += foo
+
+^D
+
+# The make system will automatically make a "package" for foo, with
+# include directories and link dependencies based on LIB_foo_USE_PACKAGES.  We
+# can override these definitions if we want, though typically we only ever need
+# to override the list of include directories.  For example, imagine that foo
+# uses basis in its internal implementation, but it doesn't expose this use to
+# users of foo.  We don't want users of foo to get the basis include
+# directories in their include paths, so we explicitly say that the foo package
+# requires the EOSI include dirs, and the foo source directory.
+
+% cat > makefiles/packages/foo.mk
+PKG_foo_INC_DIRS = $(PKG_eosi_INC_DIRS) $(LIB_eosi_SRC_DIR)
+^D
+
+# The make system will automatically define a number of variables with the
+# prefix LIB_foo.  Let's look at some:
+% make help
+
+# Read the help message, and find out about the print-var target.
+
+% make print-var VARNAME=LIB_foo
+LIB_foo=../linux-x86_64-debug/build/ene/lib/foo/libfoo.a
+
+% make print-var VARNAME=LIB_foo_OBJS
+LIB_foo_OBJS=../linux-x86_64-debug/build/ene/lib/foo/foo.o ../linux-x86_64-debug/build/ene/src/lib/foo/bar.o
+
+# Now, let's build libfoo.a
+% make build-var VARNAME=LIB_foo
+# which is the same as
+% make ../linux-x86_64-debug/build/ene/lib/foo/libfoo.a
+

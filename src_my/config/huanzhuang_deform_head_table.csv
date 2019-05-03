@@ -1,0 +1,5 @@
+﻿id,icon,name,desc,male,files,repell,tags.type,tags.value,tags.invisible,quality,pos.x,pos.y,bone,idle_anim,fix_attr.decos.decos.type,fix_attr.decos.decos.change_value,fix_attr.decos.decos.change_percent,fix_attr.levelup_growth,levelup_pttid,origins
+301001,ui/hzicon/icon_morannv_guanshi,鸡窝,鸡窝,False,spines/zhujue/huanzhuangNv/nv_shiwu_gongdou1,,HZ_TONGZHEN,100,,4,,,,,,,,,1,
+301002,ui/hzicon/icon_morannv_guanshi,菜叶,菜叶,False,spines/zhujue/huanzhuangNv/nv_shiwu_gongdou2,,HZ_TONGZHEN,100,,4,,,,,,,,,1,
+401001,ui/hzicon/icon_morannv_guanshi,鸡窝,鸡窝,True,spines/zhujue/huanzhuangNan/nan_shiwu_gongdou1,,HZ_TONGZHEN,100,,4,,,,,,,,,1,
+401002,ui/hzicon/icon_morannv_guanshi,菜叶,菜叶,True,spines/zhujue/huanzhuangNan/nan_shiwu_gongdou2,,HZ_TONGZHEN,100,,4,,,,,,,,,1,

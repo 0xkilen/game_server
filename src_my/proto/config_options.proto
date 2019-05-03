@@ -1,0 +1,146 @@
+package proto.config;
+
+import "data_base.proto";
+
+message db {
+        required string ipport = 1;
+        required string user = 2;
+        required string password = 3;
+        required string database = 4;
+}
+
+message ssl_files {
+        required string cert = 1;
+        required string private_key = 2;
+        optional string verify = 3;
+}
+
+message scene_info {
+        required uint32 player_thread_count = 1;
+        required uint32 max_roles = 2;
+        required uint32 max_fiefs = 3;
+        required uint32 max_mansions = 4;
+        required uint32 max_gladiators = 5;
+        required uint32 max_guans = 6;
+        required uint32 server_id = 7;
+        required bool scened_deamon = 8;
+        required bool dev_gm = 9;
+        required bool sdk_check_login = 10;
+        required bool cost_free = 11;
+        required uint32 gain_times = 12;
+        required bool allow_robot = 13;
+        required bool robot_slow = 14;
+        required bool testin = 15;
+        required bool write_dblog = 16;
+        required bool send_bi = 17;
+        required bool weak_connection = 18;
+        required uint32 lag = 19;
+        required uint32 max_leagues = 20;
+        optional bool auto_recharge = 21;
+        required uint32 max_children = 22;
+        optional bool skip_xinshou = 23 [default = false];
+}
+
+message dbcache_info {
+        required uint32 id = 1;
+        required uint32 max_roles = 2;
+        required uint32 max_fiefs = 3;
+        required uint32 max_mansions = 4;
+        required uint32 max_gladiators = 5;
+        required uint32 max_guans = 6;
+        required uint32 max_leagues = 7;
+        required uint32 max_children = 8;
+        required uint32 parse_thread_count = 9;
+}
+
+message yunying {
+        required string app_id = 1;
+        required string app_secret = 2;
+        optional int32 platform = 3;
+        optional string bi_addr = 4;
+        optional string gm_addr = 5;
+        optional string login_addr = 6;
+}
+
+message login_info {
+        required uint32 id = 1;
+        required proto.data.ipport gmd_ipport = 2;
+        required proto.data.ipport scened_ipport = 3;
+        required string client_version = 4;
+        required bool logind_deamon = 5;
+        optional string hot_update_client_version = 6;
+}
+
+message gm_info {
+        required uint32 id = 1;
+        required proto.data.ipport scened_ipport = 2;
+        required db db = 3;
+}
+
+message chat_info {
+        required uint32 id = 1;
+        required proto.data.ipport scened_ipport = 2;
+}
+
+message route_info {
+        required uint32 id = 1;
+        repeated proto.data.ipport ipport = 2;
+}
+
+message mirror_info {
+        required uint32 id = 1;
+        required proto.data.ipport scened_ipport = 2;
+}
+
+message logserver_info {
+        required uint32 id = 1;
+}
+
+message public_arena_info {
+        required uint32 id = 1;
+}
+
+message common_resource_info {
+        required uint32 id = 1;
+        required db db = 2;
+        required proto.data.ipport scened_ipport = 3;
+}
+
+message options {
+        enum log_level {
+                TRACE = 0;
+                DEBUG = 1;
+                INFO = 2;
+                ERROR = 3;
+                NONE = 4;
+        };
+        required uint32 id = 1;
+        required scene_info scene_info = 2;
+        required proto.data.ipport scened_client_ipport = 3;
+        required proto.data.ipport scened_dbcached_ipport = 4;
+        required proto.data.ipport scened_public_arenad_ipport = 5;
+        required proto.data.ipport logind_client_ipport = 6;
+        required db game_db = 7;
+        required db log_db = 8;
+        required db login_db = 9;
+        required log_level level = 10;
+        required proto.data.ipport gmd_yunying_ipport = 11;
+        required dbcache_info dbcache_info = 12;
+        required yunying yunying = 13;
+        required bool minicore = 14;
+        optional ssl_files ssl_files = 15;
+        required proto.data.ipport scened_logserverd_ipport = 16;
+        required login_info login_info = 17;
+        required gm_info gm_info = 18;
+        required chat_info chat_info = 19;
+        required route_info route_info = 20;
+        required mirror_info mirror_info = 21;
+        required logserver_info logserver_info = 22;
+        required public_arena_info public_arena_info = 23;
+        required proto.data.ipport gmd_admin_ipport = 24;
+        optional common_resource_info common_resource_info = 25;
+}
+
+message options_file {
+        repeated options entry = 1;
+}

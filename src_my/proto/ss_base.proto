@@ -1,0 +1,19 @@
+package proto.ss;
+
+message base {
+	extensions 100 to max;
+}
+
+message s2s_register_req {
+        extend base {
+                optional s2s_register_req srr = 90000;
+        }
+        required int32 id = 1;
+}
+
+message s2s_register_rsp {
+        extend base {
+                optional s2s_register_rsp srr = 90001;
+        }
+        required int32 id = 1;
+}

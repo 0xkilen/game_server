@@ -1,0 +1,13 @@
+TARGET_NAME := LIB_$(LIB_NAME)
+$(call ensure_defined,$(TARGET_NAME)_SRC_DIR)
+
+# in case allocator includes are needed
+$(TARGET_NAME)_USE_PACKAGES += $(ALLOCATOR_PKG)
+
+$(TARGET_NAME)_OUT_DIR := $(call MAKE_OUT_DIR,$($(TARGET_NAME)_SRC_DIR))
+$(TARGET_NAME)_BASENAME := $(call STATIC_LIB,$(LIB_NAME))
+ifneq (,$($(TARGET_NAME)_INSTALL))
+ $(TARGET_NAME) := $(INSTALL_ROOT)/lib/$($(TARGET_NAME)_BASENAME)
+else
+ $(TARGET_NAME) := $($(TARGET_NAME)_OUT_DIR)/$($(TARGET_NAME)_BASENAME)
+endif

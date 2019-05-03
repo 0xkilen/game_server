@@ -1,0 +1,2 @@
+﻿id,system_name,system_icon,unlock_conditions.conditions.type,unlock_conditions.conditions.arg,unlock_conditions.conditions.arg,open_plot
+1,花冢,icon/xitong/minpai_2#ui/newFunc/dengjitisheng_2-5,LEVEL_GE,35,,500001

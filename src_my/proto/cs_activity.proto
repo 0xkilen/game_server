@@ -1,0 +1,489 @@
+package proto.cs;
+
+import "cs_base.proto";
+import "data_base.proto";
+import "data_event.proto";
+
+message c2s_activity_login_days_reward_req {
+        extend base {
+                optional c2s_activity_login_days_reward_req caldrr = 3300;
+        }
+        required uint32 day = 1;
+}
+
+message s2c_activity_login_days_reward_rsp {
+        extend base {
+              optional s2c_activity_login_days_reward_rsp saldrr = 3301;
+        }
+        required uint32 day = 1;
+        required proto.data.result result = 2;
+        optional proto.data.event_res event_res = 3;
+}
+
+message c2s_activity_online_time_reward_req {
+        extend base {
+                optional c2s_activity_online_time_reward_req caotrr = 3302;
+        }
+        required uint32 idx = 1;
+}
+
+message s2c_activity_online_time_reward_rsp {
+        extend base {
+              optional s2c_activity_online_time_reward_rsp saotrr = 3303;
+        }
+        required uint32 idx = 1;
+        required proto.data.result result = 2;
+        optional proto.data.event_res event_res = 3;
+}
+
+message c2s_activity_seven_days_get_fuli_req {
+        extend base {
+                optional c2s_activity_seven_days_get_fuli_req casdgfr = 3304;
+        }
+        required uint32 begin_day = 1;
+        required uint32 day = 2;
+        required uint32 idx = 3;
+}
+
+message s2c_activity_seven_days_get_fuli_rsp {
+        extend base {
+              optional s2c_activity_seven_days_get_fuli_rsp sasdgfr = 3305;
+        }
+        required uint32 begin_day = 1;
+        required uint32 day = 2;
+        required uint32 idx = 3;
+        required proto.data.result result = 4;
+        optional proto.data.event_res event_res = 5;
+}
+
+message c2s_activity_seven_days_commit_quest_req {
+        extend base {
+                optional c2s_activity_seven_days_commit_quest_req casdcqr = 3306;
+        }
+        required uint32 begin_day = 1;
+        required uint32 day = 2;
+        required uint32 idx = 3;
+}
+
+message s2c_activity_seven_days_commit_quest_rsp {
+        extend base {
+              optional s2c_activity_seven_days_commit_quest_rsp sasdcqr = 3307;
+        }
+        required uint32 begin_day = 1;
+        required uint32 day = 2;
+        required uint32 idx = 3;
+        required proto.data.result result = 4;
+        optional proto.data.event_res event_res = 5;
+}
+
+message c2s_activity_seven_days_get_reward_req {
+        extend base {
+                optional c2s_activity_seven_days_get_reward_req casdgrr = 3310;
+        }
+        required uint32 begin_day = 1;
+}
+
+message s2c_activity_seven_days_get_reward_rsp {
+        extend base {
+                optional s2c_activity_seven_days_get_reward_rsp sasdgrr = 3311;
+        }
+        required uint32 begin_day = 1;
+        required proto.data.result result = 2;
+        optional proto.data.event_res event_res = 3;
+}
+
+message c2s_activity_qiandao_req {
+        extend base {
+                optional c2s_activity_qiandao_req caqr = 3312;
+        }
+}
+
+message s2c_activity_qiandao_rsp {
+        extend base {
+                optional s2c_activity_qiandao_rsp saqr = 3313;
+        }
+        required uint32 qiandao_day = 1;
+        required proto.data.result result = 2;
+        optional proto.data.event_res event_res = 3;
+}
+
+message c2s_activity_buqian_req {
+        extend base {
+                optional c2s_activity_buqian_req cabr = 3314;
+        }
+        required int32 buqian_day = 1;
+}
+
+message s2c_activity_buqian_rsp {
+        extend base {
+                optional s2c_activity_buqian_rsp sabr = 3315;
+        }
+        required int32 buqian_day = 1;
+        required proto.data.result result = 2;
+        optional proto.data.event_res event_res = 3;
+}
+
+message c2s_activity_get_leiqian_reward_req {
+        extend base {
+                optional c2s_activity_get_leiqian_reward_req caglrr = 3316;
+        }
+        required int32 leiqian_day = 1;
+}
+
+message s2c_activity_get_leiqian_reward_rsp {
+        extend base {
+                optional s2c_activity_get_leiqian_reward_rsp saglrr = 3317;
+        }
+        required int32 leiqian_day = 1;
+        required proto.data.result result = 2;
+        optional proto.data.event_res event_res = 3;
+}
+
+message c2s_activity_first_recharge_get_reward_req {
+        extend base {
+                optional c2s_activity_first_recharge_get_reward_req cafrgrr = 3322;
+        }
+}
+
+message s2c_activity_first_recharge_get_reward_rsp {
+        extend base {
+                optional s2c_activity_first_recharge_get_reward_rsp safrgrr = 3323;
+        }
+        required proto.data.result result = 1;
+        optional proto.data.event_res event_res = 2;
+}
+
+message c2s_activity_vip_qianzhuang_buy_req {
+        extend base {
+                optional c2s_activity_vip_qianzhuang_buy_req cavqbr = 3325;
+        }
+}
+
+message s2c_activity_vip_qianzhuang_buy_rsp {
+        extend base {
+                optional s2c_activity_vip_qianzhuang_buy_rsp savqbr = 3326;
+        }
+        required proto.data.result result = 1;
+        optional proto.data.event_res event_res = 2;
+}
+
+message c2s_activity_emperor_qianzhuang_buy_req {
+        extend base {
+                optional c2s_activity_emperor_qianzhuang_buy_req caeqbr = 3327;
+        }
+}
+
+message s2c_activity_emperor_qianzhuang_buy_rsp {
+        extend base {
+                optional s2c_activity_emperor_qianzhuang_buy_rsp saeqbr = 3328;
+        }
+        required proto.data.result result = 1;
+        optional proto.data.event_res event_res = 2;
+}
+
+message c2s_activity_vip_qianzhuang_get_reward_req {
+        extend base {
+                optional c2s_activity_vip_qianzhuang_get_reward_req cavqgrr = 3329;
+        }
+        required uint32 pttid = 1;
+}
+
+message s2c_activity_vip_qianzhuang_get_reward_rsp {
+        extend base {
+                optional s2c_activity_vip_qianzhuang_get_reward_rsp savqgrr = 3330;
+        }
+        required uint32 pttid = 1;
+        required proto.data.result result = 2;
+        optional proto.data.event_res event_res = 3;
+}
+
+message c2s_activity_emperor_qianzhuang_get_reward_req {
+        extend base {
+                optional c2s_activity_emperor_qianzhuang_get_reward_req caeqgrr = 3331;
+        }
+        required uint32 pttid = 1;
+}
+
+message s2c_activity_emperor_qianzhuang_get_reward_rsp {
+        extend base {
+                optional s2c_activity_emperor_qianzhuang_get_reward_rsp saeqgrr = 3332;
+        }
+        required uint32 pttid = 1;
+        required proto.data.result result = 2;
+        optional proto.data.event_res event_res = 3;
+}
+
+message c2s_activity_fund_req {
+        extend base {
+                optional c2s_activity_fund_req cafr = 3333;
+        }
+}
+
+message s2c_activity_fund_rsp {
+        extend base {
+                optional s2c_activity_fund_rsp safr = 3334;
+        }
+        required uint32 fund = 1;
+}
+
+message c2s_activity_fund_get_reward_req {
+        extend base {
+                optional c2s_activity_fund_get_reward_req cafgrr = 3335;
+        }
+        required uint32 pttid = 1;
+}
+
+message s2c_activity_fund_get_reward_rsp {
+        extend base {
+                optional s2c_activity_fund_get_reward_rsp safgrr = 3336;
+        }
+        required uint32 pttid = 1;
+        required proto.data.result result = 2;
+        optional proto.data.event_res event_res = 3;
+}
+
+message c2s_activity_update_limit_libao_req {
+        extend base {
+                optional c2s_activity_update_limit_libao_req caullr = 3337;
+        }
+}
+
+message s2c_activity_update_limit_libao_rsp {
+        extend base {
+                optional s2c_activity_update_limit_libao_rsp saullr = 3338;
+        }
+        required uint32 pttid = 1;
+        required uint32 time = 2;
+        required proto.data.result result = 3;
+}
+
+message c2s_activity_festival_exchange_req {
+        extend base {
+                optional c2s_activity_festival_exchange_req cafer = 3339;
+        }
+        required uint32 pttid = 1;
+        required uint32 exchange = 2;
+}
+
+message s2c_activity_festival_exchange_rsp {
+        extend base {
+                optional s2c_activity_festival_exchange_rsp safer = 3340;
+        }
+        required uint32 pttid = 1;
+        required uint32 exchange = 2;
+        required proto.data.result result = 3;
+        optional proto.data.event_res event_res = 4;
+        optional uint32 exchange_times = 5;
+}
+
+message c2s_activity_prize_wheel_spin_req {
+        extend base {
+                optional c2s_activity_prize_wheel_spin_req capwsr = 3341;
+        }
+        required uint32 idx = 1;
+        required bool ten_times = 2;
+}
+
+message s2c_activity_prize_wheel_spin_rsp {
+        extend base {
+                optional s2c_activity_prize_wheel_spin_rsp sapwsr = 3342;
+        }
+        required uint32 idx = 1;
+        required bool ten_times = 2;
+        required proto.data.result result = 3;
+        repeated proto.data.event_res event_res = 4;
+}
+
+message s2c_activity_prize_wheel_start {
+        extend base {
+                optional s2c_activity_prize_wheel_start sapws = 3343;
+        }
+        required uint32 start_day = 1;
+        required uint32 duration = 2;
+        required uint32 pttid = 3;
+        optional proto.data.event_res event_res = 4;
+}
+
+message s2c_activity_discount_goods_start {
+        extend base {
+                optional s2c_activity_discount_goods_start sadgs = 3344;
+        }
+        required uint32 start_day = 1;
+        required uint32 duration = 2;
+        required uint32 pttid = 3;
+}
+
+message s2c_activity_continue_recharge_start {
+        extend base {
+                optional s2c_activity_continue_recharge_start sacrs = 3345;
+        }
+        required uint32 start_day = 1;
+        required uint32 duration = 2;
+        required uint32 pttid = 3;
+        optional uint32 quest_idx = 4;
+        optional proto.data.event_res event_res = 5;
+}
+
+message c2s_activity_daiyanren_get_reward_req {
+        extend base {
+                optional c2s_activity_daiyanren_get_reward_req cadgrr = 3346;
+        }
+        required uint32 idx = 1;
+}
+
+message s2c_activity_daiyanren_get_reward_rsp {
+        extend base {
+                optional s2c_activity_daiyanren_get_reward_rsp sadgrr = 3347;
+        }
+        required uint32 idx = 1;
+        required proto.data.result result = 2;
+        optional proto.data.event_res event_res = 3;
+}
+
+message s2c_activity_limit_play_start {
+        extend base {
+                optional s2c_activity_limit_play_start salps = 3348;
+        }
+        required uint32 start_day = 1;
+        required uint32 duration = 2;
+        required uint32 pttid = 3;
+        optional proto.data.event_res event_res = 4;
+}
+
+message s2c_activity_prize_wheel_stop {
+        extend base {
+                optional s2c_activity_prize_wheel_stop sapws = 3349;
+        }
+        required proto.data.event_res event_res = 1;
+}
+
+message s2c_activity_discount_goods_stop {
+        extend base {
+                optional s2c_activity_discount_goods_stop sadgs = 3350;
+        }
+}
+
+message s2c_activity_continue_recharge_stop {
+        extend base {
+                optional s2c_activity_continue_recharge_stop sacrs = 3351;
+        }
+        optional proto.data.event_res event_res = 1;
+}
+
+message s2c_activity_limit_play_stop {
+        extend base {
+                optional s2c_activity_limit_play_stop salps = 3352;
+        }
+        required proto.data.event_res event_res = 1;
+}
+
+message c2s_activity_daiyanren_get_points_req {
+        extend base {
+                optional c2s_activity_daiyanren_get_points_req cadgpr = 3353;
+        }
+}
+
+message s2c_activity_daiyanren_get_points_rsp {
+        extend base {
+                optional s2c_activity_daiyanren_get_points_rsp sadgpr = 33554;
+        }
+        required uint32 points = 1;
+}
+
+message s2c_activity_leiji_recharge_start {
+        extend base {
+                optional s2c_activity_leiji_recharge_start salrs = 3355;
+        }
+        required uint32 start_day = 1;
+        required uint32 duration = 2;
+        required uint32 pttid = 3;
+        optional proto.data.event_res event_res = 4;
+}
+
+message s2c_activity_leiji_recharge_stop {
+        extend base {
+                optional s2c_activity_leiji_recharge_stop salrs = 3356;
+        }
+        required proto.data.event_res event_res = 1;
+}
+
+message s2c_activity_leiji_consume_start {
+        extend base {
+                optional s2c_activity_leiji_consume_start salcs = 3357;
+        }
+        required uint32 start_day = 1;
+        required uint32 duration = 2;
+        required uint32 pttid = 3;
+        optional proto.data.event_res event_res = 4;
+}
+
+message s2c_activity_leiji_consume_stop {
+        extend base {
+                optional s2c_activity_leiji_consume_stop salcs = 3358;
+        }
+        required proto.data.event_res event_res = 1;
+}
+
+message s2c_activity_tea_party_start {
+        extend base {
+                optional s2c_activity_tea_party_start satps = 3359;
+        }
+        required uint32 start_day = 1;
+        required uint32 duration = 2;
+        required uint32 pttid = 3;
+        optional proto.data.event_res event_res = 4;
+}
+
+message s2c_activity_tea_party_stop {
+        extend base {
+                optional s2c_activity_tea_party_stop satps = 3360;
+        }
+        required proto.data.event_res event_res = 1;
+}
+
+message c2s_activity_tea_party_get_favor_reward_req {
+        extend base {
+                optional c2s_activity_tea_party_get_favor_reward_req catpgfrr = 3361;
+        }
+        required uint32 idx = 1;
+}
+
+message s2c_activity_tea_party_get_favor_reward_rsp {
+        extend base {
+                optional s2c_activity_tea_party_get_favor_reward_rsp satpgfrr = 3362;
+        }
+        required uint32 idx = 1;
+        required proto.data.result result = 2;
+        optional proto.data.event_res event_res = 3;
+}
+
+message s2c_activity_recharge_rank_start {
+        extend base {
+                optional s2c_activity_recharge_rank_start sarrs = 3363;
+        }
+        required uint32 start_day = 1;
+        required uint32 duration = 2;
+}
+
+message s2c_activity_recharge_rank_stop {
+        extend base {
+                optional s2c_activity_recharge_rank_stop sarrs = 3364;
+        }
+}
+
+message s2c_activity_festival_start {
+        extend base {
+                optional s2c_activity_festival_start safs = 3365;
+        }
+        required uint32 start_day = 1;
+        required uint32 duration = 2;
+        required uint32 pttid = 3;
+        optional proto.data.event_res event_res = 4;
+}
+
+message s2c_activity_festival_stop {
+        extend base {
+                optional s2c_activity_festival_stop safs = 3366;
+        }
+        required proto.data.event_res event_res = 1;
+}

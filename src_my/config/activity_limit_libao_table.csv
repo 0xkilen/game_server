@@ -1,0 +1,5 @@
+﻿id,recharge,conditions.conditions.type,conditions.conditions.arg
+1,10701,LEVEL_GE,30
+2,10702,LEVEL_GE,40
+3,10703,LEVEL_GE,50
+4,10704,LEVEL_GE,60

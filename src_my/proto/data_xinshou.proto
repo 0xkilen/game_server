@@ -1,0 +1,6 @@
+package proto.data;
+
+message xinshou {
+        repeated uint32 passed_groups = 1;
+}
+

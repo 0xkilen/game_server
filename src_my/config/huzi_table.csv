@@ -1,0 +1,10 @@
+﻿id,icon,name,male,arg,arg,arg,arg,need.part,need.pttid,repell
+220001,ui/nielian/icon_huzi1,轩昂,True,huzi,huzi1/0,,,,,
+220002,ui/nielian/icon_huzi2,开怀,True,huzi,huzi2/0,,,,,
+220003,ui/nielian/icon_huzi3,远行,True,huzi,huzi3/0,,,,,
+220004,ui/nielian/icon_huzi4,和光,True,huzi,huzi4/0,,,,,
+220005,ui/nielian/icon_huzi5,铁骨,True,huzi,huzi5/0,,,,,
+220006,ui/nielian/icon_huzi6,盈风,True,huzi2,huzi10/0,,,SP_LIANXING,200010,
+220007,ui/nielian/icon_huzi7,山涧,True,huzi2,huzi12/0,,,SP_LIANXING,200012,
+220008,ui/nielian/icon_huzi8,意气,True,huzi,huzi4/0,huzi2,huzi10/0,SP_LIANXING,200010,
+220009,ui/nielian/icon_huzi9,豪情,True,huzi,huzi5/0,huzi2,huzi12/0,SP_LIANXING,200012,

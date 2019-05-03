@@ -1,0 +1,28 @@
+DROP TABLE IF EXISTS server;
+CREATE TABLE IF NOT EXISTS server (
+gid BIGINT UNSIGNED UNIQUE,
+data BLOB
+)
+CHARACTER SET = utf8
+ENGINE = InnoDB;
+
+DELIMITER $$
+
+DROP PROCEDURE IF EXISTS load_server$$
+CREATE PROCEDURE load_server ()
+BEGIN
+SELECT data
+FROM server
+WHERE gid = 1;
+END$$
+
+DROP PROCEDURE IF EXISTS update_server$$
+CREATE PROCEDURE update_server (IN param1 BLOB)
+BEGIN
+INSERT INTO server(gid, data)
+VALUES(1, param1)
+ON DUPLICATE KEY UPDATE
+data = param1;
+END$$
+
+DELIMITER ;

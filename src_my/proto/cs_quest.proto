@@ -1,0 +1,47 @@
+package proto.cs;
+
+import "cs_base.proto";
+import "data_base.proto";
+import "data_event.proto";
+import "data_quest.proto";
+
+message c2s_quest_commit_req {
+        extend base {
+                optional c2s_quest_commit_req cqcr = 2300;
+        }
+        required uint32 pttid = 1;
+}
+
+message s2c_quest_commit_rsp {
+        extend base {
+                optional s2c_quest_commit_rsp sqcr = 2301;
+        }
+        required uint32 pttid = 1;
+        required proto.data.result result = 2;
+        optional proto.data.event_res event_res = 3;
+}
+
+message c2s_quest_everyday_reward_req {
+        extend base {
+                optional c2s_quest_everyday_reward_req cqerr = 2302;
+        }
+        required uint32 pttid = 1;
+}
+
+message s2c_quest_everyday_reward_rsp {
+        extend base {
+                optional s2c_quest_everyday_reward_rsp sqerr = 2303;
+        }
+        required uint32 pttid = 1;
+        required proto.data.result result = 2;
+        optional proto.data.event_res event_res = 3;
+}
+
+message s2c_quest_update_notice {
+        extend base {
+                optional s2c_quest_update_notice squn = 2304;
+        }
+        required proto.data.quest quest = 1;
+        optional proto.data.event_res event_res = 2;
+}
+

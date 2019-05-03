@@ -1,0 +1,29 @@
+package proto.data;
+
+import "data_base.proto";
+
+enum route_client_type {
+        RCT_NONE = 0;
+        RCT_SCENED = 1;
+        RCT_CHATD = 2;
+        RCT_GMD = 3;
+        RCT_LOGIND = 4;
+        RCT_MIRRORD = 5;
+        RCT_PUBLIC_ARENAD = 6; // 暂时没用
+        RCT_COMMON_RESOURCED = 7;
+}
+
+message route_info {
+        optional ipport scened_ipport = 1;
+        optional ipport gmd_ipport = 2;
+}
+
+message route_client {
+        required route_client_type type = 1;
+        required uint32 id = 2;
+        required route_info route_info = 3;
+}
+
+message route_table {
+        repeated route_client clients = 1;
+}

@@ -1,0 +1,9 @@
+﻿id,icon,name,male,arg,need.part,need.pttid,repell
+107001,ui/nielian/lianbuicon1_saihongnv,湘帘,False,saihong1/0,,,
+107002,ui/nielian/lianbuicon2_saihongnv,夭桃,False,saihong2/0,,,
+107003,ui/nielian/lianbuicon3_saihongnv,相思,False,saihong3/0,,,
+107004,ui/nielian/lianbuicon4_saihongnv,烟波,False,saihong4/0,,,
+107005,ui/nielian/lianbuicon5_saihongnv,巴山,False,saihong5/0,,,
+107007,ui/nielian/lianbuicon5_saihongnv,温存,False,saihong7/0,,,
+107008,ui/nielian/lianbuicon5_saihongnv,蝶恋,False,saihong8/0,,,
+107009,ui/nielian/lianbuicon5_saihongnv,长堤,False,saihong9/0,,,

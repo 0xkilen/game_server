@@ -1,0 +1,56 @@
+package proto.data;
+
+import "data_player.proto";
+import "data_battle.proto";
+
+enum room_type {
+        RT_LIEMING = 1;
+}
+
+enum room_publicity {
+        RP_PUBLIC = 1;
+        RP_FRIENDS_AND_LEAGUE = 2;
+        RP_PRIVATE = 3;
+}
+
+message lieming_room_role {
+        required battle_actor role_actor = 1;
+        repeated battle_actor actors = 2;
+        optional int32 pit = 3;
+}
+
+message lieming_room_data {
+        optional uint32 pttid = 1;
+        optional uint32 battle_pttid = 2;
+        optional bool special = 3;
+        optional bool easy_special = 4;
+        optional bool hard_special = 5;
+        optional uint64 room_owner = 6;
+        repeated lieming_room_role roles = 7;
+        optional battle_formation formation = 8;
+        optional battle_env_data battle_env_data = 9;
+}
+
+message room_data {
+        optional lieming_room_data lieming = 1;
+}
+
+message room_limitation {
+        required uint32 min_level = 1;
+        required uint32 max_level = 2;
+}
+
+message room_array {
+        repeated room rooms = 1;
+}
+
+message room {
+        required uint64 gid = 1;
+        required room_publicity publicity = 2;
+        required room_type type = 3;
+        required room_data data = 4;
+        required room_limitation limitation = 5;
+        repeated role_info roles = 6;
+        optional uint32 close_time = 7;
+        optional uint32 close_pits = 8;
+}

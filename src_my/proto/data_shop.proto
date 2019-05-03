@@ -1,0 +1,25 @@
+package proto.data;
+
+message shop_record {
+        required uint32 shop_pttid = 1;
+        required uint32 shop_day = 2;
+        required uint32 good_id = 3;
+        required uint32 times = 4;
+        required uint32 all_times = 5;
+}
+
+message mys_shop {
+        required uint32 pttid = 1;
+        required uint32 free_refreshed_time = 2;
+        repeated mys_shop_good goods = 3;
+}
+
+message mys_shop_good {
+        required uint32 id = 2;
+        required bool bought = 3;
+}
+
+message shop {
+        repeated mys_shop mys_shops = 1;
+        repeated shop_record records = 2;
+}

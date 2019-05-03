@@ -1,0 +1,7 @@
+﻿id,pos,actor,content,plot,finish_events.events.type,finish_events.events.arg,finish_events.events.arg
+1,1,308,听说了没有，昨天叱云南将军回平城了。,20110,ADD_RESOURCE,GOLD,1000
+2,2,307,哎！从刚刚进尚书府的马车上下来的不是南平王和南安王吗？,20210,ADD_RESOURCE,GOLD,1000
+3,3,306,啧啧啧，好端端一个花灯节，居然闹鬼了。,20310,ADD_RESOURCE,GOLD,1000
+4,1,302,可不得了，那尚书府最近真是祸事连连。,20410,ADD_RESOURCE,GOLD,1000
+5,2,449,我昨日好似见到九公主御驾了，当真是个绝世美人啊。,20510,ADD_RESOURCE,GOLD,1000
+6,3,303,我刚从矿场回来，矿场出大事了。,20610,ADD_RESOURCE,GOLD,1000

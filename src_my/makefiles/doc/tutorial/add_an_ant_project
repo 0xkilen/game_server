@@ -1,0 +1,47 @@
+# To add a new ant project to the build:
+
+% mkdir ene/hello  # the path could be anywhere
+
+# copy into ene/hello the build.xml and source files com/foo/bar/...
+
+# Make a up a name for your ant project.  Let's call it "hello"
+# Then write a bunch of definitions in the ANT_hello "namespace" in make, in a
+# file called VARS.mk in the directory where the source lives.
+
+% cat > ene/hello/VARS.mk
+# The following line is boilerplate
+# This the only time you should use := in VARS.mk
+# For all other variable assignments, you should use = not :=
+ANT_hello_SRC_DIR := $(SRC_DIR)
+
+# The system will automatically create $(ANT_hello_OUT_DIR), equal to
+# $(BUILD_ROOT)/$(ANT_hello_SRC_DIR)
+
+# The list of produced files, relative to $(ANT_hello_OUT_DIR)
+# This is needed so the build system knows *when* to invoke the antfile.
+# Results of antfiles are considered by the make system to be always out of
+# date, so if any goal depends on any of $(ANT_hello_RESULTS), then the antfile
+# will be run.
+ANT_hello_RESULTS = foo.jar
+
+# The ant target to use for the build.  Corresponds to the "ANT_hello"
+# build system target.
+ANT_hello_BUILD_TARGET = all
+
+# If this antfile provides unit tests, set the ANT_hello_TEST_TARGET
+# variable to hook it up to the `make test` target.  Corresponds to the
+# "ant-test-hello" build system target.
+# ANT_hello_TEST_TARGET = test
+
+# Packages that must be built prior to running the antfile.  For example, use
+# this mechanism to build a C++ library that will be loaded in via JNI, or to
+# build jars that need to be on the classpath to build this project.
+ANT_hello_USE_PACKAGES = eosi
+
+# The classpath that must be set when invoking ant.
+# Of course, within your antfile, you can set the classpath you need for your
+# build.
+# The most common use of this parameter is to provide junit tags for ant:
+ANT_hello_CLASSPATH = $(SHARED_PREBUILTS_DIR)/junit/junit-4.1.jar
+
+^D

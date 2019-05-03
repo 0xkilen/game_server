@@ -1,0 +1,53 @@
+# To add a prebuilt library to the build:
+
+# Libraries are used by others by referring to them as "packages".  A package
+# is a set of variable definitions with a common PKG_foo_ prefix.  Let's say
+# that we're adding a prebuilt called foo.  To use foo, clients need to add
+# some directories to their include paths and to their link paths, and a couple
+# of libraries to their link line.
+
+# By convention, PKG_foo_* definitions are in prebuilt-refs/foo/VARS.mk
+
+% cat > prebuilt-refs/foo/VARS.mk
+
+# And now, the variables used by clients of PKG_foo
+PKG_foo_INC_DIRS = $(PREBUILTS_DIR)/foo/include \
+  $(PREBUILTS_DIR)/foo/otherincludes
+
+# LIBDIRNAME is "lib" on 32 bit systems, and "lib64" on 64 bit systems
+PKG_foo_LIB_DIRS = $(PREBUILTS_DIR)/foo/$(LIBDIRNAME)
+
+# This will cause, on unix, clients to use -lfoobar -lfoobaz in their link
+# lines:
+PKG_foo_LIB_NAMES = foobar foobaz
+
+# Now, if foobar and foobaz are shared libraries, and they're used by binaries
+# that we're shipping, you'll probably need to copy them into $(ENDECA_ROOT) as
+# a part of `make`.  Here's how you do that:
+
+CP_foo_SRC_DIR = $(PREBUILTS_DIR)/foo/$(LIBDIRNAME)
+CP_foo_SRC_FILENAMES = foobar.so.2 foobaz.so.5
+CP_foo_DEST_DIR = $(INSTALL_ROOT)/$(LIBDIRNAME)
+^D
+
+# Some packages may require multiple CP definitions, for example when the
+# source directory structure does not match the desired ENDECA_ROOT layout.
+
+# Now, if you're writing the VARS.mk definitions for some code you wrote that
+# uses the foo prebuilt, you just say:
+BIN_otherthing_USE_PACKAGES = ... foo ...
+# and then the link line for otherthing will include
+# -L$(PREBUILTS_DIR)/$(LIBDIRNAME) -lfoobar -lfoobaz
+
+# Normally, the files for foo mentioned in CP_foo_SRC_FILENAMES will be installed
+# whenever the foo.mk file is in scope of a make, i.e. at or below the directory
+# where a forwarding Makefile is used, or from the top of the tree.
+# It's possible, however, to trigger the installation of the package by any
+# reference to it from another package's USE_PACKAGES variable.  This is done
+# by adding a definition like this:
+PKG_foo_INSTALLERS = CP_foo
+# Note that more than one CP rule can be named on the right-hand side.
+
+# If you do not need to copy anything, and therefore do not have a
+# CP_foo_SRC_DIR, then you will need to add the line
+ALL_PACKAGES += foo

@@ -1,0 +1,150 @@
+package proto.data;
+
+message condition {
+        enum condition_type {
+                PASS_ADVENTURE = 1;
+                ADVENTURE_NO_CHANCES = 2;
+                NOT_PASS_ADVENTURE = 3;
+                COST_RESOURCE = 4;
+                COST_ITEM = 5;
+                RESOURCE_NOT_REACH_MAX = 6;
+                LEVEL_GREATER_THAN_ACTOR_LEVEL = 7;
+                RESOURCE_GE = 8;
+                HAS_ACTOR = 9;
+                BUY_GOOD_TIMES_LESS = 10;
+                NO_ACTOR = 11;
+                LEVEL_GE = 12;
+                LEVEL_GREATER_THAN_EQUIPMENT_LEVEL = 13;
+                ACTOR_INTIMACY_GE = 14;
+                ACTOR_LEVEL_GE = 15;
+                PASS_LIEMING = 16;
+                VIP_LEVEL_GE = 17;
+                GENDER = 18;
+                EQUIPMENT_EXP_GE = 19;
+                ACTOR_STAR_GE = 20;
+                ACTOR_STEP_GE = 21;
+                ACTOR_QUALITY_GE = 22;
+                ACTOR_CRAFT_GE = 23;
+                ACTOR_CRAFT_E = 24;
+                PASS_PLOT = 25;
+                INTIMACY_GE = 26;
+                FAIL = 27;
+                NO_HUANZHUANG_COLLECTION = 28;
+                NO_SPINE_COLLECTION = 29;
+                COST_PRESENT = 30;
+                ITEM_COUNT_LE = 31;
+                RANDOM = 32;
+                EQUIPMENT_QUALITY_GE = 33;
+                EQUIPMENT_LEVEL_GE = 34;
+                FRIEND_COUNT_LE = 35;
+                LEAGUE_JOINED = 36;
+                MANSION_FANCY_GE = 37;
+                ROLE_PIN_LE = 38;
+                ROLE_PIN_E = 39;
+                MANSION_BANQUET_PRESTIGE_LEVEL_GE = 40;
+                PLOT_OPTION_NOT_LOCKED = 41;
+                TOWER_CUR_LEVEL_E = 42;
+                TOWER_HIGHEST_LEVEL_GE = 43;
+                PLOT_OPTION_SELECTED = 44;
+                MAX_GPIN_GE = 46;
+                GPIN_LIMIT = 47;
+                PASS_XINSHOU_GROUP = 52;
+                HAS_TITLE = 53;
+                ROLE_NOT_EQUIPED_EQUIPMENT_PART = 54;
+                ROLE_HAS_NOT_EQUIPED_EQUIPMENT = 55;
+                NOT_IN_LEAGUE = 56;
+                QUEST_COMMITTED = 57;
+                FORMATION_NO_ACTOR = 58;
+                FORMATION_GRID_NO_ACTOR = 59;
+                LOTTERY_FREE = 60;
+                MARRIED = 61;
+                NOT_MARRIED = 62;
+                MANSION_CREATED = 63;
+                EVER_MARRIED = 64;
+                ACTOR_PIN_LE = 65;
+                SERVER_OPEN_DAY_IN = 66;
+                FIRST_LOGIN_DAY_E = 67;
+                FEIGE_ONGOING = 68;
+                MANSION_COOK_HAS_RECIPE = 69;
+                MANSION_FARM_PLOT_STATE = 70;
+                ARENA_BEST_RANK_GE = 71;
+                QUEST_ACCEPTED = 72;
+                FEIGE_FINISHED = 73;
+                HUANZHUANG_EXP_GE = 74;
+                LEAGUE_SHOP_LEVEL_IS = 75;
+                HAS_BONUS_CITY = 76;
+                LEVEL_GREATER_THAN_HUANZHUANG_LEVEL = 77;
+                MANSION_HALL_QUEST_COUNT_GE = 78;
+                LEAGUE_SHOP_LEVEL_GE = 79;
+                MANSION_FURNITURE_COUNT_GE = 80;
+                CHILD_PHASE_IN = 81;
+                LEVEL_GREATER_THAN_CHILD_LEVEL = 82;
+                ZHANLI_GE = 83;
+                LEVEL_LE = 84;
+                VIP_LEVEL_LE = 85;
+                SPOUSE_VIP_LEVEL_GE = 86;
+                SPOUSE_VIP_LEVEL_LE = 87;
+                ROLE_HAS_EQUIPMENT_PART_COUNT_GE = 88;
+        }
+        required condition_type type = 1;
+        repeated string arg = 2;
+}
+
+message condition_array {
+        repeated condition conditions = 1;
+}
+
+message fief_condition {
+        enum fief_condition_type {
+                COST_RESOURCE = 1;
+                BUILDING_LEVEL_GE = 2;
+                RESOURCE_LESS = 3;
+                RESOURCE_GE = 4;
+                YESTERDAY_HAS_BOSS = 5;
+                FAIL = 6;
+        }
+        required fief_condition_type type = 1;
+        repeated string arg = 2;
+}
+
+message fief_condition_array {
+        repeated fief_condition conditions = 1;
+}
+
+enum league_condition_type {
+        LCT_COST_RESOURCE = 1;
+        LCT_LEVEL_GE = 2;
+        LCT_PASS_CAMPAIGN = 3;
+        LCT_FAIL = 4;
+        LCT_MEMBER_COUNT_GE = 5;
+}
+
+message league_condition {
+        required league_condition_type type = 1;
+        repeated string arg = 2;
+}
+
+message league_condition_array {
+        repeated league_condition conditions = 1;
+}
+
+enum child_condition_type {
+        CCT_LEVEL_GE = 1;
+        CCT_VALUE_NOT_FULL = 2;
+        CCT_PHASE_IN = 3;
+        CCT_VALUE_GE = 4;
+        CCT_SKILL_SLOT_EMPTY = 5;
+        CCT_STUDY_LEVEL_IN = 6;
+        CCT_ACTOR_STAR_GE = 7;
+        CCT_VALUE_LE = 8;
+        CCT_FAIL = 99;
+}
+
+message child_condition {
+        required child_condition_type type = 1;
+        repeated string arg = 2;
+}
+
+message child_condition_array {
+        repeated child_condition conditions = 1;
+}

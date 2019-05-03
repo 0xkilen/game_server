@@ -1,0 +1,87 @@
+# You may want to build something that isn't an object file, a library, a
+# shared library, a binary, a copied file, a C# file, or the result of running
+# ant.  So you'll need to write your own custom rule.  Custom rules should go
+# in a file called RULES.mk somewhere in the source tree near the files that
+# the rule operates on.  For example, let's say that you have (elsewhere in
+# your tree) defined how to build a great macro processor called "macrocenter",
+# and now you want to generate a source file using it.
+
+# In RULES.mk, you always have the immediate variables SRC_DIR and OUT_DIR set
+# to the appropriate values (OUT_DIR being the mirror of SRC_DIR but in the
+# build output directory).
+
+# In our example, we're generating
+#   ../linux-x86_64-debug/build/ene/foo/happy.cpp
+# from
+#   ene/foo/happy.cpp.macros
+# using
+#   $(BIN_macrocenter)
+
+% cat > ene/foo/RULES.mk
+$(OUT_DIR)/happy.cpp: $(SRC_DIR)/happy.cpp.macros $(BIN_macrocenter)
+	$(call MKDIR,$(@D))
+	$(BIN_macrocenter) < $< > $@
+^D
+
+#
+# For more information about using generated source files, see
+# add_a_generated_source_file
+#
+
+#
+# In the example above, the action that the rule triggered was running
+# an executable whose definition was elsewhere in the source tree. It's possible
+# to do almost anything in rules, but it's a very good idea to not depend on any
+# tools other than what we provide in dev_tools.  For example, one might script
+# some action using gawk (see ene/createVer.awk for an example).  Suggested languages
+# are:
+# 	make
+# 	shell (Unix /bin/sh script)     $(shell ..args...)
+# 	awk                             $(AWK) ...args...
+# 	perl                            $(PERL) ..args...
+# 	java                            $(JAVA) ..args...
+#
+# listed roughly in order of preference.  For any of these, care must be taken
+# to make sure that pathnames are handled properly on both Unix-style and Windows
+# platforms.  Within the make system, paths are normally stored with forward
+# slashes, and conversion to backslash forms on Windows is mostly handled by
+# the shell it uses to invoke programs.  In some cases it is necessary to do this
+# manually, as the shell cannot always figure out the correct transformation of
+# a command line to Windows format.  It is also necessary to do the opposite
+# transformation, for example when using an environment variable containing
+# a path.
+#
+
+#
+# You may also be generating, with a custom rule, something that nobody else
+# depends on.  In order to include that item in the default and clean targets,
+# you need to set up an ALIEN entity.
+#
+# For example, let's say that you want your build to always include a
+# platform.txt file in the install directory.  In RULES.mk, you might say:
+#
+% cat > ene/platform/RULES.mk
+$(ALIEN_platform_TARGETS):
+	$(call MKDIR,$(@D))
+	echo $(TARGET_OS)-$(TARGET_CPU) > $@
+^D
+
+#
+# To include this file in the default build target, if nobody else depends on
+# it, you next create an ALIEN entity, as follows:
+#
+% cat > ene/platform/VARS.mk
+ALIEN_platform_SRC_DIR := $(SRC_DIR)
+ALIEN_platform_TARGETS = $(INSTALL_ROOT)/doc/platform.txt
+^D
+
+#
+# The SRC_DIR is used to figure out whether to build platform.txt when we do a
+# build in a subdirectory.  For example, making in ene will build
+# platform.txt, but making in ene/graph will not.
+#
+
+#
+# For a real-world example, see ALIEN_navapi_ndoc, defined in ene/navapi.
+#
+

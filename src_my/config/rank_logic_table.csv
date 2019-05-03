@@ -1,0 +1,9 @@
+﻿type,unlock_conditions.conditions.type,unlock_conditions.conditions.arg,unlock_conditions.conditions.arg,unlock_conditions.conditions.type,unlock_conditions.conditions.arg,unlock_conditions.conditions.arg
+RT_LEVEL,LEVEL_GE,20,,,,
+RT_ZHANLI,LEVEL_GE,10,,ZHANLI_GE,50000,
+RT_RECEIVE_GIFT,LEVEL_GE,10,,RESOURCE_GE,RECEIVE_GIFT,100
+RT_GIVE_GIFT,LEVEL_GE,10,,RESOURCE_GE,GIVE_GIFT,100
+RT_CHAOTANG,LEVEL_GE,10,,GPIN_LIMIT,>=,6
+RT_MANSION_FANCY,LEVEL_GE,20,,MANSION_FANCY_GE,100,
+RT_TOWER,LEVEL_GE,60,,TOWER_HIGHEST_LEVEL_GE,1,
+RT_TEA_PARTY_FAVOR,RESOURCE_GE,TEA_PARTY_FAVOR,1000,,,

@@ -1,0 +1,25 @@
+package proto.data;
+
+enum chat_type {
+        CT_WORLD = 1;
+        CT_PRIVATE = 2;
+        CT_CROSS_WORLD = 3;
+        CT_SYSTEM = 4;
+        CT_LEAGUE = 5;
+        CT_BANQUET = 6;
+        CT_ROOM = 7;
+        CT_WORLD_LABA = 8;
+        CT_COMMON = 9;
+}
+
+message world_chat {
+        required chat_type type = 1;
+        required uint64 gid = 2;
+        required string rolename = 3;
+        required uint32 time = 4;
+        required string content = 5;
+}
+
+message world_chat_array {
+	repeated world_chat world_chat = 1;
+}
